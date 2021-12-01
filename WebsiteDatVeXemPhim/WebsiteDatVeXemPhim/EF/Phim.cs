@@ -17,29 +17,27 @@ namespace WebsiteDatVeXemPhim.EF
 
         public int id { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string TenPhim { get; set; }
 
         [StringLength(1000)]
         public string MoTa { get; set; }
 
-        public double ThoiLuong { get; set; }
+        public double? ThoiLuong { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime NgayKhoiChieu { get; set; }
+        public DateTime? NgayKhoiChieu { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime NgayKetThuc { get; set; }
+        public DateTime? NgayKetThuc { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string SanXuat { get; set; }
 
         [StringLength(100)]
         public string DaoDien { get; set; }
 
-        public int NamSX { get; set; }
+        public int? NamSX { get; set; }
 
         [Column(TypeName = "image")]
         public byte[] ApPhich { get; set; }
@@ -48,6 +46,10 @@ namespace WebsiteDatVeXemPhim.EF
 
         [StringLength(30)]
         public string TheLoai { get; set; }
+
+        public DateTime? NgayTao { get; set; }
+
+        public DateTime? NgayCapNhat { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichChieu> LichChieux { get; set; }

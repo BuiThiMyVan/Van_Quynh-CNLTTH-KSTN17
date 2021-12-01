@@ -9,27 +9,7 @@ GO
 
 --drop database QLRP
 
-CREATE TABLE NhanVien
-(
-	id int identity(1,1) PRIMARY KEY,
-	HoTen NVARCHAR(100) NOT NULL,
-	NgaySinh DATE NOT NULL,
-	DiaChi NVARCHAR(100),
-	SDT VARCHAR(100),
-	CMND INT NOT NULL Unique,
-	TinhTrang int,
-)
-GO
 
-CREATE TABLE TaiKhoan
-(
-	UserName NVARCHAR(100) NOT NULL,
-	Pass VARCHAR(1000) NOT NULL,
-	LoaiTK INT NOT NULL DEFAULT 2, -- 1:admin || 2:staff
-	idNV int NOT NULL,
-	TinhTrang int,
-	FOREIGN KEY (idNV) REFERENCES dbo.NhanVien(ID)
-)
 GO
 
 
@@ -37,27 +17,33 @@ GO
 CREATE TABLE PhongChieu
 (
 	id int identity(1,1) PRIMARY KEY,
-	TenPhong NVARCHAR(100) NOT NULL,
-	SoChoNgoi INT NOT NULL,
-	TinhTrang INT NOT NULL DEFAULT 1, -- 0:không hoạt động || 1:đang hoạt động
-	LoaiManHinh VARCHAR(50)
+	TenPhong NVARCHAR(100),
+	SoChoNgoi INT ,
+	SoHang int,
+	SoCot int,
+	TinhTrang INT, -- 0:không hoạt động || 1:đang hoạt động
+	LoaiManHinh VARCHAR(50),
+	NgayTao Datetime,
+	NgayCapNhat Datetime,
 )
 GO
 
 CREATE TABLE Phim
 (
 	id int identity(1,1) PRIMARY KEY,
-	TenPhim nvarchar(100) NOT NULL,
-	MoTa nvarchar(1000) NULL,
-	ThoiLuong float NOT NULL,
-	NgayKhoiChieu date NOT NULL,
-	NgayKetThuc date NOT NULL,
-	SanXuat nvarchar(50) NOT NULL,
-	DaoDien nvarchar(100) NULL,
-	NamSX int NOT NULL,
+	TenPhim nvarchar(100),
+	MoTa nvarchar(1000),
+	ThoiLuong float,
+	NgayKhoiChieu date,
+	NgayKetThuc date,
+	SanXuat nvarchar(50),
+	DaoDien nvarchar(100),
+	NamSX int,
 	ApPhich image,
 	TinhTrang int,
-	TheLoai Nvarchar(30)
+	TheLoai Nvarchar(30),
+	NgayTao Datetime,
+	NgayCapNhat Datetime,
 )
 GO
 
@@ -66,31 +52,35 @@ GO
 CREATE TABLE TheLoai
 (
 	id int identity(1,1) PRIMARY KEY,
-	TenTheLoai NVARCHAR(100) NOT NULL,
+	TenTheLoai NVARCHAR(100),
 	MoTa NVARCHAR(100),
-	TinhTrang int
+	TinhTrang int,
+	NgayTao Datetime,
+	NgayCapNhat Datetime,
 )
 GO
 
 CREATE TABLE SuatChieu
 (
 	id int identity(1,1) PRIMARY KEY,
-	SuatChieu int NOT NULL,
+	SuatChieu int,
 )
 GO
 
 CREATE TABLE LichChieu
 (
 	id int identity(1,1) PRIMARY KEY,
-	ThoiGianChieu DATETIME NOT NULL,
-	idPhong int NOT NULL,
-	idPhim int NOT NULL,
-	GiaVe Money NOT NULL,
-	TrangThai INT NOT NULL DEFAULT '0', --0: Chưa tạo vé cho lịch chiếu || 1: Đã tạo vé
-	idSuatChieu int NOT NULL,
+	ThoiGianChieu DATETIME,
+	idPhong int,
+	idPhim int,
+	GiaVe Money,
+	TrangThai INT, --0: Chưa tạo vé cho lịch chiếu || 1: Đã tạo vé
+	idSuatChieu int,
 	FOREIGN KEY (idPhong) REFERENCES dbo.PhongChieu(id),
 	FOREIGN KEY (idPhim) REFERENCES dbo.Phim(id),
 	FOREIGN KEY (idSuatChieu) REFERENCES dbo.SuatChieu(id),
+	NgayTao Datetime,
+	NgayCapNhat Datetime,
 
 	--CONSTRAINT PK_LichChieu PRIMARY KEY(ngayChieu,gioChieu,idPhong) --Vì cùng 1 thời điểm có thể có nhiều phòng cùng hoạt động nên khóa chính phải là cả 3 cái
 )
@@ -98,13 +88,15 @@ GO
 
 CREATE TABLE KhachHang
 (
-	id int identity(1,1) PRIMARY KEY,
-	HoTen NVARCHAR(100) NOT NULL,
-	NgaySinh DATE NOT NULL,
+	UserName VarChar(50) PRIMARY KEY,
+	Pass VarChar(50),
+	HoTen NVARCHAR(100),
+	NgaySinh DATE,
 	DiaChi NVARCHAR(100),
-	SDT VARCHAR(100),
-	CMND INT NOT NULL Unique,
-	DiemTichLuy int
+	SDT VARCHAR(11),
+	TinhTrang int,
+	NgayTao Datetime,
+	NgayCapNhat Datetime,
 )
 GO
 
@@ -112,15 +104,17 @@ GO
 CREATE TABLE Ve
 (
 	id int identity(1,1) PRIMARY KEY,
-	LoaiVe INT  DEFAULT '0', --0: Vé người lớn || 1: Vé học sinh - sinh viên || 2: vé trẻ em
+	LoaiVe INT, --0: Vé người lớn || 1: Vé học sinh - sinh viên || 2: vé trẻ em
 	idLichChieu int,
 	MaGheNgoi VARCHAR(50),
-	idKhachHang int,
-	TrangThai INT NOT NULL DEFAULT '0', --0: 'Chưa Bán' || 1: 'Đã Bán'
-	TienBanVe MONEY DEFAULT '0'
-
+	SoHang int,
+	SoCot int,
+	idKhachHang Varchar(50),
+	TrangThai INT, --0: 'Chưa Bán' || 1: 'Đã Bán'
+	NgayTao Datetime,
+	NgayCapNhat Datetime,
 	FOREIGN KEY (idLichChieu) REFERENCES dbo.LichChieu(id),
-	FOREIGN KEY (idKhachHang) REFERENCES dbo.KhachHang(id)
+	FOREIGN KEY (idKhachHang) REFERENCES dbo.KhachHang(UserName)
 )
 GO
 

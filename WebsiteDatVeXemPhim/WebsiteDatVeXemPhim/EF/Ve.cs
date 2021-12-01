@@ -18,12 +18,18 @@ namespace WebsiteDatVeXemPhim.EF
         [StringLength(50)]
         public string MaGheNgoi { get; set; }
 
-        public int? idKhachHang { get; set; }
+        public int? SoHang { get; set; }
 
-        public int TrangThai { get; set; }
+        public int? SoCot { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal? TienBanVe { get; set; }
+        [StringLength(50)]
+        public string idKhachHang { get; set; }
+
+        public int? TrangThai { get; set; }
+
+        public DateTime? NgayTao { get; set; }
+
+        public DateTime? NgayCapNhat { get; set; }
 
         public virtual KhachHang KhachHang { get; set; }
 

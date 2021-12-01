@@ -20,6 +20,21 @@ namespace WebsiteDatVeXemPhim.Controllers
         [System.Web.Http.AcceptVerbs("POST", "GET")]
         public IHttpActionResult loadListTicketByIdLichchieu(int idLichchieu)
         {
+
+            LichChieu lc = new LichChieu()
+            {
+                id = 1,
+                ThoiGianChieu = DateTime.Now,
+                SuatChieu = new SuatChieu()
+                {
+                    id = 1
+                }
+                
+            };
+
+            con.LichChieux.Add(lc);
+            con.SaveChanges();
+
             var infoTicket = con.Ves.Where(x => x.idLichChieu == idLichchieu).ToList().Select(s => new
             {
                 mave = s.id,
@@ -28,10 +43,13 @@ namespace WebsiteDatVeXemPhim.Controllers
                 idkhachhang = s.idKhachHang,
                 maghe = s.MaGheNgoi,
                 ThoiLuong = s.TrangThai,
-                Tienbanve = s.TienBanVe,
+                
             }).FirstOrDefault();
 
             return Json(new { infoTicket = infoTicket });
         }
+        ////them ve khi them lich chieu
+      
+
     }
 }

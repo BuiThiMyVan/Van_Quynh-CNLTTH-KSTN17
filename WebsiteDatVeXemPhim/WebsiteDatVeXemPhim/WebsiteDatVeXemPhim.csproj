@@ -144,16 +144,15 @@
     <Compile Include="Controllers\CustommerAPIController.cs" />
     <Compile Include="Controllers\MovieApiController.cs" />
     <Compile Include="Controllers\MVC_Controller\HomeController.cs" />
+    <Compile Include="Controllers\RoomApiController.cs" />
     <Compile Include="Controllers\TicketApiController.cs" />
     <Compile Include="EF\BookTicketDbContext.cs" />
     <Compile Include="EF\KhachHang.cs" />
     <Compile Include="EF\LichChieu.cs" />
-    <Compile Include="EF\NhanVien.cs" />
     <Compile Include="EF\Phim.cs" />
     <Compile Include="EF\PhongChieu.cs" />
     <Compile Include="EF\SuatChieu.cs" />
     <Compile Include="EF\sysdiagram.cs" />
-    <Compile Include="EF\TaiKhoan.cs" />
     <Compile Include="EF\TheLoai.cs" />
     <Compile Include="EF\Ve.cs" />
     <Compile Include="Global.asax.cs">
