@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <style>
+        .content-wrapper {
+            padding: 16px;            
+        }
+
+        .content-wrapper .list-title {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            color: #1D243E;
+        }
+
+        #search {
+            margin: 16px 0;
+        }
+
+        #search .search-box {
+            position: relative;
+            padding: 8px 16px;
+            width: 354px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 4px;
+        }
+
+        #search .search-box .search-input {
+            width: 100%;
+            border: none;
+        }
+
+        #search .search-box .search-icon {
+            position: absolute;
+            top: 8px;
+            right: 14px;
+            width: 14px;
+            height: 14px;
+        }
+    </style>
+}
+
+<div class="content-wrapper">
+    <span class="list-title">Quản lý Phim</span>
+    <div id="search">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Nhập tên phim/đạo diễn..." />
+            <div class="search-icon"><i class="fas fa-search"></i></div>
+        </div>
+        
+    </div>
+</div>
+

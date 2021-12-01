@@ -141,6 +141,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MovieController.cs" />
     <Compile Include="Controllers\CustommerAPIController.cs" />
     <Compile Include="Controllers\MovieApiController.cs" />
     <Compile Include="Controllers\MVC_Controller\HomeController.cs" />
@@ -164,12 +167,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\assets\demo\chart-area-demo.js" />
+    <Content Include="Areas\Admin\Content\assets\demo\chart-bar-demo.js" />
+    <Content Include="Areas\Admin\Content\assets\demo\chart-pie-demo.js" />
+    <Content Include="Areas\Admin\Content\assets\demo\datatables-demo.js" />
+    <Content Include="Areas\Admin\Content\assets\img\error-404-monochrome.svg" />
+    <Content Include="Areas\Admin\Content\css\main-admin.css" />
+    <Content Include="Areas\Admin\Content\css\styles.css" />
+    <Content Include="Areas\Admin\Content\js\datatables-simple-demo.js" />
+    <Content Include="Areas\Admin\Content\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\app.css" />
     <Content Include="Content\css\bootstrap-grid.min.css" />
     <Content Include="Content\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\css\fontawesome.min.css" />
     <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\jquery.mCustomScrollbar.min.css" />
     <Content Include="Content\css\main.css" />
@@ -234,6 +248,18 @@
     <Content Include="Content\fonts\ioniconse0a5.ttf" />
     <Content Include="Content\fonts\ioniconse0a5.woff" />
     <Content Include="Content\fonts\ioniconse0a5.woff2" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Dashboard.cshtml" />
+    <Content Include="Content\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\webfonts\fa-v4compatibility.ttf" />
+    <Content Include="Content\webfonts\fa-v4compatibility.woff2" />
+    <Content Include="Areas\Admin\Views\Movie\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -263,6 +289,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Views\Customer\" />
     <Folder Include="Views\MovieRoom\" />
     <Folder Include="Views\MovieSchedule\" />
