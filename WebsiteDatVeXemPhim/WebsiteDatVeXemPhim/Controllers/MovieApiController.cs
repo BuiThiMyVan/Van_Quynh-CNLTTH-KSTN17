@@ -143,7 +143,7 @@ namespace WebsiteDatVeXemPhims.Controllers
             Phim objph = JsonConvert.DeserializeObject<Phim>(ph1);
             try
             {
-                var phim = con.Phims.Find(objph.id);
+                Phim phim = con.Phims.Find(objph.id);
                 phim.TenPhim = objph.TenPhim;
                 phim.MoTa = objph.MoTa;
                 phim.ThoiLuong = objph.ThoiLuong;
@@ -206,7 +206,7 @@ namespace WebsiteDatVeXemPhims.Controllers
             TheLoai lph = JsonConvert.DeserializeObject<TheLoai>(objlp);
             try
             {
-                var loaiphim = con.TheLoais.Find(lph.id);
+                TheLoai loaiphim = con.TheLoais.Find(lph.id);
                 loaiphim.TenTheLoai = lph.TenTheLoai;
                 loaiphim.MoTa = lph.MoTa;
                 loaiphim.TinhTrang = lph.TinhTrang;
