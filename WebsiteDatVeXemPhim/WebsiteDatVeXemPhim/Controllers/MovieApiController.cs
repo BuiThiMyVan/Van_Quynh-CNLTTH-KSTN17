@@ -25,14 +25,16 @@ namespace WebsiteDatVeXemPhims.Controllers
                 TenPhim = s.TenPhim,
                 MoTa = s.MoTa,
                 ThoiLuong = s.ThoiLuong,
-                NgayKhoiChieu = s.NgayKhoiChieu.ToString("dd/MM/yyyy"),
-                NgayKetThuc = s.NgayKetThuc.ToString("dd/MM/yyyy"),
+                NgayKhoiChieu = s.NgayKhoiChieu,
+                NgayKetThuc = s.NgayKetThuc,
                 Sanxuat = s.SanXuat,
                 DaoDien = s.DaoDien,
                 NamSX = s.NamSX,
                 ApPhich = s.ApPhich,
                 TinhTrang = s.TinhTrang,
                 TheLoai = s.TheLoai,
+                NgayTao = s.NgayTao,
+                NgayCapNhat = s.NgayCapNhat,
             }).FirstOrDefault();
 
             return Json(new { infoPhim = infoPhim });
@@ -50,14 +52,16 @@ namespace WebsiteDatVeXemPhims.Controllers
                 TenPhim = s.TenPhim,
                 MoTa = s.MoTa,
                 ThoiLuong = s.ThoiLuong,
-                NgayKhoiChieu = s.NgayKhoiChieu.ToString("dd/MM/yyyy"),
-                NgayKetThuc = s.NgayKetThuc.ToString("dd/MM/yyyy"),
+                NgayKhoiChieu = s.NgayKhoiChieu,
+                NgayKetThuc = s.NgayKetThuc,
                 Sanxuat = s.SanXuat,
                 DaoDien = s.DaoDien,
                 NamSX = s.NamSX,
                 ApPhich = s.ApPhich,
                 TinhTrang = s.TinhTrang,
                 TheLoai = s.TheLoai,
+                NgayTao = s.NgayTao,
+                NgayCapNhat = s.NgayCapNhat,
             });
 
             int totalPage = 0;
@@ -72,7 +76,7 @@ namespace WebsiteDatVeXemPhims.Controllers
             {
                 end = objpage.page * objpage.pageSize;
             }
-            return Json(new { listPhim = listPhim, page = objpage.page, pageSize = objpage.pageSize, totalPage = totalPage, totalRecord = totalRecord, start = start, end = end });
+            return Json(new { listPhim = listPhim, totalPage = totalPage, mota = "từ" + start + "đến" + end + "của tổng số" + totalRecord });
         }
 
         
@@ -87,6 +91,9 @@ namespace WebsiteDatVeXemPhims.Controllers
                 TenLoai = s.TenTheLoai,
                 MoTa = s.MoTa,
                 TinhTrang = s.TinhTrang,
+                NgayTao = s.NgayTao,
+                NgayCapNhat = s.NgayCapNhat,
+
             });
 
             int totalPage = 0;
@@ -101,7 +108,7 @@ namespace WebsiteDatVeXemPhims.Controllers
             {
                 end = objpage.page * objpage.pageSize;
             }
-            return Json(new { listLoaiPhim = listLoaiPhim, page = objpage.page, pageSize = objpage.pageSize, totalPage = totalPage, totalRecord = totalRecord, start = start, end = end });
+            return Json(new { listLoaiPhim = listLoaiPhim, totalPage = totalPage, mota = "từ" + start + "đến" + end + "của tổng số" + totalRecord });
         }
 
 
@@ -114,6 +121,8 @@ namespace WebsiteDatVeXemPhims.Controllers
                 TenTheLoai = s.TenTheLoai,
                 MoTa = s.MoTa,
                 TinhTrang = s.TinhTrang,
+                NgayTao = s.NgayTao,
+                NgayCapNhat = s.NgayCapNhat,
             }).FirstOrDefault();
 
             return Json(new { infoLoaiPhim = infoLoaiPhim });
@@ -125,15 +134,17 @@ namespace WebsiteDatVeXemPhims.Controllers
         public IHttpActionResult addPhim(string ph)
         {
             Phim objph = JsonConvert.DeserializeObject<Phim>(ph);
+            objph.NgayTao = DateTime.Now;
+            objph.NgayCapNhat = null;
             try
             {
                 con.Phims.Add(objph);
                 con.SaveChanges();
-                return Json(1);
+                return Json(200);
             }
             catch
             {
-                return Json(0);
+                return Json(404);
             }
 
         }
@@ -154,31 +165,32 @@ namespace WebsiteDatVeXemPhims.Controllers
                 phim.NamSX = objph.NamSX;
                 phim.ApPhich = objph.ApPhich;
                 phim.TinhTrang = objph.TinhTrang;
+                phim.NgayCapNhat = DateTime.Now;
 
                 con.SaveChanges();
-                return Json(1);
+                return Json(200);
             }
             catch
             {
-                return Json(0);
+                return Json(404);
             }
         }
-        [System.Web.Http.AcceptVerbs("POST")]
-        public IHttpActionResult deletePhim(string id)
-        {
-            try
-            {
-                var phim = con.Phims.Find(id);
-                con.Phims.Remove(phim);
-                con.SaveChanges();
-                return Json(1);
-            }
-            catch
-            {
-                return Json(0);
-            }
+        //[System.Web.Http.AcceptVerbs("POST")]
+        //public IHttpActionResult deletePhim(int id)
+        //{
+        //    try
+        //    {
+        //        var phim = con.Phims.Find(id);
+        //        con.Phims.Remove(phim);
+        //        con.SaveChanges();
+        //        return Json(1);
+        //    }
+        //    catch
+        //    {
+        //        return Json(0);
+        //    }
 
-        }
+        //}
        
 
 
@@ -186,15 +198,17 @@ namespace WebsiteDatVeXemPhims.Controllers
         public IHttpActionResult addLoaiPhim(string objlp)
         {
             TheLoai lph = JsonConvert.DeserializeObject<TheLoai>(objlp);
+            lph.NgayTao =DateTime.Now;
+            lph.NgayCapNhat = null;
             try
             {
                 con.TheLoais.Add(lph);
                 con.SaveChanges();
-                return Json(1);
+                return Json(200);
             }
             catch
             {
-                return Json(0);
+                return Json(404);
             }
 
         }
@@ -204,18 +218,20 @@ namespace WebsiteDatVeXemPhims.Controllers
         public IHttpActionResult updateLoaiPhim(string objlp)
         {
             TheLoai lph = JsonConvert.DeserializeObject<TheLoai>(objlp);
+           
             try
             {
                 TheLoai loaiphim = con.TheLoais.Find(lph.id);
                 loaiphim.TenTheLoai = lph.TenTheLoai;
                 loaiphim.MoTa = lph.MoTa;
                 loaiphim.TinhTrang = lph.TinhTrang;
+                loaiphim.NgayCapNhat = DateTime.Now;
                 con.SaveChanges();
-                return Json(1);
+                return Json(200);
             }
             catch
             {
-                return Json(0);
+                return Json(404);
             }
         }
     }

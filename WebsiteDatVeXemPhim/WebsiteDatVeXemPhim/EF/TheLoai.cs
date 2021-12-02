@@ -11,7 +11,6 @@ namespace WebsiteDatVeXemPhim.EF
     {
         public int id { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string TenTheLoai { get; set; }
 
@@ -19,5 +18,9 @@ namespace WebsiteDatVeXemPhim.EF
         public string MoTa { get; set; }
 
         public int? TinhTrang { get; set; }
+
+        public DateTime? NgayTao { get; set; }
+
+        public DateTime? NgayCapNhat { get; set; }
     }
 }

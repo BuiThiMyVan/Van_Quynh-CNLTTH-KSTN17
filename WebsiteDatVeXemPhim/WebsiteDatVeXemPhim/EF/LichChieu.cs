@@ -17,18 +17,22 @@ namespace WebsiteDatVeXemPhim.EF
 
         public int id { get; set; }
 
-        public DateTime ThoiGianChieu { get; set; }
+        public DateTime? ThoiGianChieu { get; set; }
 
-        public int idPhong { get; set; }
+        public int? idPhong { get; set; }
 
-        public int idPhim { get; set; }
+        public int? idPhim { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal GiaVe { get; set; }
+        public decimal? GiaVe { get; set; }
 
-        public int TrangThai { get; set; }
+        public int? TrangThai { get; set; }
 
-        public int idSuatChieu { get; set; }
+        public int? idSuatChieu { get; set; }
+
+        public DateTime? NgayTao { get; set; }
+
+        public DateTime? NgayCapNhat { get; set; }
 
         public virtual Phim Phim { get; set; }
 

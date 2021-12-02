@@ -17,16 +17,23 @@ namespace WebsiteDatVeXemPhim.EF
 
         public int id { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string TenPhong { get; set; }
 
-        public int SoChoNgoi { get; set; }
+        public int? SoChoNgoi { get; set; }
 
-        public int TinhTrang { get; set; }
+        public int? SoHang { get; set; }
+
+        public int? SoCot { get; set; }
+
+        public int? TinhTrang { get; set; }
 
         [StringLength(50)]
         public string LoaiManHinh { get; set; }
+
+        public DateTime? NgayTao { get; set; }
+
+        public DateTime? NgayCapNhat { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichChieu> LichChieux { get; set; }

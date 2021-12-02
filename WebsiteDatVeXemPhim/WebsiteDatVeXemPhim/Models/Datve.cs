@@ -1,13 +1,13 @@
-namespace WebsiteDatVeXemPhim.EF
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+namespace WebsiteDatVeXemPhim.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    [Table("Ve")]
-    public partial class Ve
+    public class Datve
     {
         public int id { get; set; }
 
@@ -30,9 +30,8 @@ namespace WebsiteDatVeXemPhim.EF
         public DateTime? NgayTao { get; set; }
 
         public DateTime? NgayCapNhat { get; set; }
-
-        public virtual KhachHang KhachHang { get; set; }
-
-        public virtual LichChieu LichChieu { get; set; }
+       
+        [StringLength(50)]
+        public string UserName { get; set; }
     }
 }

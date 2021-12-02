@@ -25,13 +25,42 @@ namespace WebsiteDatVeXemPhim.Controllers
                 mave = s.id,
                 LoaiVe = s.LoaiVe,
                 lichchieu = s.idLichChieu,
+                maghengoi = s.MaGheNgoi,
+                sohang = s.SoHang,
+                socot = s.SoCot,
                 idkhachhang = s.idKhachHang,
-                maghe = s.MaGheNgoi,
-                ThoiLuong = s.TrangThai,
-                Tienbanve = s.TienBanVe,
-            }).FirstOrDefault();
+                trangthai = s.TrangThai,
+                ngaytao = s.NgayTao,
+                ngaycapnhat = s.NgayCapNhat
+            });
 
             return Json(new { infoTicket = infoTicket });
         }
+        ////dat ve chua chay dc
+        [System.Web.Http.AcceptVerbs("POST")]
+        public IHttpActionResult datVE(string ve)
+        {
+            Ve objve = JsonConvert.DeserializeObject<Ve>(ve);
+            try
+            {
+                Ve Ve = con.Ves.Find(objve.id);
+                Ve.LoaiVe = objve.LoaiVe;
+                Ve.idLichChieu = objve.idLichChieu;
+                Ve.MaGheNgoi = objve.MaGheNgoi ;
+                Ve.SoHang = objve.SoHang ;
+                Ve.SoCot = objve.SoCot ;
+                Ve.idKhachHang = objve.idKhachHang;
+                Ve.TrangThai = 0;
+                Ve.NgayCapNhat = DateTime.Now;
+                con.SaveChanges();
+                return Json(200);
+            }
+            catch
+            {
+                return Json(404);
+            }
+        }
+
+
     }
 }
