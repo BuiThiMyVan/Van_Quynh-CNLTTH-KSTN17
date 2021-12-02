@@ -6,6 +6,14 @@
 
 @section Styles {
     <style>
+        .display-none {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
         .content-wrapper {
             padding: 16px;            
         }
@@ -56,7 +64,7 @@
     </style>
 }
 
-<div class="content-wrapper">
+<div class="content-wrapper display-none" id="ListFilm">
     <span class="list-title">Quản lý Phim</span>
     <div id="search">
         <div class="search-box">
@@ -70,15 +78,25 @@
                 <tr>
                     <th scope="col" class="ordinal-numbers">STT</th>
                     <th scope="col">Tên phim</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Thời lượng</th>
+                    <th scope="col">Ngày tạo</th>
+                    <th scope="col">Ngày khởi chiếu</th>
+                    <th scope="col">Đạo diễn</th>
+                    <th scope="col">Năm sản xuất</th>
+                    <th scope="col">Tình trạng</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
+                    <td class="text-center">
+                        {{pageSize * (currentPage-1) + index +1}}
+                    </td>
                     <td>Mark</td>
                     <td>Otto</td>
+                    <td>mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>mdo</td>
                     <td>mdo</td>
                 </tr>
             </tbody>
