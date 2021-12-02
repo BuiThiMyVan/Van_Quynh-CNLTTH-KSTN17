@@ -76,7 +76,7 @@ namespace WebsiteDatVeXemPhims.Controllers
             {
                 end = objpage.page * objpage.pageSize;
             }
-            return Json(new { listPhim = listPhim, page = objpage.page, pageSize = objpage.pageSize, totalPage = totalPage, totalRecord = totalRecord, start = start, end = end });
+            return Json(new { listPhim = listPhim, totalPage = totalPage, mota = "từ" + start + "đến" + end + "của tổng số" + totalRecord });
         }
 
         
@@ -108,7 +108,7 @@ namespace WebsiteDatVeXemPhims.Controllers
             {
                 end = objpage.page * objpage.pageSize;
             }
-            return Json(new { listLoaiPhim = listLoaiPhim, page = objpage.page, pageSize = objpage.pageSize, totalPage = totalPage, totalRecord = totalRecord, start = start, end = end });
+            return Json(new { listLoaiPhim = listLoaiPhim, totalPage = totalPage, mota = "từ" + start + "đến" + end + "của tổng số" + totalRecord });
         }
 
 

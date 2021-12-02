@@ -24,6 +24,8 @@ namespace WebsiteDatVeXemPhim.Controllers
                 SoChoNgoi = s.SoChoNgoi,
                 TinhTrang = s.TinhTrang,
                 LoaiManHinh = s.LoaiManHinh,
+                NgayTao = s.NgayTao,
+                NgayCapNhat = s.NgayCapNhat,
 
             }).FirstOrDefault();
 
@@ -43,7 +45,9 @@ namespace WebsiteDatVeXemPhim.Controllers
                 SoChoNgoi = s.SoChoNgoi,
                 TinhTrang = s.TinhTrang,
                 LoaiManHinh = s.LoaiManHinh,
-            
+                NgayTao = s.NgayTao,
+                NgayCapNhat = s.NgayCapNhat,
+
             });
 
             int totalPage = 0;
@@ -58,26 +62,9 @@ namespace WebsiteDatVeXemPhim.Controllers
             {
                 end = objpage.page * objpage.pageSize;
             }
-            return Json(new { lishPC = listPC, page = objpage.page, pageSize = objpage.pageSize, totalPage = totalPage, totalRecord = totalRecord, start = start, end = end });
+            return Json(new { lishPC = listPC, totalPage = totalPage, mota = "từ" + start + "đến" + end + "của tổng số" + totalRecord });
         }
 
-
-        [System.Web.Http.AcceptVerbs("POST")]
-        public IHttpActionResult addPC(string PC)
-        {
-            PhongChieu objPC = JsonConvert.DeserializeObject<PhongChieu>(PC);
-            try
-            {
-                con.PhongChieux.Add(objPC);
-                con.SaveChanges();
-                return Json(1);
-            }
-            catch
-            {
-                return Json(0);
-            }
-
-        }
         [System.Web.Http.AcceptVerbs("POST")]
         public IHttpActionResult updatePC(string PC)
         {
@@ -87,31 +74,20 @@ namespace WebsiteDatVeXemPhim.Controllers
                 PhongChieu PhongChieu = con.PhongChieux.Find(objPC.id);
                 PhongChieu.TenPhong = objPC.TenPhong;
                 PhongChieu.SoChoNgoi = objPC.SoChoNgoi;
+                PhongChieu.SoHang = objPC.SoHang;
+                PhongChieu.SoCot = objPC.SoCot;
                 PhongChieu.TinhTrang = objPC.TinhTrang;
-                PhongChieu.LoaiManHinh = objPC.LoaiManHinh; 
+                PhongChieu.LoaiManHinh = objPC.LoaiManHinh;
+                PhongChieu.NgayTao = null;
+                PhongChieu.NgayCapNhat = DateTime.Now;
                 con.SaveChanges();
-                return Json(1);
+                return Json(200);
             }
             catch
             {
-                return Json(0);
+                return Json(404);
             }
         }
-        [System.Web.Http.AcceptVerbs("POST")]
-        public IHttpActionResult deletePC(int id)
-        {
-            try
-            {
-                var PhongChieu = con.PhongChieux.Find(id);
-                con.PhongChieux.Remove(PhongChieu);
-                con.SaveChanges();
-                return Json(1);
-            }
-            catch
-            {
-                return Json(0);
-            }
-
-        }
+       
     }
 }
