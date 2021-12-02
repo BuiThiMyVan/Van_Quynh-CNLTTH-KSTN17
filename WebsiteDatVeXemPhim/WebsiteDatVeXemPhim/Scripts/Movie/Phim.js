@@ -16,14 +16,14 @@
     },
 
     method: {
-        getListKOL_Campaign: function () {
-            AddLoader();
+        getListFilm: function () {
+            //AddLoader();
             var self = this;
             var modal = {
                 //Search: self.txtSearch.trim(),
-                PageSize: self.pageSize,
-                CurrentPage: self.currentPage - 1,
-                Status: self.Status
+                pageSize: self.pageSize,
+                page: self.currentPage,
+                //Status: self.Status
             }
             $.ajax({
                 data: modal,
@@ -32,23 +32,26 @@
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
-                self.list = res.data.list;
-                self.totalPage = res.totalPage;
+                console.log(res);
+                self.list = res.data.listPhim;
+                self.totalPage = res.data.totalPage;
                 self.pageView = res.data.PageView;
-                HiddenLoader();
-                $("#ListFilm").css("display", "block");
-                setTimeout(function () {
-                    $(function () {
-                        $('[data-toggle="tooltip"]').tooltip(
-                            {
-                                container: 'body'
-                            }
-                        );
-                    });
-                });
+                //HiddenLoader();
+                //$("#ListFilm").css("display", "block");
+                //setTimeout(function () {
+                //    $(function () {
+                //        $('[data-toggle="tooltip"]').tooltip(
+                //            {
+                //                container: 'body'
+                //            }
+                //        );
+                //    });
+                //});
             });
         },
 
     }
 })
+
+vmListFilm.getListFilm();
 

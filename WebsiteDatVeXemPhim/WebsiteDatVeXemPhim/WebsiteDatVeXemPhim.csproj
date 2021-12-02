@@ -191,7 +191,8 @@
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\photoswipe.css" />
     <Content Include="Content\css\plyr.css" />
-    <Content Include="Content\fonts\ioniconse0a5.svg" />
+    <Content Include="Content\css\themify-icons.css" />
+    <Content Include="Content\fonts\themify.svg" />
     <Content Include="Content\icon\apple-touch-icon-114x114.png" />
     <Content Include="Content\icon\apple-touch-icon-144x144.png" />
     <Content Include="Content\icon\apple-touch-icon-72x72.png" />
@@ -244,10 +245,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\fonts\ioniconse0a5.eot" />
-    <Content Include="Content\fonts\ioniconse0a5.ttf" />
-    <Content Include="Content\fonts\ioniconse0a5.woff" />
-    <Content Include="Content\fonts\ioniconse0a5.woff2" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Dashboard.cshtml" />
@@ -260,7 +257,11 @@
     <Content Include="Content\webfonts\fa-v4compatibility.ttf" />
     <Content Include="Content\webfonts\fa-v4compatibility.woff2" />
     <Content Include="Areas\Admin\Views\Movie\Index.cshtml" />
+    <Content Include="Content\fonts\themify.eot" />
+    <Content Include="Content\fonts\themify.ttf" />
+    <Content Include="Content\fonts\themify.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
