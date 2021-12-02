@@ -1,9 +1,8 @@
-﻿function isNumberKey(evt) {
-    var charCode = (evt.which) ? evt.which : event.keyCode;
-    if (charCode == 13) {
-        lstStudent.getList();
-    } else if ((charCode < 48 || charCode > 57)) {
-        return false;
-    }
-    return true;
+﻿function AddLoader() {
+    $("#img-spin").removeClass('display-none');
+    $("#img-spin").addClass('display-flex');
+}
+function HiddenLoader() {
+    $("#img-spin").addClass('display-none');
+    $("#img-spin").removeClass('display-flex');
 }

@@ -13,5 +13,10 @@ namespace WebsiteDatVeXemPhim.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult MyFilm()
+        {
+            return View();
+        }
     }
 }

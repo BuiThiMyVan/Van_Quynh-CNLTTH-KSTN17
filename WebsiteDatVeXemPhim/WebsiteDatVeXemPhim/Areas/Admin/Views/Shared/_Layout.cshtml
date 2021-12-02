@@ -15,12 +15,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="~/Content/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/app.css" rel="stylesheet" />
     <link href="/Areas/Admin/Content/css/styles.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/css/main-admin.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     @RenderSection("Styles", false)
 </head>
 <body class="sb-nav-fixed">
+    <div id="img-spin" class="display-flex"><img src="/Content/Images/spin.gif" /></div>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Header Logo -->
         <a href="index.html" class="header__logo">
@@ -51,7 +53,7 @@
                         </a>
                         <a class="nav-link" href="/Admin/Movie/Index">
                             <div class="sb-nav-link-icon"><i class="fas fa-film"></i></div>
-                            Danh sách Phim
+                            Phim
                         </a>
                         <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
@@ -79,6 +81,8 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="/Scripts/vue.js"></script>
     <script src="/Areas/Admin/Content/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="/Areas/Admin/Content/assets/demo/chart-area-demo.js"></script>

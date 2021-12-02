@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
+using static WebsiteDatVeXemPhim.EF.Phim;
 
 namespace WebsiteDatVeXemPhims.Controllers
 {
@@ -41,28 +42,11 @@ namespace WebsiteDatVeXemPhims.Controllers
         }
 
 
-        [System.Web.Http.AcceptVerbs("GET")]
-        public IHttpActionResult loadListPhim(string infoPage)
+        [System.Web.Http.AcceptVerbs("GET", "POST")]
+        public IHttpActionResult loadListPhim(Pagination objpage)
         {
-            Pagination objpage = JsonConvert.DeserializeObject<Pagination>(infoPage);
             var totalRecord = con.Phims.Count();
-            var listPhim = con.Phims.OrderBy(s => s.id).Skip((objpage.page - 1) * objpage.pageSize).Take(objpage.pageSize).ToList().Select(s => new
-            {
-                MaPhim = s.id,
-                TenPhim = s.TenPhim,
-                MoTa = s.MoTa,
-                ThoiLuong = s.ThoiLuong,
-                NgayKhoiChieu = s.NgayKhoiChieu,
-                NgayKetThuc = s.NgayKetThuc,
-                Sanxuat = s.SanXuat,
-                DaoDien = s.DaoDien,
-                NamSX = s.NamSX,
-                ApPhich = s.ApPhich,
-                TinhTrang = s.TinhTrang,
-                TheLoai = s.TheLoai,
-                NgayTao = s.NgayTao,
-                NgayCapNhat = s.NgayCapNhat,
-            });
+            var listPhim = con.Phims.OrderByDescending(s => s.NgayTao).Skip((objpage.page - 1) * objpage.pageSize).Take(objpage.pageSize).ToList();
 
             int totalPage = 0;
             totalPage = (int)Math.Ceiling((double)totalRecord / objpage.pageSize);
@@ -76,7 +60,16 @@ namespace WebsiteDatVeXemPhims.Controllers
             {
                 end = objpage.page * objpage.pageSize;
             }
-            return Json(new { listPhim = listPhim, totalPage = totalPage, mota = "từ" + start + "đến" + end + "của tổng số" + totalRecord });
+            var pageView = "";
+            pageView = start + "-" + end + " của tổng số " + totalRecord;
+
+            JsonPhim jsonreturn = new JsonPhim
+            {
+                listPhim = listPhim.Select(t => t.CopyObjectForMovieApi()).ToArray(),
+                totalPage = totalPage,
+                pageView = pageView
+            };
+            return Json(new { data = jsonreturn });
         }
 
         

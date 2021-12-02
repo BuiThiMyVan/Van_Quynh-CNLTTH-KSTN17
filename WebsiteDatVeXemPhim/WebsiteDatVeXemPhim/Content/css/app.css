@@ -1,3 +1,14 @@
 ﻿.m0 {
     margin: 0;
 }
+
+#img-spin {
+    width: 100%;
+    position: fixed;
+    z-index: 999999999;
+    height: 100%;
+    background: white;
+    opacity: 0.8;
+    align-items: center;
+    justify-content: center;
+}

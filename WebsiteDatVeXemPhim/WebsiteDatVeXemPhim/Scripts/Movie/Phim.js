@@ -15,16 +15,45 @@
         RoleId: -1
     },
 
-    method: {
+    methods: {
+        first: function () {
+            this.currentPage = 1;
+            this.getListFilm();
+        },
+
+        last: function () {
+            this.currentPage = this.totalPage;
+            this.getListFilm();
+        },
+
+        next: function () {
+            if (this.currentPage < this.totalPage) {
+                this.currentPage++;
+                this.getListFilm();
+            }
+        },
+
+        prev: function () {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                this.getListFilm();
+            }
+        },
+
+        validatePage: function () {
+            var page = $("#pagePicked").val();
+            if (page > this.totalPage) {
+                this.currentPage = this.totalPage;
+            }
+        },
+
         getListFilm: function () {
             //AddLoader();
             var self = this;
             var modal = {
-                //Search: self.txtSearch.trim(),
-                pageSize: self.pageSize,
                 page: self.currentPage,
-                //Status: self.Status
-            }
+                pageSize: self.pageSize                
+            };
             $.ajax({
                 data: modal,
                 url: "/api/MovieApi/loadListPhim",
@@ -35,23 +64,23 @@
                 console.log(res);
                 self.list = res.data.listPhim;
                 self.totalPage = res.data.totalPage;
-                self.pageView = res.data.PageView;
-                //HiddenLoader();
-                //$("#ListFilm").css("display", "block");
-                //setTimeout(function () {
-                //    $(function () {
-                //        $('[data-toggle="tooltip"]').tooltip(
-                //            {
-                //                container: 'body'
-                //            }
-                //        );
-                //    });
-                //});
+                self.pageView = res.data.pageView;
+                HiddenLoader();
+                $("#ListFilm").css("display", "block");
             });
-        },
+        }
 
     }
 })
 
 vmListFilm.getListFilm();
 
+function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    if (charCode == 13) {
+        vmListFilm.getListFilm();
+    } else if ((charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}

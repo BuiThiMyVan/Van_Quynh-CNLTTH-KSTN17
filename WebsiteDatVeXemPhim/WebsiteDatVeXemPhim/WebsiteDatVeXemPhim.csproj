@@ -156,14 +156,16 @@
     <Compile Include="EF\Phim.cs" />
     <Compile Include="EF\PhongChieu.cs" />
     <Compile Include="EF\SuatChieu.cs" />
-    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\TheLoai.cs" />
     <Compile Include="EF\Ve.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ObjectUtil.cs" />
+    <Compile Include="Partials\KhachHang.cs" />
     <Compile Include="Models\Pagination.cs" />
     <Compile Include="Models\Datve.cs" />
+    <Compile Include="Partials\Phim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +199,7 @@
     <Content Include="Content\icon\apple-touch-icon-144x144.png" />
     <Content Include="Content\icon\apple-touch-icon-72x72.png" />
     <Content Include="Content\icon\favicon-32x32.png" />
+    <Content Include="Content\Images\spin.gif" />
     <Content Include="Content\img\covers\cover.jpg" />
     <Content Include="Content\img\covers\cover2.jpg" />
     <Content Include="Content\img\covers\cover3.jpg" />
@@ -260,6 +263,7 @@
     <Content Include="Content\fonts\themify.eot" />
     <Content Include="Content\fonts\themify.ttf" />
     <Content Include="Content\fonts\themify.woff" />
+    <Content Include="Areas\Admin\Views\Movie\MyFilm.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -267,12 +271,14 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Movie\Phim.js" />
+    <Content Include="Scripts\vue.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

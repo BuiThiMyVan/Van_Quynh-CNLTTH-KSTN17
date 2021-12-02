@@ -1,4 +1,6 @@
-﻿
+﻿@using WebsiteDatVeXemPhim
+@using WebsiteDatVeXemPhim.EF
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -6,6 +8,18 @@
 
 @section Styles {
     <style>
+        :root {
+            --main-color: #b9256a;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+        }
+
         .display-none {
             display: none;
         }
@@ -18,40 +32,52 @@
             padding: 16px;
         }
 
-        .content-wrapper .list-title {
-            display: inline-block;
-            margin-bottom: 12px;
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 29px;
-            color: #1D243E;
+        .content-wrapper .header {
+            display: flex;
+            justify-content: space-between;
         }
+
+            .content-wrapper .list-title {
+                display: inline-block;
+                margin-bottom: 12px;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 29px;
+                color: #1D243E;
+            }
+            .content-wrapper .btn-main-color {
+                color: #fff;
+                background-color: var(--main-color);
+                border-radius: 4px;
+                padding: 12px 38px;
+                font-weight: bold;
+            }
 
         #search {
             margin: 16px 0;
         }
 
-        #search .search-box {
-            position: relative;
-            padding: 8px 16px;
-            width: 354px;
-            height: 40px;
-            background-color: #fff;
-            border-radius: 4px;
-        }
+            #search .search-box {
+                position: relative;
+                padding: 8px 16px;
+                width: 354px;
+                height: 40px;
+                background-color: #fff;
+                border-radius: 4px;
+            }
 
-        #search .search-box .search-input {
-            width: 100%;
-            border: none;
-        }
+                #search .search-box .search-input {
+                    width: 100%;
+                    border: none;
+                }
 
-        #search .search-box .search-icon {
-            position: absolute;
-            top: 8px;
-            right: 14px;
-            width: 14px;
-            height: 14px;
-        }
+                #search .search-box .search-icon {
+                    position: absolute;
+                    top: 8px;
+                    right: 14px;
+                    width: 14px;
+                    height: 14px;
+                }
 
         .content-wrapper .table-list {
             margin-top: 8px;
@@ -64,17 +90,16 @@
 
         .table-list .ordinal-numbers {
             width: 44px;
-
         }
 
         .table-list .name-film {
             min-width: 182px;
         }
 
-        .table-list .name-film:hover {
-            cursor: pointer;
-            opacity: 0.8;
-        }
+            .table-list .name-film:hover {
+                cursor: pointer;
+                opacity: 0.8;
+            }
 
         .table-list .produce-year {
             width: 124px;
@@ -84,6 +109,17 @@
             width: 158px;
         }
 
+        .text-main-color {
+            color: var(--main-color);
+        }
+
+        .text-orange {
+            color: #FFB401;
+        }
+
+        .text-blue {
+            color: #4679CC;
+        }
 
     </style>
 
@@ -121,7 +157,7 @@
             padding: 0 16px;
         }
 
-        .nav-link {
+        .paginate .nav-link {
             height: 34px;
         }
 
@@ -134,11 +170,11 @@
             padding: 8px 18px;
         }
 
-        .page-link:hover {
-            color: #515253;
-            opacity: 0.8;
-            cursor: pointer;
-        }
+            .page-link:hover {
+                color: #515253;
+                opacity: 0.8;
+                cursor: pointer;
+            }
 
         .infoStudent {
             position: relative;
@@ -152,8 +188,11 @@
     </style>
 }
 
-<div class="content-wrapper" id="ListFilm">
-    <span class="list-title">Quản lý Phim</span>
+<div class="content-wrapper display-none" id="ListFilm">
+    <div class="header">
+        <span class="list-title">Quản lý Phim</span>
+        <a href="/Movie/AddPhim" class="btn-main-color">Tạo phim</a>
+    </div>
     <div id="search">
         <div class="search-box">
             <input type="text" class="search-input" placeholder="Nhập tên phim/đạo diễn..." />
@@ -173,15 +212,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr v-for="(item, index) in list">
                     <td class="ordinal-numbers text-center">
-                        @*{{pageSize * (currentPage-1) + index +1}}*@
+                        {{pageSize * (currentPage-1) + index +1}}
                     </td>
-                    <td class="name-film">Mark</td>
-                    <td class="text-center">Otto</td>
-                    <td class="show-date text-center">mdo</td>
-                    <td class="produce-year text-center">Otto</td>
-                    <td class="text-center">mdo</td>
+                    <td class="name-film"> {{ item.TenPhim }} </td>
+                    <td class="text-center">{{ item.ThoiLuong }} phút</td>
+                    <td class="show-date text-center">{{ item.NgayKhoiChieuFormat }}</td>
+                    <td class="produce-year text-center">{{ item.NamSX }}</td>
+                    <td class="text-center text-orange" v-if="item.TinhTrang == @((int)Phim.StatusFilm.ChuaKhoiChieu)"> Chưa khởi chiếu</td>
+                    <td class="text-center text-blue" v-if="item.TinhTrang == @((int)Phim.StatusFilm.DangKhoiChieu)"> Đang khởi chiếu</td>
+                    <td class="text-center text-main-color" v-if="item.TinhTrang == @((int)Phim.StatusFilm.KetThuc)"> Kết thúc</td>
                 </tr>
             </tbody>
         </table>
@@ -189,32 +230,31 @@
     <div class="paginate">
         <div class="paginate_sub paginate_sub-pageSize">
             <label class="form-label">Số dòng trên 1 trang</label>
-            <select class="pagePicked m-3" v-model="pageSize" v-on:change="getList()">
-                <option value="5" selected>5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
+            <select class="pagePicked m-3" v-model="pageSize" v-on:change="getListFilm()">
+                <option v-for="item in listPageSize" v-bind:value="item">
+                    {{item}}
+                </option>
             </select>
-            <span>{{start}} - {{end}} <span>của tổng số</span> {{totalRecord}} </span>
+            <span>{{ pageView }} </span>
         </div>
         <div class="paginate_sub paginate_sub-link">
             <div class="sub-link">
                 <label class="form-label">Đi đến trang</label>
-                <input type="text" v-model="page" id="pagePicked" class="pagePicked" v-on:keyup="validatePage()" onkeypress="return isNumberKey(event)">
+                <input type="text" v-bind:value="currentPage" id="pagePicked" class="pagePicked" v-on:keyup="validatePage()" onkeypress="return isNumberKey(event)">
             </div>
             <nav class="nav-link">
                 <ul class="pagination">
                     <li class="page-item">
-                        <span class="page-link" v-on:click="firstList()"><i v-bind:style="{color:firstList_disable}" class="fas fa-step-backward"></i></span>
+                        <span class="page-link" v-on:click="first()"><i @*v-bind:style="{color:firstList_disable}"*@ class="fas fa-step-backward"></i></span>
                     </li>
                     <li class="page-item">
-                        <span class="page-link" v-on:click="prevList()"><i v-bind:style="{color:firstList_disable}" class="fas fa-chevron-left"></i></span>
+                        <span class="page-link" v-on:click="prev()"><i @*v-bind:style="{color:firstList_disable}"*@ class="fas fa-chevron-left"></i></span>
                     </li>
                     <li class="page-item">
-                        <span class="page-link" v-on:click="nextList()"><i v-bind:style="{color:lastList_disable}" class="fas fa-chevron-right"></i></span>
+                        <span class="page-link" v-on:click="next()"><i @*v-bind:style="{color:lastList_disable}"*@ class="fas fa-chevron-right"></i></span>
                     </li>
                     <li class="page-item">
-                        <span class="page-link" v-on:click="lastList()"><i v-bind:style="{color:lastList_disable}" class="fas fa-step-forward"></i></span>
+                        <span class="page-link" v-on:click="last()"><i @*v-bind:style="{color:lastList_disable}"*@ class="fas fa-step-forward"></i></span>
                     </li>
                 </ul>
             </nav>
@@ -222,4 +262,8 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="/Scripts/Movie/Phim.js"></script>
+}
 

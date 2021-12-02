@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebsiteDatVeXemPhim.EF;
-using WebsiteDatVeXemPhim.Models;
 
 namespace WebsiteDatVeXemPhim.Controllers
 {
