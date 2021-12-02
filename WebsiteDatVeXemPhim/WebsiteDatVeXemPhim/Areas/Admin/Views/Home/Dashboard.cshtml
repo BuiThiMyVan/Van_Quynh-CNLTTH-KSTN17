@@ -44,6 +44,15 @@
             width: 14px;
             height: 14px;
         }
+
+        .content-wrapper .table-list {
+            margin-top: 8px;
+            background-color: #fff;
+        }
+
+        .table > :not(:first-child) {
+            border-top: none;
+        }
     </style>
 }
 
@@ -54,7 +63,26 @@
             <input type="text" class="search-input" placeholder="Nhập tên phim/đạo diễn..." />
             <div class="search-icon"><i class="fas fa-search"></i></div>
         </div>
-        
+    </div>
+    <div class="table-list">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" class="ordinal-numbers">STT</th>
+                    <th scope="col">Tên phim</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>mdo</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
