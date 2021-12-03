@@ -17,7 +17,7 @@ namespace WebsiteDatVeXemPhim.Controllers
         public IHttpActionResult addKH(KhachHang objkh)
         {
             //KhachHang objkh = JsonConvert.DeserializeObject<KhachHang>(kh);
-            
+            objkh.TinhTrang = (int)KhachHang.KH.enable;
             objkh.Pass = objkh.EncodePassword(objkh.Pass);
             objkh.NgayTao = DateTime.Now;
             objkh.NgayCapNhat = DateTime.Now;
@@ -26,7 +26,7 @@ namespace WebsiteDatVeXemPhim.Controllers
                 NguoiDung nd = new NguoiDung();
                 nd.UserName = objkh.UserName;
                 nd.Pass = objkh.Pass;
-                nd.roleid = (int)KhachHang.Role.admin;
+                nd.roleid = (int)NguoiDung.Role.admin;
                 con.NguoiDungs.Add(nd);
                 con.KhachHangs.Add(objkh);
                 con.SaveChanges();

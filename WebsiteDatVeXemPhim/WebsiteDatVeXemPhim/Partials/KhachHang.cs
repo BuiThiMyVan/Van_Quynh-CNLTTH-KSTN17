@@ -9,10 +9,10 @@ namespace WebsiteDatVeXemPhim.EF
 {
     public partial class KhachHang
     {
-        public enum Role
+        public enum KH
         {
-            admin = 0,
-            kh = 1,
+            disable = 0,
+            enable = 1,
 
         }
 
