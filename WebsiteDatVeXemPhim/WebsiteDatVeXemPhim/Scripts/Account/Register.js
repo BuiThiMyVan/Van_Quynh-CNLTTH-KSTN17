@@ -111,7 +111,7 @@
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
                 console.log(res);
-                if (res == 200) {
+                if (res.message == 200) {
                     alert('Đăng ký tài khoản thành công');
                 } else {
                     alert('Đã xảy ra lỗi trong quá trình đăng ký');
