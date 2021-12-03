@@ -20,21 +20,21 @@ namespace WebsiteDatVeXemPhim.Controllers
             
             objkh.Pass = objkh.EncodePassword(objkh.Pass);
             objkh.NgayTao = DateTime.Now;
-            objkh.NgayCapNhat = null;
+            objkh.NgayCapNhat = DateTime.Now;
             try
             {
                 NguoiDung nd = new NguoiDung();
                 nd.UserName = objkh.UserName;
                 nd.Pass = objkh.Pass;
-                nd.roleid = 1;
+                nd.roleid = (int)KhachHang.Role.admin;
                 con.NguoiDungs.Add(nd);
                 con.KhachHangs.Add(objkh);
                 con.SaveChanges();
-                return Json(200);
+                return Json(new { message = 200 });
             }
             catch
             {
-                return Json(404);
+                return Json(new { message = 404 });
             }
 
         }
@@ -53,11 +53,11 @@ namespace WebsiteDatVeXemPhim.Controllers
                 Khachhang.SDT = objkh.SDT;
                 Khachhang.NgayCapNhat = DateTime.Now;
                 con.SaveChanges();
-                return Json(200);
+                return Json(new { message = 200 });
             }
             catch
             {
-                return Json(404);
+                return Json(new { message = 404 });
             }
         }
       

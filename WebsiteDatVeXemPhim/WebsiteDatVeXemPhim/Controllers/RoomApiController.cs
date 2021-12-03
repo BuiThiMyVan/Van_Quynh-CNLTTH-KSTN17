@@ -81,11 +81,11 @@ namespace WebsiteDatVeXemPhim.Controllers
                 PhongChieu.NgayTao = null;
                 PhongChieu.NgayCapNhat = DateTime.Now;
                 con.SaveChanges();
-                return Json(200);
+                return Json(new { message = 200 });
             }
             catch
             {
-                return Json(404);
+                return Json(new { message = 404 });
             }
         }
        
