@@ -9,6 +9,13 @@ namespace WebsiteDatVeXemPhim.EF
 {
     public partial class KhachHang
     {
+        public enum KH
+        {
+            disable = 0,
+            enable = 1,
+
+        }
+
         public string EncodePassword(string originalPassword)
         {
             //Declarations
