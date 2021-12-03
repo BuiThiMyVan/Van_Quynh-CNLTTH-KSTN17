@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/Content/css/plyr.css">
     <link rel="stylesheet" href="/Content/css/photoswipe.css">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery-ui.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/Content/css/main.css">
 
     <!-- Favicons -->
@@ -92,7 +93,7 @@
                             </div>
 
                             <div class="sign__group">
-                                <input v-model="ngaysinh" id="birthday" type="date" class="sign__input" placeholder="Ngày Sinh">
+                                <input v-model="ngaysinh" onchange="getBirthday()" id="datepicker" class="sign__input" type="text" placeholder="Ngày sinh">
                             </div>
 
                             <div class="sign__group">
@@ -135,7 +136,25 @@
     <script src="/Content/js/main.js"></script>
     <script src="~/Scripts/vue.js"></script>
     <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
     <script src="~/Scripts/Account/Register.js"></script>
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function () {
+        $('#datepicker').datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true
+        })
+    })
+
+
+    function getBirthday() {
+        var birthday = $("#datepicker").val();
+        vmRegister.ngaysinh = birthday;
+    }
+</script>
+

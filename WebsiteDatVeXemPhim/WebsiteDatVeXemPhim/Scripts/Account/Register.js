@@ -5,7 +5,7 @@
         password: '',
         confirm_pass: '',
         hoten: '',
-        ngaysinh: null,
+        ngaysinh: '',
         diachi: '',
         sdt: '',
         error_username: '',
@@ -98,10 +98,9 @@
                 UserName: self.username,
                 Pass: self.password,
                 HoTen: self.hoten,
-                NgaySinh: self.NgaySinh,
-                DiaChi: self.DiaChi == null ? '' : self.DiaChi,
-                SDT: self.SDT,
-                TinhTrang: 1,
+                NgaySinh: moment(self.ngaysinh, 'DD/MM/YYYY').format('YYYY-MM-DD'),
+                DiaChi: self.diachi,
+                SDT: self.sdt
             };
             console.log(modal);
             $.ajax({

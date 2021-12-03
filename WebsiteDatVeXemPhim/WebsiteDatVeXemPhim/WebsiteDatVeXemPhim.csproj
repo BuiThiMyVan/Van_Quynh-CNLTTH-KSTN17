@@ -166,6 +166,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Partials\LoaiPhim.cs" />
+    <Compile Include="Partials\NguoiDung.cs" />
     <Compile Include="Utils\ObjectUtil.cs" />
     <Compile Include="Partials\KhachHang.cs" />
     <Compile Include="Models\Pagination.cs" />
@@ -193,6 +194,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\fontawesome.min.css" />
     <Content Include="Content\css\ionicons.min.css" />
+    <Content Include="Content\css\jquery-ui.min.css" />
     <Content Include="Content\css\jquery.mCustomScrollbar.min.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\nouislider.min.css" />
@@ -285,6 +287,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
