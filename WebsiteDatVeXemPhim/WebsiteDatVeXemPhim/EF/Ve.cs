@@ -22,8 +22,7 @@ namespace WebsiteDatVeXemPhim.EF
 
         public int? SoCot { get; set; }
 
-        [StringLength(50)]
-        public string idKhachHang { get; set; }
+        public int? idKhachHang { get; set; }
 
         public int? TrangThai { get; set; }
 

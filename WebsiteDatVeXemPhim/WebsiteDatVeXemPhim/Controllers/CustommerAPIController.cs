@@ -14,15 +14,20 @@ namespace WebsiteDatVeXemPhim.Controllers
         BookTicketDbContext con = new BookTicketDbContext();
 
         [System.Web.Http.AcceptVerbs("POST")]
-        public IHttpActionResult addKH(string kh)
+        public IHttpActionResult addKH(KhachHang objkh)
         {
-            KhachHang objkh = JsonConvert.DeserializeObject<KhachHang>(kh);
+            //KhachHang objkh = JsonConvert.DeserializeObject<KhachHang>(kh);
             
             objkh.Pass = objkh.EncodePassword(objkh.Pass);
             objkh.NgayTao = DateTime.Now;
             objkh.NgayCapNhat = null;
             try
             {
+                NguoiDung nd = new NguoiDung();
+                nd.UserName = objkh.UserName;
+                nd.Pass = objkh.Pass;
+                nd.roleid = 1;
+                con.NguoiDungs.Add(nd);
                 con.KhachHangs.Add(objkh);
                 con.SaveChanges();
                 return Json(200);

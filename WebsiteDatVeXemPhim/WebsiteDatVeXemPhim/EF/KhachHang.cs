@@ -15,7 +15,8 @@ namespace WebsiteDatVeXemPhim.EF
             Ves = new HashSet<Ve>();
         }
 
-        [Key]
+        public int id { get; set; }
+
         [StringLength(50)]
         public string UserName { get; set; }
 
@@ -39,6 +40,8 @@ namespace WebsiteDatVeXemPhim.EF
         public DateTime? NgayTao { get; set; }
 
         public DateTime? NgayCapNhat { get; set; }
+
+        public virtual NguoiDung NguoiDung { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ve> Ves { get; set; }

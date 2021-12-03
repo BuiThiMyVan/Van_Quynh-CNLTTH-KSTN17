@@ -155,14 +155,17 @@
     <Compile Include="EF\BookTicketDbContext.cs" />
     <Compile Include="EF\KhachHang.cs" />
     <Compile Include="EF\LichChieu.cs" />
+    <Compile Include="EF\NguoiDung.cs" />
     <Compile Include="EF\Phim.cs" />
     <Compile Include="EF\PhongChieu.cs" />
     <Compile Include="EF\SuatChieu.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\TheLoai.cs" />
     <Compile Include="EF\Ve.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Partials\LoaiPhim.cs" />
     <Compile Include="Utils\ObjectUtil.cs" />
     <Compile Include="Partials\KhachHang.cs" />
     <Compile Include="Models\Pagination.cs" />
