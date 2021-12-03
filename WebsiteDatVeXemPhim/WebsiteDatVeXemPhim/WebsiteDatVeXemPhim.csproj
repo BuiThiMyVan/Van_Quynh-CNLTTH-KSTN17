@@ -146,6 +146,8 @@
     <Compile Include="Areas\Admin\Controllers\MovieController.cs" />
     <Compile Include="Controllers\CustommerAPIController.cs" />
     <Compile Include="Controllers\MovieApiController.cs" />
+    <Compile Include="Controllers\MVC_Controller\AccountController.cs" />
+    <Compile Include="Controllers\MVC_Controller\BaseController.cs" />
     <Compile Include="Controllers\MVC_Controller\HomeController.cs" />
     <Compile Include="Controllers\RoomApiController.cs" />
     <Compile Include="Controllers\ScheduleApiController.cs" />
@@ -185,6 +187,7 @@
     <Content Include="Content\css\app.css" />
     <Content Include="Content\css\bootstrap-grid.min.css" />
     <Content Include="Content\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\fontawesome.min.css" />
     <Content Include="Content\css\ionicons.min.css" />
     <Content Include="Content\css\jquery.mCustomScrollbar.min.css" />
@@ -246,6 +249,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Account\Login.js" />
+    <Content Include="Scripts\Account\Register.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -293,10 +298,15 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Account\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Customer\" />
     <Folder Include="Views\MovieRoom\" />
     <Folder Include="Views\MovieSchedule\" />
