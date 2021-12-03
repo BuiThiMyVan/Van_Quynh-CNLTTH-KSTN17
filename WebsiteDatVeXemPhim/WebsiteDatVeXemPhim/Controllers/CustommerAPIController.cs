@@ -14,9 +14,9 @@ namespace WebsiteDatVeXemPhim.Controllers
         BookTicketDbContext con = new BookTicketDbContext();
 
         [System.Web.Http.AcceptVerbs("POST")]
-        public IHttpActionResult addKH(string kh)
+        public IHttpActionResult addKH(KhachHang objkh)
         {
-            KhachHang objkh = JsonConvert.DeserializeObject<KhachHang>(kh);
+            //KhachHang objkh = JsonConvert.DeserializeObject<KhachHang>(kh);
             
             objkh.Pass = objkh.EncodePassword(objkh.Pass);
             objkh.NgayTao = DateTime.Now;
