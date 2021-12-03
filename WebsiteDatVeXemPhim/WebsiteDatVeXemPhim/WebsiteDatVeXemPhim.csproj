@@ -160,6 +160,7 @@
     <Compile Include="EF\Phim.cs" />
     <Compile Include="EF\PhongChieu.cs" />
     <Compile Include="EF\SuatChieu.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\TheLoai.cs" />
     <Compile Include="EF\Ve.cs" />
     <Compile Include="Global.asax.cs">
@@ -167,6 +168,7 @@
     </Compile>
     <Compile Include="Partials\LoaiPhim.cs" />
     <Compile Include="Partials\NguoiDung.cs" />
+    <Compile Include="Partials\Ve.cs" />
     <Compile Include="Utils\ObjectUtil.cs" />
     <Compile Include="Partials\KhachHang.cs" />
     <Compile Include="Models\Pagination.cs" />
