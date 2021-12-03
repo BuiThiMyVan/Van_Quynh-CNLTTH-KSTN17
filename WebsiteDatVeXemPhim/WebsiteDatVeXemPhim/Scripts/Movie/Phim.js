@@ -48,7 +48,7 @@
         },
 
         getListFilm: function () {
-            //AddLoader();
+            AddLoader();
             var self = this;
             var modal = {
                 page: self.currentPage,

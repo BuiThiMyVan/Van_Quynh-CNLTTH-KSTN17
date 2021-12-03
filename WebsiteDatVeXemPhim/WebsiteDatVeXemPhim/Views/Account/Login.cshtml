@@ -38,6 +38,11 @@
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
     <title>Đặt vé xem phim</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 
 </head>
 <body class="body">
@@ -63,7 +68,7 @@
                                 <div class="text-danger"> {{error_password}}</div>
                             </div>
 
-                            <button class="sign__btn" type="button">Đăng nhập</button>
+                            <button class="sign__btn" type="button" v-on:click="login()">Đăng nhập</button>
 
                             <span class="sign__text">Bạn chưa có tài khoản? <a href="Account/Register">Đăng ký!</a></span>
 

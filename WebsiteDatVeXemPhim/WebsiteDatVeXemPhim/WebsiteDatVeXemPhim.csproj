@@ -144,6 +144,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MovieController.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Controllers\CustommerAPIController.cs" />
     <Compile Include="Controllers\MovieApiController.cs" />
     <Compile Include="Controllers\MVC_Controller\AccountController.cs" />
@@ -159,7 +160,6 @@
     <Compile Include="EF\Phim.cs" />
     <Compile Include="EF\PhongChieu.cs" />
     <Compile Include="EF\SuatChieu.cs" />
-    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\TheLoai.cs" />
     <Compile Include="EF\Ve.cs" />
     <Compile Include="Global.asax.cs">
@@ -200,6 +200,7 @@
     <Content Include="Content\css\photoswipe.css" />
     <Content Include="Content\css\plyr.css" />
     <Content Include="Content\css\themify-icons.css" />
+    <Content Include="Content\fonts\ioniconse0a5.svg" />
     <Content Include="Content\fonts\themify.svg" />
     <Content Include="Content\icon\apple-touch-icon-114x114.png" />
     <Content Include="Content\icon\apple-touch-icon-144x144.png" />
@@ -272,6 +273,10 @@
     <Content Include="Content\fonts\themify.ttf" />
     <Content Include="Content\fonts\themify.woff" />
     <Content Include="Areas\Admin\Views\Movie\MyFilm.cshtml" />
+    <Content Include="Content\fonts\ioniconse0a5.eot" />
+    <Content Include="Content\fonts\ioniconse0a5.ttf" />
+    <Content Include="Content\fonts\ioniconse0a5.woff" />
+    <Content Include="Content\fonts\ioniconse0a5.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -285,6 +290,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\Movie\Phim.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Web.config" />
