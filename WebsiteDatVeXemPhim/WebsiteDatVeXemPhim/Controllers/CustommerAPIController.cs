@@ -23,6 +23,11 @@ namespace WebsiteDatVeXemPhim.Controllers
             objkh.NgayCapNhat = null;
             try
             {
+                NguoiDung nd = new NguoiDung();
+                nd.UserName = objkh.UserName;
+                nd.Pass = objkh.Pass;
+                nd.roleid = 1;
+                con.NguoiDungs.Add(nd);
                 con.KhachHangs.Add(objkh);
                 con.SaveChanges();
                 return Json(200);
