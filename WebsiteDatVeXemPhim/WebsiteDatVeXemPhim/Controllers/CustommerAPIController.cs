@@ -21,6 +21,13 @@ namespace WebsiteDatVeXemPhim.Controllers
             objkh.Pass = objkh.EncodePassword(objkh.Pass);
             objkh.NgayTao = DateTime.Now;
             objkh.NgayCapNhat = DateTime.Now;
+            foreach (NguoiDung lnd in con.NguoiDungs)
+            {
+                if (lnd.UserName.Contains(objkh.UserName))
+                {
+                    return Json(new { message = 400 });
+                }
+            }
             try
             {
                 NguoiDung nd = new NguoiDung();
@@ -39,19 +46,22 @@ namespace WebsiteDatVeXemPhim.Controllers
 
         }
         [System.Web.Http.AcceptVerbs("POST")]
-        public IHttpActionResult updateKH(string kh)
+        public IHttpActionResult updateKH(KhachHang objkh)
         {
-            KhachHang objkh = JsonConvert.DeserializeObject<KhachHang>(kh);
+            //KhachHang objkh = JsonConvert.DeserializeObject<KhachHang>(kh);
             try
             {
-                KhachHang Khachhang = con.KhachHangs.Find(objkh.UserName);
-                Khachhang.UserName = objkh.UserName;
-                Khachhang.Pass = objkh.EncodePassword(objkh.Pass);
-                Khachhang.HoTen = objkh.HoTen;
-                Khachhang.NgaySinh = objkh.NgaySinh;
-                Khachhang.DiaChi = objkh.DiaChi;
-                Khachhang.SDT = objkh.SDT;
-                Khachhang.NgayCapNhat = DateTime.Now;
+                KhachHang khachHang = con.KhachHangs.Find(objkh.id);
+                NguoiDung nguoiDung = con.NguoiDungs.Find(khachHang.UserName);
+               
+                nguoiDung.Pass = objkh.EncodePassword(objkh.Pass);
+
+                khachHang.Pass = objkh.EncodePassword(objkh.Pass);
+                khachHang.HoTen = objkh.HoTen;
+                khachHang.NgaySinh = objkh.NgaySinh;
+                khachHang.DiaChi = objkh.DiaChi;
+                khachHang.SDT = objkh.SDT;
+                khachHang.NgayCapNhat = DateTime.Now;
                 con.SaveChanges();
                 return Json(new { message = 200 });
             }

@@ -43,10 +43,10 @@ namespace WebsiteDatVeXemPhim.Controllers
             //Ve objve = JsonConvert.DeserializeObject<Ve>(ve);
             try
             {
-                Ve Ve = con.Ves.Find(objve.id);
-                Ve.idKhachHang = objve.idKhachHang;
-                Ve.TrangThai = 0;
-                Ve.NgayCapNhat = DateTime.Now;
+                Ve ve = con.Ves.Find(objve.id);
+                ve.idKhachHang = objve.idKhachHang;
+                ve.TrangThai = (int)Ve.TK.daban;
+                ve.NgayCapNhat = DateTime.Now;
                 con.SaveChanges();
                 return Json(new { message = 200 });
             }
