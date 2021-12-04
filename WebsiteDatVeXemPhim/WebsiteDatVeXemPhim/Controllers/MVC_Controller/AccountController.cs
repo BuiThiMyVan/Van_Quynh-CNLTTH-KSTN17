@@ -53,11 +53,17 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
                     result = 2;
                 }
             }
-            return new JsonResult() { Data = result };
+            return Json(new { result = result });
         }
 
         [System.Web.Http.AcceptVerbs("POST", "GET")]
         public ActionResult Register()
+        {
+            return View();
+        }
+
+        [System.Web.Http.AcceptVerbs("POST", "GET")]
+        public ActionResult Error404()
         {
             return View();
         }

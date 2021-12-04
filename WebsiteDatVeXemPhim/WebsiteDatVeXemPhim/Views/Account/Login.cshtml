@@ -57,6 +57,7 @@
                             <a href="index.html" class="sign__title">
                                 <span>BUG</span> Cinema
                             </a>
+                            <div class="text-danger" style=" width: 100%; margin-bottom: 20px;"> {{error_login}}</div>
                             <div id="error-login" class="alert alert-danger display-none" role="alert"></div>
                             <div class="sign__group">
                                 <input v-model="username" type="text" class="sign__input" placeholder="Tên đăng nhập">
@@ -70,7 +71,7 @@
 
                             <button class="sign__btn" type="button" v-on:click="login()">Đăng nhập</button>
 
-                            <span class="sign__text">Bạn chưa có tài khoản? <a href="Account/Register">Đăng ký!</a></span>
+                            <span class="sign__text">Bạn chưa có tài khoản? <a href="/Account/Register">Đăng ký!</a></span>
 
                         </form>
                         <!-- end authorization form -->
