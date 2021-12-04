@@ -26,34 +26,20 @@ namespace WebsiteDatVeXemPhim.Controllers
 
             return Json(new { infoSC = infoSC });
         }
-
-        //lay danh sach Suất chiếu
+        // lay Suất chiếu hiển thị lên combobox
         [System.Web.Http.AcceptVerbs("GET")]
-        public IHttpActionResult loadListPC(string infoPage)
+        public IHttpActionResult getSuatChieu()
         {
-            Pagination objpage = JsonConvert.DeserializeObject<Pagination>(infoPage);
-            var totalRecord = con.SuatChieux.Count();
-            var listSC = con.SuatChieux.OrderBy(s => s.id).Skip((objpage.page - 1) * objpage.pageSize).Take(objpage.pageSize).ToList().Select(s => new
+            var infoSC = con.SuatChieux.ToList().Select(s=>new
             {
                 MaSC = s.id,
                 SuatChieu = s.SuatChieu1,
-
             });
 
-            int totalPage = 0;
-            totalPage = (int)Math.Ceiling((double)totalRecord / objpage.pageSize);
-            int start = (objpage.page - 1) * objpage.pageSize + 1;
-            int end = 0;
-            if (objpage.page == totalPage)
-            {
-                end = totalRecord;
-            }
-            else
-            {
-                end = objpage.page * objpage.pageSize;
-            }
-            return Json(new { listSC = listSC, totalPage = totalPage, mota = "từ" + start + "đến" + end + "của tổng số" + totalRecord });
+            return Json(new { infoSC = infoSC });
         }
+
+
         ////thêm 1 lịch chiếu thì thêm vé
         [System.Web.Http.AcceptVerbs("POST", "GET")]
         public IHttpActionResult addLichChieu(string lc)

@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using WebsiteDatVeXemPhim.EF;
 using WebsiteDatVeXemPhim.Models;
+using static WebsiteDatVeXemPhim.EF.PhongChieu;
 
 namespace WebsiteDatVeXemPhim.Controllers
 {
@@ -32,39 +33,19 @@ namespace WebsiteDatVeXemPhim.Controllers
             return Json(new { infoPC = infoPC });
         }
 
-        //lay danh sach phong chieu
+        //lay danh sach phong chieu hiển thị lên commbobox
         [System.Web.Http.AcceptVerbs("GET")]
-        public IHttpActionResult loadListPC(string infoPage)
+        public IHttpActionResult loadListPC()
         {
-            Pagination objpage = JsonConvert.DeserializeObject<Pagination>(infoPage);
-            var totalRecord = con.PhongChieux.Count();
-            var listPC = con.PhongChieux.OrderBy(s => s.id).Skip((objpage.page - 1) * objpage.pageSize).Take(objpage.pageSize).ToList().Select(s => new
-            {
-                MaPC = s.id,
-                TenPhong = s.TenPhong,
-                SoChoNgoi = s.SoChoNgoi,
-                TinhTrang = s.TinhTrang,
-                LoaiManHinh = s.LoaiManHinh,
-                NgayTao = s.NgayTao,
-                NgayCapNhat = s.NgayCapNhat,
+            var listPhongChieu = con.PhongChieux.ToList();
 
-            });
-
-            int totalPage = 0;
-            totalPage = (int)Math.Ceiling((double)totalRecord / objpage.pageSize);
-            int start = (objpage.page - 1) * objpage.pageSize + 1;
-            int end = 0;
-            if (objpage.page == totalPage)
+            JsonPhongChieu jsonreturn = new JsonPhongChieu
             {
-                end = totalRecord;
-            }
-            else
-            {
-                end = objpage.page * objpage.pageSize;
-            }
-            return Json(new { lishPC = listPC, totalPage = totalPage, mota = "từ" + start + "đến" + end + "của tổng số" + totalRecord });
+                listPhongChieu = listPhongChieu.Select(t => t.CopyObjectForMovieRoom()).ToArray()
+            };
+            return Json(new { data = jsonreturn });
         }
-
+        //sửa phòng chiếu
         [System.Web.Http.AcceptVerbs("POST")]
         public IHttpActionResult updatePC(string PC)
         {

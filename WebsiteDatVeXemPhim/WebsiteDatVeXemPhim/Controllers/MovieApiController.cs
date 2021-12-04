@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 using static WebsiteDatVeXemPhim.EF.Phim;
+using static WebsiteDatVeXemPhim.EF.TheLoai;
 
 namespace WebsiteDatVeXemPhims.Controllers
 {
@@ -72,36 +73,23 @@ namespace WebsiteDatVeXemPhims.Controllers
             return Json(new { data = jsonreturn });
         }
 
-        
+        /// <summary>
+        /// lấy ra tất cả loại phim hiển thị lên combobox
+        /// </summary>
+        /// <returns></returns>
         [System.Web.Http.AcceptVerbs("GET")]
-        public IHttpActionResult loadListLoaiPhim(string infoPage)
+        public IHttpActionResult loadListLoaiPhim()
         {
-            Pagination objpage = JsonConvert.DeserializeObject<Pagination>(infoPage);
-            var totalRecord = con.TheLoais.Count();
-            var listLoaiPhim = con.TheLoais.OrderBy(s => s.id).Skip((objpage.page - 1) * objpage.pageSize).Take(objpage.pageSize).ToList().Select(s => new
-            {
-                Maloai = s.id,
-                TenLoai = s.TenTheLoai,
-                MoTa = s.MoTa,
-                TinhTrang = s.TinhTrang,
-                NgayTao = s.NgayTao,
-                NgayCapNhat = s.NgayCapNhat,
+            //Pagination objpage = JsonConvert.DeserializeObject<Pagination>(infoPage);
+            //var totalRecord = con.TheLoais.Count();
+            var listLoaiPhim = con.TheLoais.ToList();
 
-            });
+            JsonTheLoai jsonreturn = new JsonTheLoai
+            {
+                listLoaiPhim = listLoaiPhim.Select(t => t.CopyObjectForMovieType()).ToArray()
+            };
+            return Json(new { data = jsonreturn });
 
-            int totalPage = 0;
-            totalPage = (int)Math.Ceiling((double)totalRecord / objpage.pageSize);
-            int start = (objpage.page - 1) * objpage.pageSize + 1;
-            int end = 0;
-            if (objpage.page == totalPage)
-            {
-                end = totalRecord;
-            }
-            else
-            {
-                end = objpage.page * objpage.pageSize;
-            }
-            return Json(new { listLoaiPhim = listLoaiPhim, totalPage = totalPage, mota = "từ" + start + "đến" + end + "của tổng số" + totalRecord });
         }
 
 
@@ -121,7 +109,11 @@ namespace WebsiteDatVeXemPhims.Controllers
             return Json(new { infoLoaiPhim = infoLoaiPhim });
         }
 
-
+        /// <summary>
+        /// thêm phim
+        /// </summary>
+        /// <param name="ph"></param>
+        /// <returns></returns>
 
         [System.Web.Http.AcceptVerbs("POST")]
         public IHttpActionResult addPhim(string ph)
@@ -141,10 +133,15 @@ namespace WebsiteDatVeXemPhims.Controllers
             }
 
         }
+        /// <summary>
+        /// sửa phim
+        /// </summary>
+        /// <param name="objph"></param>
+        /// <returns></returns>
         [System.Web.Http.AcceptVerbs("POST")]
-        public IHttpActionResult updatePhim(string ph1)
+        public IHttpActionResult updatePhim(Phim objph)
         {
-            Phim objph = JsonConvert.DeserializeObject<Phim>(ph1);
+            //Phim objph = JsonConvert.DeserializeObject<Phim>(ph1);
             try
             {
                 Phim phim = con.Phims.Find(objph.id);
@@ -168,24 +165,7 @@ namespace WebsiteDatVeXemPhims.Controllers
                 return Json(404);
             }
         }
-        //[System.Web.Http.AcceptVerbs("POST")]
-        //public IHttpActionResult deletePhim(int id)
-        //{
-        //    try
-        //    {
-        //        var phim = con.Phims.Find(id);
-        //        con.Phims.Remove(phim);
-        //        con.SaveChanges();
-        //        return Json(1);
-        //    }
-        //    catch
-        //    {
-        //        return Json(0);
-        //    }
-
-        //}
-       
-
+ 
 
         [System.Web.Http.AcceptVerbs("POST")]
         public IHttpActionResult addLoaiPhim(string objlp)
@@ -208,9 +188,9 @@ namespace WebsiteDatVeXemPhims.Controllers
 
 
         [System.Web.Http.AcceptVerbs("POST")]
-        public IHttpActionResult updateLoaiPhim(string objlp)
+        public IHttpActionResult updateLoaiPhim(TheLoai lph)
         {
-            TheLoai lph = JsonConvert.DeserializeObject<TheLoai>(objlp);
+            //TheLoai lph = JsonConvert.DeserializeObject<TheLoai>(objlp);
            
             try
             {
