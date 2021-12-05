@@ -68,7 +68,7 @@
                     <div class="sign__content">
                         <!-- registration form -->
                         <form action="#" class="sign__form">
-                            <a href="index.html" class="sign__title">
+                            <a href="/home-page" class="sign__title">
                                 <span>BUG</span> Cinema
                             </a>
 
@@ -106,8 +106,9 @@
                             </div>
 
                             <div class="sign__group sign__group--checkbox">
-                                <input id="remember" name="remember" type="checkbox" checked="checked">
+                                <input v-model="remember" id="remember" name="remember" type="checkbox" checked="checked">
                                 <label for="remember">Tôi đã đọc và đồng ý với <a href="#">Chính sách bảo mật</a></label>
+                                <div class="text-danger"> {{error_remember}}</div>
                             </div>
 
                             <button class="sign__btn" type="button" v-on:click="register()">Đăng ký</button>
