@@ -4,7 +4,8 @@
         username: '',
         password: '',
         error_username: '',
-        error_password: ''
+        error_password: '',
+        error_login: ''
     },
     watch: {
         username: function () {
@@ -46,18 +47,15 @@
                     dataType: 'json',
                     contentType: "application/x-www-form-urlencoded; charset=UTF-8"
                 }).then(res => {
-                    //console.log(res);
-                    switch (res) {
+                    switch (res.result) {
                         case 1:
                             window.location.href = "/Home/Index";
                             break;
                         case 2:
-                            error_login.innerText = "Tài khoản không tồn tại";
-                            $("#error-login").show();
+                            self.error_login = "Tài khoản không tồn tại";
                             break;
                         case 3:
-                            error_login.innerText = "Mật khẩu nhập không chính xác";
-                            $("#error-login").show();
+                            self.error_login = "Mật khẩu nhập không chính xác";
                             break;
                     }
                 });

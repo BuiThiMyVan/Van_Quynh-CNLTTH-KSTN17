@@ -12,7 +12,9 @@
         error_password: '',
         error_confirm_pass: '',
         error_hoten: '',
-        error_sdt: ''
+        error_sdt: '',
+        remember: false,
+        error_remember: ''
     },
 
     watch: {
@@ -54,14 +56,25 @@
 
         sdt: function () {
             var self = this;
-            var regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/i;
-            if (!regex.test(self.sdt)) {
-                self.error_sdt = 'Bạn cần nhập đúng định dạng số điện thoại';
-            }
+            var regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+            
             if (self.sdt == '') {
                 self.error_sdt = 'Bạn cần nhập số điện thoại';
             } else {
-                self.error_sdt = '';
+                if (regex.test(self.sdt) == true) {
+                    self.error_sdt = '';
+                } else {
+                    self.error_sdt = 'Bạn cần nhập đúng định dạng số điện thoại';
+                }
+            }
+        },
+
+        remember: function () {
+            var self = this;
+            if (!self.remember) {
+                self.error_remember = 'Chưa xác nhận điều khoản';
+            } else {
+                self.error_remember = '';
             }
         }
     },
@@ -90,7 +103,11 @@
                 self.error_sdt = 'Bạn cần nhập số điện thoại';
             }
 
-            if (self.error_username !== '' || self.error_password !== '' || self.error_confirm_pass || self.error_hoten !== '' || self.error_sdt !== '') {
+            if (self.remember == false) {
+                self.error_remember = 'Chưa xác nhận điều khoản';
+            }
+
+            if (self.error_username !== '' || self.error_password !== '' || self.error_confirm_pass || self.error_hoten !== '' || self.error_sdt !== '' || self.error_remember !== '') {
                 return false;
             }
 
@@ -102,7 +119,9 @@
                 DiaChi: self.diachi,
                 SDT: self.sdt
             };
+
             console.log(modal);
+
             $.ajax({
                 data: modal,
                 url: "/api/CustommerAPI/addKH",
@@ -111,8 +130,11 @@
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
                 console.log(res);
-                if (res == 200) {
+                if (res.message == 200) {
                     alert('Đăng ký tài khoản thành công');
+                    window.location.href = '/home-page';
+                } else if (res.message == 400) {
+                    self.error_username = 'Tên đăng nhập đã tồn tại';                    
                 } else {
                     alert('Đã xảy ra lỗi trong quá trình đăng ký');
                 }

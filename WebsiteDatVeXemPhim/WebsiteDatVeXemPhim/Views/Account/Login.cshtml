@@ -54,23 +54,24 @@
                     <div class="sign__content">
                         <!-- authorization form -->
                         <form action="#" class="sign__form">
-                            <a href="index.html" class="sign__title">
+                            <a href="/home-page" class="sign__title">
                                 <span>BUG</span> Cinema
                             </a>
+                            <div class="text-danger" style=" width: 100%; margin-bottom: 20px;"> {{error_login}}</div>
                             <div id="error-login" class="alert alert-danger display-none" role="alert"></div>
                             <div class="sign__group">
-                                <input v-model="username" type="text" class="sign__input" placeholder="Tên đăng nhập">
+                                <input v-model="username" type="text" class="sign__input" placeholder="Tên đăng nhập" v-on:keyup.enter="login()">
                                 <div class="text-danger"> {{error_username}}</div>
                             </div>
 
                             <div class="sign__group">
-                                <input v-model="password" type="password" class="sign__input" placeholder="Mật khẩu">
+                                <input v-model="password" type="password" class="sign__input" placeholder="Mật khẩu" v-on:keyup.enter="login()">
                                 <div class="text-danger"> {{error_password}}</div>
                             </div>
 
                             <button class="sign__btn" type="button" v-on:click="login()">Đăng nhập</button>
 
-                            <span class="sign__text">Bạn chưa có tài khoản? <a href="Account/Register">Đăng ký!</a></span>
+                            <span class="sign__text">Bạn chưa có tài khoản? <a href="/Account/Register">Đăng ký!</a></span>
 
                         </form>
                         <!-- end authorization form -->

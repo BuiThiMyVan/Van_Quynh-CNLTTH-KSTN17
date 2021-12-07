@@ -1,0 +1,36 @@
+﻿@using WebsiteDatVeXemPhim.EF
+<style>
+    .header__nav-link {
+        text-transform: none;
+    }
+
+    .header__nav-link > i {
+        font-size: 24px;
+    }
+</style>
+@{
+    var session = (NguoiDung)Session[WebsiteDatVeXemPhim.Common.CommonConstants.USER_SESSION];
+}
+
+
+@if (Session[WebsiteDatVeXemPhim.Common.CommonConstants.USER_SESSION] == null)
+{
+    <a href="/Account/Login" class="header__sign-in">
+        <i class="icon ion-ios-log-in"></i>
+        <span>Đăng nhập</span>
+    </a>
+}
+
+else
+{
+<a class="dropdown-toggle header__nav-link" href="#" role="button"
+   id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true"
+   aria-expanded="false"><i class="icon ion-ios-person"></i>&nbsp;&nbsp;Xin Chào, @session.UserName</a>
+
+    <ul class="dropdown-menu header__dropdown-menu"
+        aria-labelledby="dropdownMenuCatalog">
+        <li><a href="feedback.html">Thông tin tài khoản</a></li>
+        <li><a href="signin.html"></a></li>
+        <li><a href="/Account/Logout">Đăng xuất</a></li>
+    </ul>
+}

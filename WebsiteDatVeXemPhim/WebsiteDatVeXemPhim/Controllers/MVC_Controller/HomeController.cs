@@ -13,5 +13,10 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
         {
             return View();
         }
+
+        public PartialViewResult Account()
+        {
+            return PartialView();
+        }
     }
 }
