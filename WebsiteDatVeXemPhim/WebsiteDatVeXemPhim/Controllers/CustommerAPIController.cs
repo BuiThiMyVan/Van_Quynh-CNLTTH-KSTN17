@@ -70,7 +70,22 @@ namespace WebsiteDatVeXemPhim.Controllers
                 return Json(new { message = 404 });
             }
         }
-      
-
+        //// lấy khách hàng theo username
+        [System.Web.Http.AcceptVerbs("POST", "GET")]
+        public IHttpActionResult getCustommerByUsername(string username)
+        {
+            var kh = con.KhachHangs.Where(x => x.UserName == username).ToList().Select(s => new {
+                id = s.id,
+                username = s.UserName,
+                hoten = s.HoTen,
+                ngaysinh = s.NgaySinh,
+                diachi = s.DiaChi,
+                sodienthoai = s.SDT,
+                tinhtrang = s.TinhTrang,
+                ngaytao = s.NgayTao,
+                ngaycapnhat = s.NgayCapNhat,
+            });
+            return Json(new { kh = kh });
+        }
     }
 }
