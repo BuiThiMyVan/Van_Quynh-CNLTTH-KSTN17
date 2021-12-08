@@ -81,6 +81,7 @@ namespace WebsiteDatVeXemPhim.Controllers
                 ngaysinh = s.NgaySinh == null ? "" : s.NgaySinh.GetValueOrDefault().ToString("dd/MM/yyyy"),
                 diachi = s.DiaChi,
                 sodienthoai = s.SDT,
+                pass = s.Pass,
                 tinhtrang = s.TinhTrang,
                 ngaytao = s.NgayTao == null ? "" : s.NgayTao.GetValueOrDefault().ToString("dd/MM/yyyy"),
                 ngaycapnhat = s.NgayCapNhat == null ? "" : s.NgayCapNhat.GetValueOrDefault().ToString("dd/MM/yyyy"),
