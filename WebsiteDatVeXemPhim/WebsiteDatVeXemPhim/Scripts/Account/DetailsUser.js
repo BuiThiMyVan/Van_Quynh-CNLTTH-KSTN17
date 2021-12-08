@@ -81,14 +81,21 @@
 
     methods: {
         getInfoUser: function () {
+            var self = this;
             $.ajax({
                 data: modal,
-                url: "/api/CustommerAPI?username=" + username,
+                url: "/api/CustommerAPI?username=" + session.UserName,
                 type: 'POST',
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
-                
+                self.username = res.kh.username;
+                self.password = res.kh.password,
+                self.confirm_pass = res.kh.password,
+                self.hoten = res.kh.hoten == null ? '' : res.kh.hoten,
+                self.ngaysinh = res.kh.ngaysinh == null ? '' : res.kh.ngaysinh,
+                self.diachi = res.kh.diachi == null ? '' : res.kh.diachi,
+                self.sdt == res.kh.sdt == null ? '' : res.kh.sdt,
             });
         },
 

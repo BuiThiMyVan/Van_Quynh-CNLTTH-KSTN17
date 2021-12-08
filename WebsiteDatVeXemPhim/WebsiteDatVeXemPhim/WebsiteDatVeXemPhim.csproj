@@ -282,6 +282,7 @@
     <Content Include="Content\fonts\ioniconse0a5.ttf" />
     <Content Include="Content\fonts\ioniconse0a5.woff" />
     <Content Include="Content\fonts\ioniconse0a5.woff2" />
+    <Content Include="Areas\Admin\Views\Movie\AddFilm.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\Account\DetailsUser.js" />

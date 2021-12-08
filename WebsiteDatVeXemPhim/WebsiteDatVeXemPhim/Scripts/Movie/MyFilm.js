@@ -11,7 +11,80 @@
         NamSX: 0,
         ApPhich: '',
         TinhTrang: -1,
-        TheLoai: ''
+        TheLoai: '',
+
+        error_name: '',
+        error_time: '',
+        error_startdate: '',
+        error_finishdate: '',
+        error_produceyear: '',
+        error_image: '',
+        error_cate: ''
+    },
+
+    watch: {
+        TenPhim: function () {
+            var self = this;
+            if (self.TenPhim == '') {
+                self.error_name = 'Tên phim không được để trống';
+            } else {
+                self.error_name = '';
+            }
+        },
+
+        ThoiLuong: function () {
+            var self = this;
+            if (self.ThoiLuong <= 0) {
+                self.error_time = 'Thời Lượng không được để trống';
+            } else {
+                self.error_time = '';
+            }
+        },
+
+        NgayKhoiChieu: function () {
+            var self = this;
+            if (self.NgayKhoiChieu < moment().valueOf()) {
+                self.error_startdate = 'Ngày khởi chiếu không không hợp lệ';
+            } else {
+                self.error_startdate = '';
+            }
+        },
+
+        NgayKetThuc: function () {
+            var self = this;
+            if (self.NgayKetThuc < moment().valueOf()) {
+                self.error_finishdate = 'Ngày kết thúc không hợp lệ';
+            } else {
+                self.error_finishdate = '';
+            }
+        },
+
+        NamSX: function () {
+            var self = this;
+            if (self.NamSX < 1700) {
+                self.error_produceyear = 'Năm sản xuất không hợp lệ';
+            } else {
+                self.error_produceyear = '';
+            }
+        },
+
+        ApPhich: function () {
+            var self = this;
+            if (self.TenPhim == '') {
+                self.error_image = 'Poster không được để trống';
+            } else {
+                self.error_image = '';
+            }
+        },
+
+        TheLoai: function () {
+            var self = this;
+            if (self.TheLoai == '') {
+                self.error_cate = 'Thể loại không được để trống';
+            } else {
+                self.error_cate = '';
+            }
+        }
     },
 
     methods: {
