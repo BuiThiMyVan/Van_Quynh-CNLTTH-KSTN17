@@ -44,7 +44,7 @@ namespace WebsiteDatVeXemPhims.Controllers
         }
         // lấy phim theo tên phim hoặc năm sản xuất
         [System.Web.Http.AcceptVerbs("GET")]
-        public IHttpActionResult getPhimbyTenPhim(string TenPhim, int NamSX)
+        public IHttpActionResult getPhimbyTenPhimOrNamSX(string TenPhim, int NamSX)
         {
             
             var listPhimbyTenPhim = (from Phim p in con.Phims
