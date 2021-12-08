@@ -7,122 +7,6 @@
 }
 
 @section Styles {
-    <style>
-        :root {
-            --main-color: #b9256a;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-        }
-
-        .display-none {
-            display: none;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .content-wrapper {
-            padding: 16px;
-        }
-
-        .content-wrapper .header {
-            display: flex;
-            justify-content: space-between;
-        }
-
-            .content-wrapper .list-title {
-                display: inline-block;
-                margin-bottom: 12px;
-                font-weight: bold;
-                font-size: 24px;
-                line-height: 29px;
-                color: #1D243E;
-            }
-            .content-wrapper .btn-main-color {
-                color: #fff;
-                background-color: var(--main-color);
-                border-radius: 4px;
-                padding: 12px 38px;
-                font-weight: bold;
-            }
-
-        #search {
-            margin: 16px 0;
-        }
-
-            #search .search-box {
-                position: relative;
-                padding: 8px 16px;
-                width: 354px;
-                height: 40px;
-                background-color: #fff;
-                border-radius: 4px;
-            }
-
-                #search .search-box .search-input {
-                    width: 100%;
-                    border: none;
-                }
-
-                #search .search-box .search-icon {
-                    position: absolute;
-                    top: 8px;
-                    right: 14px;
-                    width: 14px;
-                    height: 14px;
-                }
-
-        .content-wrapper .table-list {
-            margin-top: 8px;
-            background-color: #fff;
-        }
-
-        .table > :not(:first-child) {
-            border-top: none;
-        }
-
-        .table-list .ordinal-numbers {
-            width: 44px;
-        }
-
-        .table-list .name-film {
-            min-width: 182px;
-        }
-
-            .table-list .name-film:hover {
-                cursor: pointer;
-                opacity: 0.8;
-            }
-
-        .table-list .produce-year {
-            width: 124px;
-        }
-
-        .table-list .show-date {
-            width: 158px;
-        }
-
-        .text-main-color {
-            color: var(--main-color);
-        }
-
-        .text-orange {
-            color: #FFB401;
-        }
-
-        .text-blue {
-            color: #4679CC;
-        }
-
-    </style>
-
     @* Phân trang *@
     <style>
         .paginate {
@@ -188,7 +72,7 @@
     </style>
 }
 
-<div class="content-wrapper display-none" id="ListFilm">
+<div class="content-wrapper" style="display:none" id="ListFilm">
     <div class="header">
         <span class="list-title">Quản lý Phim</span>
         <a href="/Movie/AddPhim" class="btn-main-color">Tạo phim</a>
@@ -216,7 +100,7 @@
                     <td class="ordinal-numbers text-center">
                         {{pageSize * (currentPage-1) + index +1}}
                     </td>
-                    <td class="name-film"> {{ item.TenPhim }} </td>
+                    <td class="name-film"> <a class="text-main-color" href="/Admin/Movie/MyFilm">{{ item.TenPhim }}</a></td>
                     <td class="text-center">{{ item.ThoiLuong }} phút</td>
                     <td class="show-date text-center">{{ item.NgayKhoiChieuFormat }}</td>
                     <td class="produce-year text-center">{{ item.NamSX }}</td>

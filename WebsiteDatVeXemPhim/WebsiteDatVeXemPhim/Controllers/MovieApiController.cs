@@ -28,16 +28,16 @@ namespace WebsiteDatVeXemPhims.Controllers
                 TenPhim = s.TenPhim,
                 MoTa = s.MoTa,
                 ThoiLuong = s.ThoiLuong,
-                NgayKhoiChieu = s.NgayKhoiChieu,
-                NgayKetThuc = s.NgayKetThuc,
+                NgayKhoiChieu = s.NgayKhoiChieu == null ? "" : s.NgayKhoiChieu.GetValueOrDefault().ToString("dd/MM/yyyy"),
+                NgayKetThuc = s.NgayKetThuc == null ? "" : s.NgayKetThuc.GetValueOrDefault().ToString("dd/MM/yyyy"),
                 Sanxuat = s.SanXuat,
                 DaoDien = s.DaoDien,
                 NamSX = s.NamSX,
                 ApPhich = s.ApPhich,
                 TinhTrang = s.TinhTrang,
                 TheLoai = s.TheLoai,
-                NgayTao = s.NgayTao,
-                NgayCapNhat = s.NgayCapNhat,
+                NgayTao = s.NgayTao == null ? "" : s.NgayTao.GetValueOrDefault().ToString("dd/MM/yyyy"),
+                NgayCapNhat = s.NgayCapNhat == null ? "" : s.NgayCapNhat.GetValueOrDefault().ToString("dd/MM/yyyy"),
             }).FirstOrDefault();
 
             return Json(new { infoPhim = infoPhim });

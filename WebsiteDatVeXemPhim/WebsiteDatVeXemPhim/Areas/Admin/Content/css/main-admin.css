@@ -1,4 +1,19 @@
-﻿.header__logo {
+﻿:root {
+    --main-color: #b9256a;
+}
+
+.mt-8 {
+    margin-top: 8px;
+}
+
+#img-spin > img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header__logo {
     max-width: 100%;
     width: auto;
     padding: 0px 16px;
@@ -11,4 +26,125 @@
     font-size: 40px;
     font-weight: 900;
     color: #ff55a5;
+}
+
+.text-main-color {
+    color: var(--main-color);
+}
+
+.text-orange {
+    color: #FFB401;
+}
+
+.text-blue {
+    color: #4679CC;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--main-color);
+    opacity: 0.8;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+}
+
+.display-none {
+    display: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.content-wrapper {
+    padding: 16px;
+}
+
+    .content-wrapper .header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .content-wrapper .header-detail {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-wrapper .list-title,
+    .content-wrapper .name-title {
+        display: inline-block;
+        margin-bottom: 12px;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 29px;
+        color: #1D243E;
+    }
+
+    .content-wrapper .btn-main-color {
+        color: #fff;
+        background-color: var(--main-color);
+        border-radius: 4px;
+        padding: 12px 38px;
+        font-weight: bold;
+    }
+
+#search {
+    margin: 16px 0;
+}
+
+    #search .search-box {
+        position: relative;
+        padding: 8px 16px;
+        width: 354px;
+        height: 40px;
+        background-color: #fff;
+        border-radius: 4px;
+    }
+
+        #search .search-box .search-input {
+            width: 100%;
+            border: none;
+        }
+
+        #search .search-box .search-icon {
+            position: absolute;
+            top: 8px;
+            right: 14px;
+            width: 14px;
+            height: 14px;
+        }
+
+.content-wrapper .table-list {
+    margin-top: 8px;
+    background-color: #fff;
+}
+
+.table > :not(:first-child) {
+    border-top: none;
+}
+
+.table-list .ordinal-numbers {
+    width: 44px;
+}
+
+.table-list .name-film {
+    min-width: 182px;
+}
+
+    .table-list .name-film:hover {
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+.table-list .produce-year {
+    width: 124px;
+}
+
+.table-list .show-date {
+    width: 158px;
 }

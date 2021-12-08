@@ -29,10 +29,15 @@ else
 
     <ul class="dropdown-menu header__dropdown-menu"
         aria-labelledby="dropdownMenuCatalog">
- 	<li>
+<<<<<<< HEAD
+        <li>
             <a href="/Account/Details">Thông tin tài khoản</a>
         </li>
         <li><a href="signin.html">Thông tin đặt vé</a></li>
+=======
+        <li><a href="feedback.html">Thông tin tài khoản</a></li>
+        <li><a href="signin.html"></a></li>
+>>>>>>> origin/quynh
         <li><a href="/Account/Logout">Đăng xuất</a></li>
     </ul>
 }

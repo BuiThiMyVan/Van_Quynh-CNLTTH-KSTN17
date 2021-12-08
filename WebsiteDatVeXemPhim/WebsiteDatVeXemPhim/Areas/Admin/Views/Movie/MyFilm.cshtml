@@ -5,13 +5,106 @@
 }
 
 @section Styles {
-    .link-list {
-        color: var(--main-color);
-    }    
+    <style>
+        .link-list {
+            color: var(--main-color);
+        }    
+
+        .content-detail {
+            margin-top: 16px;
+            padding: 24px 16px;
+            background-color: #fff;
+            border-radius: 4px;
+        }
+
+        .content-detail .content-item {
+            display: flex;
+            margin-bottom: 24px;
+        }
+
+        .content-detail .content-label {
+            min-width: 260px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #6C738D;
+        }
+
+        .content-detail .content-input {
+            flex: 1;
+            padding: 7px;
+            border: 1px solid rgb(216, 221, 230);
+            border-radius: 4px;
+        }
+
+        .content-detail .content-numbers {
+            max-width: 88px;
+        }
+
+        .content-detail .content-status {
+            max-width: 240px;
+        }
+
+        .content-detail .btn-update {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+    </style>
+
 }
 
 <div class="content-wrapper">
-    <a href="/Admin/Movie/Index" class="link-list">Danh sách phim</a>
-    <span class="list-title">Quản lý Phim</span>
+    <div class="header-detail">
+        <a href="/Admin/Movie/Index" class="link-list"> > Danh sách phim</a>
+        <span class="name-title mt-8">Quản lý Phim</span>
+    </div>
+    <div class="content-detail">
+        <div class="content-item">
+            <label class="content-label">Tên phim</label>
+            <input class="content-input" type="text" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Mô tả</label>
+            <textarea class="content-input" type="text" rows="4"></textarea>
+        </div>
+        <div class="content-item">
+            <label class="content-label">Thời lượng</label>
+            <input class="content-input content-numbers" type="text" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Ngày khởi chiếu</label>
+            <input class="content-input" type="text" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Ngày kết thúc</label>
+            <input class="content-input" type="text" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Sản xuất</label>
+            <input class="content-input" type="text" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Đạo diễn</label>
+            <input class="content-input" type="text" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Năm sản xuất</label>
+            <input class="content-input content-numbers" type="text" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Áp phích</label>
+            <input class="content-input" type="text" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Tình trạng</label>
+            <input class="content-input content-status" type="text" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Thể loại</label>
+            <input class="content-input" type="text" />
+        </div>
+        <div class="btn-update">
+            <a href="/Movie/AddPhim" class="btn-main-color">Tạo phim</a>
+        </div>
+    </div>
 </div>
-

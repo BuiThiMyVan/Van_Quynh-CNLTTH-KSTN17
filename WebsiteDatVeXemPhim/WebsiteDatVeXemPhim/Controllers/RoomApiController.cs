@@ -25,8 +25,8 @@ namespace WebsiteDatVeXemPhim.Controllers
                 SoChoNgoi = s.SoChoNgoi,
                 TinhTrang = s.TinhTrang,
                 LoaiManHinh = s.LoaiManHinh,
-                NgayTao = s.NgayTao,
-                NgayCapNhat = s.NgayCapNhat,
+                NgayTao = s.NgayTao == null ? "" : s.NgayTao.GetValueOrDefault().ToString("dd/MM/yyyy"),
+                NgayCapNhat = s.NgayCapNhat == null ? "" : s.NgayCapNhat.GetValueOrDefault().ToString("dd/MM/yyyy"),
 
             }).FirstOrDefault();
 
