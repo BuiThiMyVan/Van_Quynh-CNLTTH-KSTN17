@@ -76,9 +76,6 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
         {
             return View();
         }
-        {
-            return View();
-        }
 
         [System.Web.Http.AcceptVerbs("POST", "GET")]
         public ActionResult Error404()
