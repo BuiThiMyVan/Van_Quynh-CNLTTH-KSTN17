@@ -100,7 +100,7 @@
                     <td class="ordinal-numbers text-center">
                         {{pageSize * (currentPage-1) + index +1}}
                     </td>
-                    <td class="name-film"> <a class="text-main-color" href="/Admin/Movie/MyFilm">{{ item.TenPhim }}</a></td>
+                    <td class="name-film"> <a class="text-main-color" v-bind:href="'/Admin/Movie/MyFilm?id=' + item.id">{{ item.TenPhim }}</a></td>
                     <td class="text-center">{{ item.ThoiLuong }} phút</td>
                     <td class="show-date text-center">{{ item.NgayKhoiChieuFormat }}</td>
                     <td class="produce-year text-center">{{ item.NamSX }}</td>

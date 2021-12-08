@@ -61,12 +61,9 @@
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
-                console.log(res);
-                debugger
                 self.list = res.data.listPhim;
                 self.totalPage = res.data.totalPage;
                 self.pageView = res.data.pageView;
-                debugger
                 HiddenLoader();
                 $("#ListFilm").css("display", "block");
             });

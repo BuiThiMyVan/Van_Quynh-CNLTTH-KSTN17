@@ -14,8 +14,9 @@ namespace WebsiteDatVeXemPhim.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult MyFilm()
+        public ActionResult MyFilm(int id)
         {
+            ViewBag.Id = id;
             return View();
         }
     }
