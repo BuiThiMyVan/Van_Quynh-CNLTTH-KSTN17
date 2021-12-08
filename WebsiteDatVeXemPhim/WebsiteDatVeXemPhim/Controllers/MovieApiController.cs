@@ -17,7 +17,8 @@ namespace WebsiteDatVeXemPhims.Controllers
     public class MovieApiController : ApiController
     {
         BookTicketDbContext con = new BookTicketDbContext();
-
+        
+        //lấy phim theo id
         [System.Web.Http.AcceptVerbs("GET")]
         public IHttpActionResult getPhimbyId(int MaPhim)
         {
@@ -41,8 +42,31 @@ namespace WebsiteDatVeXemPhims.Controllers
 
             return Json(new { infoPhim = infoPhim });
         }
+        // lấy phim theo tên phim
+        [System.Web.Http.AcceptVerbs("GET")]
+        public IHttpActionResult getPhimbyTenPhim(string TenPhim)
+        {
+            var listPhimbyTenPhim = con.Phims.Where(x => x.TenPhim == TenPhim).ToList();
 
+            JsonPhim jsonreturn = new JsonPhim
+            {
+                listPhim = listPhimbyTenPhim.Select(t => t.CopyObjectForMovieApi()).ToArray()
+            };
+            return Json(new { data = jsonreturn });
+        }
+        // lấy phim theo năm sản xuất
+        [System.Web.Http.AcceptVerbs("GET")]
+        public IHttpActionResult getPhimbyNamSX(int NamSX)
+        {
+            var listPhimbyNamSX = con.Phims.Where(x => x.NamSX == NamSX).ToList();
 
+            JsonPhim jsonreturn = new JsonPhim
+            {
+                listPhim = listPhimbyNamSX.Select(t => t.CopyObjectForMovieApi()).ToArray()
+            };
+            return Json(new { data = jsonreturn });
+        }
+        //// lấy list phim
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         public IHttpActionResult loadListPhim(Pagination objpage)
         {
@@ -73,10 +97,8 @@ namespace WebsiteDatVeXemPhims.Controllers
             return Json(new { data = jsonreturn });
         }
 
-        /// <summary>
+       
         /// lấy ra tất cả loại phim hiển thị lên combobox
-        /// </summary>
-        /// <returns></returns>
         [System.Web.Http.AcceptVerbs("GET")]
         public IHttpActionResult loadListLoaiPhim()
         {
@@ -96,17 +118,13 @@ namespace WebsiteDatVeXemPhims.Controllers
         [System.Web.Http.AcceptVerbs("GET")]
         public IHttpActionResult getLoaiPhimId(int MaLoaiPhim)
         {
-            var infoLoaiPhim = con.TheLoais.Where(x => x.id == MaLoaiPhim).ToList().Select(s => new
-            {
-                MaLoaiPhim = s.id,
-                TenTheLoai = s.TenTheLoai,
-                MoTa = s.MoTa,
-                TinhTrang = s.TinhTrang,
-                NgayTao = s.NgayTao,
-                NgayCapNhat = s.NgayCapNhat,
-            }).FirstOrDefault();
+            var listLoaiPhim = con.TheLoais.Where(x=>x.id == MaLoaiPhim).ToList();
 
-            return Json(new { infoLoaiPhim = infoLoaiPhim });
+            JsonTheLoai jsonreturn = new JsonTheLoai
+            {
+                listLoaiPhim = listLoaiPhim.Select(t => t.CopyObjectForMovieType()).ToArray()
+            };
+            return Json(new { data = jsonreturn });
         }
 
         /// <summary>

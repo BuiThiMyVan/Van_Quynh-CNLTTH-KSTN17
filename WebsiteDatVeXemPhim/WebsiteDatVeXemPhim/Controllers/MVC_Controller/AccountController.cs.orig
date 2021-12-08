@@ -71,16 +71,16 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
             return RedirectToAction("Index", "Home");
         }
 
-       	[System.Web.Http.AcceptVerbs("POST", "GET")]
+        [System.Web.Http.AcceptVerbs("POST", "GET")]
+<<<<<<< HEAD
         public ActionResult Details()
-        {
-            return View();
-        }
         {
             return View();
         }
 
         [System.Web.Http.AcceptVerbs("POST", "GET")]
+=======
+>>>>>>> origin/quynh
         public ActionResult Error404()
         {
             return View();
