@@ -1,4 +1,4 @@
-﻿var vmRegister = new Vue({
+var vmRegister = new Vue({
     el: "#Register",
     data: {
         username: '',
@@ -21,7 +21,7 @@
         username: function () {
             var self = this;
             if (self.username == '') {
-                self.error_username = 'Bạn cần điền tên đăng nhập';
+                self.error_username = 'B?n c?n ?i?n t?n ??ng nh?p';
             } else {
                 self.error_username = '';
             }
@@ -30,7 +30,7 @@
         password: function () {
             var self = this;
             if (self.password == '') {
-                self.error_password = 'Bạn cần nhập mật khẩu';
+                self.error_password = 'B?n c?n nh?p m?t kh?u';
             } else {
                 self.error_password = '';
             }
@@ -39,7 +39,7 @@
         confirm_pass: function () {
             var self = this;
             if (self.confirm_pass !== self.password) {
-                self.error_confirm_pass = 'Mật khẩu nhập lại không khớp';
+                self.error_confirm_pass = 'M?t kh?u nh?p l?i kh?ng kh?p';
             } else {
                 self.error_confirm_pass = '';
             }
@@ -48,7 +48,7 @@
         hoten: function () {
             var self = this;
             if (self.hoten == '') {
-                self.error_hoten = 'Bạn cần nhập họ tên';
+                self.error_hoten = 'B?n c?n nh?p h? t?n';
             } else {
                 self.error_hoten = '';
             }
@@ -59,12 +59,12 @@
             var regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
             
             if (self.sdt == '') {
-                self.error_sdt = 'Bạn cần nhập số điện thoại';
+                self.error_sdt = 'B?n c?n nh?p s? ?i?n tho?i';
             } else {
                 if (regex.test(self.sdt) == true) {
                     self.error_sdt = '';
                 } else {
-                    self.error_sdt = 'Bạn cần nhập đúng định dạng số điện thoại';
+                    self.error_sdt = 'B?n c?n nh?p ??ng ??nh d?ng s? ?i?n tho?i';
                 }
             }
         },
@@ -72,7 +72,7 @@
         remember: function () {
             var self = this;
             if (!self.remember) {
-                self.error_remember = 'Chưa xác nhận điều khoản';
+                self.error_remember = 'Ch?a x?c nh?n ?i?u kho?n';
             } else {
                 self.error_remember = '';
             }
@@ -84,27 +84,27 @@
             var self = this;
 
             if (self.username == '') {
-                self.error_username = 'Bạn cần điền tên đăng nhập';
+                self.error_username = 'B?n c?n ?i?n t?n ??ng nh?p';
             }
 
             if (self.password == '') {
-                self.error_password = 'Bạn cần nhập mật khẩu';
+                self.error_password = 'B?n c?n nh?p m?t kh?u';
             }
 
             if (self.confirm_pass !== self.password) {
-                self.error_confirm_pass = 'Mật khẩu nhập lại không khớp';
+                self.error_confirm_pass = 'M?t kh?u nh?p l?i kh?ng kh?p';
             }
 
             if (self.hoten == '') {
-                self.error_hoten = 'Bạn cần nhập họ tên';
+                self.error_hoten = 'B?n c?n nh?p h? t?n';
             }
 
             if (self.sdt == '') {
-                self.error_sdt = 'Bạn cần nhập số điện thoại';
+                self.error_sdt = 'B?n c?n nh?p s? ?i?n tho?i';
             }
 
             if (self.remember == false) {
-                self.error_remember = 'Chưa xác nhận điều khoản';
+                self.error_remember = 'Ch?a x?c nh?n ?i?u kho?n';
             }
 
             if (self.error_username !== '' || self.error_password !== '' || self.error_confirm_pass || self.error_hoten !== '' || self.error_sdt !== '' || self.error_remember !== '') {

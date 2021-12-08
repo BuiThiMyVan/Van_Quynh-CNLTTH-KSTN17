@@ -30,8 +30,8 @@ namespace WebsiteDatVeXemPhim.Controllers
                 socot = s.SoCot,
                 idkhachhang = s.idKhachHang,
                 trangthai = s.TrangThai,
-                ngaytao = s.NgayTao,
-                ngaycapnhat = s.NgayCapNhat
+                ngaytao = s.NgayTao == null ? "" : s.NgayTao.GetValueOrDefault().ToString("dd/MM/yyyy"),
+                ngaycapnhat = s.NgayCapNhat == null ? "" : s.NgayCapNhat.GetValueOrDefault().ToString("dd/MM/yyyy"),
             });
 
             return Json(new { infoTicket = infoTicket });

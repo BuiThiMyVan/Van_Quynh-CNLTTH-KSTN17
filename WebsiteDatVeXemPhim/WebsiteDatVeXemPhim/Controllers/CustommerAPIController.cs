@@ -78,12 +78,12 @@ namespace WebsiteDatVeXemPhim.Controllers
                 id = s.id,
                 username = s.UserName,
                 hoten = s.HoTen,
-                ngaysinh = s.NgaySinh,
+                ngaysinh = s.NgaySinh == null ? "" : s.NgaySinh.GetValueOrDefault().ToString("dd/MM/yyyy"),
                 diachi = s.DiaChi,
                 sodienthoai = s.SDT,
                 tinhtrang = s.TinhTrang,
-                ngaytao = s.NgayTao,
-                ngaycapnhat = s.NgayCapNhat,
+                ngaytao = s.NgayTao == null ? "" : s.NgayTao.GetValueOrDefault().ToString("dd/MM/yyyy"),
+                ngaycapnhat = s.NgayCapNhat == null ? "" : s.NgayCapNhat.GetValueOrDefault().ToString("dd/MM/yyyy"),
             });
             return Json(new { kh = kh });
         }
