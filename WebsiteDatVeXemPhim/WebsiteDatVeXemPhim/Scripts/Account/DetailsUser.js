@@ -57,7 +57,7 @@
         sdt: function () {
             var self = this;
             var regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-            
+
             if (self.sdt == '') {
                 self.error_sdt = 'Bạn cần nhập số điện thoại';
             } else {
@@ -80,7 +80,19 @@
     },
 
     methods: {
-        register: function () {
+        getInfoUser: function () {
+            $.ajax({
+                data: modal,
+                url: "/api/CustommerAPI?username=" + username,
+                type: 'POST',
+                dataType: 'json',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+            }).then(res => {
+                
+            });
+        },
+
+        updateInfoUser: function () {
             var self = this;
 
             if (self.username == '') {
@@ -122,19 +134,19 @@
 
             $.ajax({
                 data: modal,
-                url: "/api/CustommerAPI/addKH",
+                url: "/api/CustommerAPI/updateKH",
                 type: 'POST',
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
                 console.log(res);
                 if (res.message == 200) {
-                    alert('Đăng ký tài khoản thành công');
+                    alert('Cập nhật thông tin tài khoản thành công');
                     window.location.href = '/home-page';
                 } else if (res.message == 400) {
-                    self.error_username = 'Tên đăng nhập đã tồn tại';                    
+                    self.error_username = 'Tên đăng nhập đã tồn tại';
                 } else {
-                    alert('Đã xảy ra lỗi trong quá trình đăng ký');
+                    alert('Đã xảy ra lỗi trong quá trình cập nhật');
                 }
             });
         }

@@ -72,6 +72,12 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
         }
 
         [System.Web.Http.AcceptVerbs("POST", "GET")]
+        public ActionResult Details()
+        {
+            return View();
+        }
+
+        [System.Web.Http.AcceptVerbs("POST", "GET")]
         public ActionResult Error404()
         {
             return View();
