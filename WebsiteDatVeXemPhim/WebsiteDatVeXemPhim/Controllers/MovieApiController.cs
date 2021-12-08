@@ -42,11 +42,14 @@ namespace WebsiteDatVeXemPhims.Controllers
 
             return Json(new { infoPhim = infoPhim });
         }
-        // lấy phim theo tên phim
+        // lấy phim theo tên phim hoặc năm sản xuất
         [System.Web.Http.AcceptVerbs("GET")]
-        public IHttpActionResult getPhimbyTenPhim(string TenPhim)
+        public IHttpActionResult getPhimbyTenPhim(string TenPhim, int NamSX)
         {
-            var listPhimbyTenPhim = con.Phims.Where(x => x.TenPhim == TenPhim).ToList();
+            
+            var listPhimbyTenPhim = (from Phim p in con.Phims
+                                   where p.NamSX == NamSX || p.TenPhim == TenPhim
+                                   select p).ToList();
 
             JsonPhim jsonreturn = new JsonPhim
             {
@@ -54,18 +57,7 @@ namespace WebsiteDatVeXemPhims.Controllers
             };
             return Json(new { data = jsonreturn });
         }
-        // lấy phim theo năm sản xuất
-        [System.Web.Http.AcceptVerbs("GET")]
-        public IHttpActionResult getPhimbyNamSX(int NamSX)
-        {
-            var listPhimbyNamSX = con.Phims.Where(x => x.NamSX == NamSX).ToList();
-
-            JsonPhim jsonreturn = new JsonPhim
-            {
-                listPhim = listPhimbyNamSX.Select(t => t.CopyObjectForMovieApi()).ToArray()
-            };
-            return Json(new { data = jsonreturn });
-        }
+        
         //// lấy list phim
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         public IHttpActionResult loadListPhim(Pagination objpage)
