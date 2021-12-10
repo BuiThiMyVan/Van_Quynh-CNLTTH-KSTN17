@@ -59,7 +59,6 @@ namespace WebsiteDatVeXemPhim.Controllers
                 PhongChieu.SoCot = objPC.SoCot;
                 PhongChieu.TinhTrang = objPC.TinhTrang;
                 PhongChieu.LoaiManHinh = objPC.LoaiManHinh;
-                PhongChieu.NgayTao = null;
                 PhongChieu.NgayCapNhat = DateTime.Now;
                 con.SaveChanges();
                 return Json(new { message = 200 });
