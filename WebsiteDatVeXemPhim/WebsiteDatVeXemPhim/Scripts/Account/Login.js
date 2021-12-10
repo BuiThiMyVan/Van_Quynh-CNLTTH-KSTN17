@@ -38,7 +38,6 @@
                     UserName: self.username,
                     Pass: self.password
                 };
-                console.log(account);
 
                 $.ajax({
                     data: account,
@@ -49,9 +48,7 @@
                 }).then(res => {
                     switch (res.result) {
                         case 1:
-                            AddLoader();
                             window.location.href = "/Home/Index";
-                            HiddenLoader();
                             break;
                         case 2:
                             self.error_login = "Tài khoản không tồn tại";

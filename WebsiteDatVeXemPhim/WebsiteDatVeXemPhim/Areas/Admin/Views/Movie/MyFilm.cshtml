@@ -5,10 +5,25 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="content-wrapper" id="MyFilm">
+@section Styles {
+    <style>
+        .header-detail div:first-child {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+       
+}
+
+<div class="content-wrapper" id="MyFilm" style="display: none">
     <div class="header-detail">
-        <a href="/Admin/Movie/Index" class="link-list"> < Danh sách phim</a>
-        <span class="name-title mt-8"> {{ TenPhim }} </span>
+        <div>
+            <a href="/Admin/Movie/Index" class="link-list"> < Danh sách phim</a>
+            <span class="name-title mt-8"> {{ TenPhim }} </span>
+        </div>
+        <div>
+            <a href="/Admin/Schedule/Create" class="btn-main-color">Tạo lịch chiếu</a>
+        </div>
     </div>
     <div class="content-detail">
         <div class="content-detail-head"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;&nbsp; Thông tin phim</div>

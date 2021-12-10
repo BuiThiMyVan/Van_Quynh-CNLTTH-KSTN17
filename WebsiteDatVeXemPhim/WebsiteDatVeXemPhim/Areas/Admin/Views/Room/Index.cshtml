@@ -1,0 +1,51 @@
+﻿@using WebsiteDatVeXemPhim
+@using WebsiteDatVeXemPhim.EF
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper" @*style="display:none"*@ id="ListRoom">
+    <div class="header">
+        <span class="list-title">Quản lý Phim</span>
+        <a href="/Admin/Movie/AddFilm" class="btn-main-color">Tạo phim</a>
+    </div>
+    <div id="search">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Nhập tên phim/đạo diễn..." />
+            <div class="search-icon"><i class="fas fa-search"></i></div>
+        </div>
+    </div>
+    <div class="table-list">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" class="ordinal-numbers text-center">STT</th>
+                    <th scope="col" class="name-film">Tên phòng</th>
+                    <th scope="col" class="text-center">Số chỗ ngồi</th>
+                    <th scope="col" class="show-date text-center">Loại màn hình</th>
+                    <th scope="col" class="produce-year text-center">Ngày tạo</th>
+                    <th scope="col" class="text-center">Tình trạng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in list">
+                    <td class="ordinal-numbers text-center">
+                        {{ index +1}}
+                    </td>
+                    <td class="name-film"> <a class="text-main-color" v-bind:href="'/Admin/Movie/MyFilm?id=' + item.id">{{ item.TenPhong }}</a></td>
+                    <td class="text-center">{{ item.SoChongoi }} </td>
+                    <td class="show-date text-center">{{ item.LoaiManHinh }}</td>
+                    <td class="produce-year text-center">{{ item.NgayTaoFormat }}</td>
+                    <td class="text-center text-blue" v-if="item.TinhTrang == @((int)PhongChieu.PC.sudung)"> Đang sử dụng</td>
+                    <td class="text-center text-main-color" v-if="item.TinhTrang == @((int)PhongChieu.PC.khongsudung)"> Không sử dụng</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/Room/Room.js"></script>
+}
+

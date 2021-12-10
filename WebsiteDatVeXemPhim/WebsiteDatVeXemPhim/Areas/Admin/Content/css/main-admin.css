@@ -72,7 +72,7 @@ input:focus, select:focus, textarea:focus {
 
     .content-wrapper .header-detail {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
     }
 
     .content-wrapper .list-title,
@@ -92,6 +92,7 @@ input:focus, select:focus, textarea:focus {
         border-radius: 4px;
         padding: 12px 38px;
         font-weight: bold;
+        display: inline-block;
     }
 
 #search {

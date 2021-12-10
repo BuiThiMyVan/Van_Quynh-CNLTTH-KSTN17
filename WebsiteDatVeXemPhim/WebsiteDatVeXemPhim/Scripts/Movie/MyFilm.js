@@ -99,7 +99,7 @@
         },
 
         getInfoFilm: function () {
-         // AddLoader();
+            AddLoader();
             var self = this;
             $.ajax({
                 url: "/api/MovieApi/getPhimbyId?MaPhim=" + id,
@@ -118,8 +118,8 @@
                 self.ApPhich = res.infoPhim.ApPhich == null ? '' : res.infoPhim.ApPhich;
                 self.TinhTrang = res.infoPhim.TinhTrang == null ? -1 : res.infoPhim.TinhTrang;
                 self.TheLoai = res.infoPhim.TheLoai == null ? '' : res.infoPhim.TheLoai;
-              //HiddenLoader();
-            //  $("#ListFilm").css("display", "block");
+            HiddenLoader();
+                $("#MyFilm").css("display", "block");
             });
         },
 

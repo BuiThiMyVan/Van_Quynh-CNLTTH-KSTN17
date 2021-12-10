@@ -1,7 +1,8 @@
-﻿var vmRegister = new Vue({
-    el: "#Register",
+﻿var vmDetailsUser = new Vue({
+    el: "#DetailsUser",
     data: {
         username: '',
+        password_old: '',
         password: '',
         confirm_pass: '',
         hoten: '',
@@ -12,9 +13,7 @@
         error_password: '',
         error_confirm_pass: '',
         error_hoten: '',
-        error_sdt: '',
-        remember: false,
-        error_remember: ''
+        error_sdt: ''
     },
 
     watch: {
@@ -24,24 +23,6 @@
                 self.error_username = 'Bạn cần điền tên đăng nhập';
             } else {
                 self.error_username = '';
-            }
-        },
-
-        password: function () {
-            var self = this;
-            if (self.password == '') {
-                self.error_password = 'Bạn cần nhập mật khẩu';
-            } else {
-                self.error_password = '';
-            }
-        },
-
-        confirm_pass: function () {
-            var self = this;
-            if (self.confirm_pass !== self.password) {
-                self.error_confirm_pass = 'Mật khẩu nhập lại không khớp';
-            } else {
-                self.error_confirm_pass = '';
             }
         },
 
@@ -67,66 +48,55 @@
                     self.error_sdt = 'Bạn cần nhập đúng định dạng số điện thoại';
                 }
             }
-        },
-
-        remember: function () {
-            var self = this;
-            if (!self.remember) {
-                self.error_remember = 'Chưa xác nhận điều khoản';
-            } else {
-                self.error_remember = '';
-            }
         }
     },
 
     methods: {
         getInfoUser: function () {
             var self = this;
+            console.log(typeof session);
             $.ajax({
-                data: modal,
-                url: "/api/CustommerAPI?username=" + session.UserName,
-                type: 'POST',
+                url: "/api/CustommerAPI/getCustommerByUsername?username=" + session,
+                type: 'GET',
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
-                self.username = res.kh.username;
-                self.password = res.kh.password,
-                self.confirm_pass = res.kh.password,
-                self.hoten = res.kh.hoten == null ? '' : res.kh.hoten,
-                self.ngaysinh = res.kh.ngaysinh == null ? '' : res.kh.ngaysinh,
-                self.diachi = res.kh.diachi == null ? '' : res.kh.diachi,
-                self.sdt == res.kh.sdt == null ? '' : res.kh.sdt,
+                console.log(res);
+                self.username = res.kh[0].username;
+                self.password_old = res.kh[0].pass,
+                self.confirm_pass = res.kh[0].password,
+                self.hoten = res.kh[0].hoten == null ? '' : res.kh[0].hoten,
+                self.ngaysinh = res.kh[0].ngaysinh == null ? '' : res.kh[0].ngaysinh,
+                self.diachi = res.kh[0].diachi == null ? '' : res.kh[0].diachi,
+                self.sdt = res.kh[0].sodienthoai == null ? '' : res.kh[0].sodienthoai
             });
         },
 
         updateInfoUser: function () {
             var self = this;
+            var bug = 0;
 
             if (self.username == '') {
                 self.error_username = 'Bạn cần điền tên đăng nhập';
-            }
-
-            if (self.password == '') {
-                self.error_password = 'Bạn cần nhập mật khẩu';
+                bug++;
             }
 
             if (self.confirm_pass !== self.password) {
                 self.error_confirm_pass = 'Mật khẩu nhập lại không khớp';
+                bug++;
             }
 
             if (self.hoten == '') {
                 self.error_hoten = 'Bạn cần nhập họ tên';
+                bug++;
             }
 
             if (self.sdt == '') {
                 self.error_sdt = 'Bạn cần nhập số điện thoại';
+                bug++;
             }
 
-            if (self.remember == false) {
-                self.error_remember = 'Chưa xác nhận điều khoản';
-            }
-
-            if (self.error_username !== '' || self.error_password !== '' || self.error_confirm_pass || self.error_hoten !== '' || self.error_sdt !== '' || self.error_remember !== '') {
+            if (bug != 0) {
                 return false;
             }
 
@@ -149,16 +119,13 @@
                 console.log(res);
                 if (res.message == 200) {
                     alert('Cập nhật thông tin tài khoản thành công');
-                    window.location.href = '/home-page';
-                } else if (res.message == 400) {
-                    self.error_username = 'Tên đăng nhập đã tồn tại';
+                    window.location.href = '/home-page';               
                 } else {
                     alert('Đã xảy ra lỗi trong quá trình cập nhật');
                 }
             });
         }
     },
-
-
-
 })
+
+vmDetailsUser.getInfoUser();

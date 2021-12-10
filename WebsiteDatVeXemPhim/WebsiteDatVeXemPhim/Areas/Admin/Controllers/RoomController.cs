@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
+namespace WebsiteDatVeXemPhim.Areas.Admin.Controllers
 {
-    public class BaseController : Controller
+    public class RoomController : Controller
     {
-        // GET: Base
+        // GET: Admin/Room
         public ActionResult Index()
         {
             return View();

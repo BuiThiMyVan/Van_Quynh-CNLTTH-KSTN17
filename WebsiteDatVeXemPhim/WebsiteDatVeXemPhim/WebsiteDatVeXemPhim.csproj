@@ -146,13 +146,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MovieController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ScheduleController.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Controllers\CustommerAPIController.cs" />
     <Compile Include="Controllers\MovieApiController.cs" />
     <Compile Include="Controllers\MVC_Controller\AccountController.cs" />
-    <Compile Include="Controllers\MVC_Controller\BaseController.cs" />
     <Compile Include="Controllers\MVC_Controller\HomeController.cs" />
     <Compile Include="Controllers\RoomApiController.cs" />
     <Compile Include="Controllers\ScheduleApiController.cs" />
@@ -923,6 +925,9 @@
     <Content Include="Content\js\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\js\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\js\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Admin\Views\Schedule\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Room\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\Account\DetailsUser.js" />
@@ -942,6 +947,8 @@
     <Content Include="Scripts\Movie\AddFilm.js" />
     <Content Include="Scripts\Movie\MyFilm.js" />
     <Content Include="Scripts\Movie\Phim.js" />
+    <Content Include="Scripts\Room\Room.js" />
+    <Content Include="Scripts\Schedule\Create.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

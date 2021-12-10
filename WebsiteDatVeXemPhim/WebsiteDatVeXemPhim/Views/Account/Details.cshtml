@@ -1,7 +1,4 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@using WebsiteDatVeXemPhim.EF
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,8 +57,7 @@
     </style>
 </head>
 <body class="body">
-
-    <div class="sign section--bg" data-bg="img/section/section.jpg" id="Register">
+    <div class="sign section--bg" data-bg="img/section/section.jpg" id="DetailsUser">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -85,7 +81,7 @@
 
                             <div class="user__info__group">
                                 <label for="user__info__birthday">Ngày sinh</label>
-                                <input v-model="ngaysinh" name="user__info__birthday" type="text" class="user__info__input" placeholder="Nhập ngày sinh">
+                                <input class="user__info__input" type="text" v-model="ngaysinh" id="ngaysinh" onchange="getBirthday()" />
                             </div>
 
                             <div class="user__info__group">
@@ -96,12 +92,16 @@
 
                             <div class="user__info__group">
                                 <label for="user__info__phone">Địa chỉ</label>
-                                <input v-model="diachi" name="user__info__phone" type="text" class="user__info__input" placeholder="Nhập số điện thoại">
-                                <div class="text-danger"> {{error_diachi}}</div>
+                                <input v-model="diachi" type="text" class="user__info__input" placeholder="Nhập địa chỉ">
                             </div>
 
                             <div class="user__info__group">
-                                <label for="user__info__password">Mật khẩu</label>
+                                <label for="user__info__password">Mật khẩu cũ</label>
+                                <input v-model="password_old" name="user__info__password" type="password" class="user__info__input" placeholder="Nhập mật khẩu">
+                            </div>
+
+                            <div class="user__info__group">
+                                <label for="user__info__password">Mật khẩu mới</label>
                                 <input v-model="password" name="user__info__password" type="password" class="user__info__input" placeholder="Nhập mật khẩu">
                                 <div class="text-danger"> {{error_password}}</div>
                             </div>
@@ -136,27 +136,34 @@
     <script src="/Content/js/main.js"></script>
     <script src="~/Scripts/vue.js"></script>
     <script src="~/Scripts/moment.js"></script>
-    <script src="~/Scripts/jquery-ui.min.js"></script>
-    <script src="~/Scripts/Account/Register.js"></script>
+    <script src="/Scripts/jquery-ui.min.js"></script>
 </body>
 
 </html>
 
-<script>
-    var session = (NguoiDung)@Session[WebsiteDatVeXemPhim.Common.CommonConstants.USER_SESSION];
+@{
+    var session = (NguoiDung)Session[WebsiteDatVeXemPhim.Common.CommonConstants.USER_SESSION];
+}
 
+<script>
+    var session = "@session.UserName";
+</script>
+<script src="~/Scripts/Account/DetailsUser.js"></script>
+<script>
+    
     $(document).ready(function () {
-        $('#datepicker').datepicker({
+        $('#ngaysinh').datepicker({
             dateFormat: "dd/mm/yy",
             changeMonth: true,
             changeYear: true
-        })
-    })
+        });
+    });
 
 
     function getBirthday() {
-        var birthday = $("#datepicker").val();
-        vmRegister.ngaysinh = birthday;
+        var birthday = $("#ngaysinh").val();
+        vmDetailsUser.ngaysinh = birthday;
     }
 </script>
+
 
