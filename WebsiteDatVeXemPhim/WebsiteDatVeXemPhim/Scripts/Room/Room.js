@@ -5,7 +5,7 @@
     },
     methods: {
         getListRoom: function () {
-            //AddLoader();
+            AddLoader();
             var self = this;
             $.ajax({
                 url: "/api/RoomApi/loadListPC",
@@ -15,8 +15,8 @@
             }).then(res => {
                 console.log(res.data);
                 self.list = res.data.listPhongChieu;
-                //HiddenLoader();
-                //$("#ListFilm").css("display", "block");
+                HiddenLoader();
+                $("#ListRoom").css("display", "block");
             });
         }
 

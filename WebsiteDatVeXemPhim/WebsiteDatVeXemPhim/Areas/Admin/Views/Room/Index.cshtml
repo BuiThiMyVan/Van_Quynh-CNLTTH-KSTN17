@@ -5,11 +5,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="content-wrapper" @*style="display:none"*@ id="ListRoom">
+<div class="content-wrapper" style="display:none" id="ListRoom">
     <div class="header">
         <span class="list-title">Quản lý phòng chiếu</span>
     </div>
-    <div class="table-list">
+    <div class="table-list mt-32">
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -27,7 +27,7 @@
                         {{ index +1}}
                     </td>
                     <td class="name-film"> <a class="text-main-color" v-bind:href="'/Admin/Room/MyRoom?id=' + item.id">{{ item.TenPhong }}</a></td>
-                    <td class="text-center">{{ item.SoChongoi }} </td>
+                    <td class="text-center">{{ item.SoChoNgoi }} </td>
                     <td class="show-date text-center">{{ item.LoaiManHinh }}</td>
                     <td class="produce-year text-center">{{ item.NgayTaoFormat }}</td>
                     <td class="text-center text-blue" v-if="item.TinhTrang == @((int)PhongChieu.PC.sudung)"> Đang sử dụng</td>
