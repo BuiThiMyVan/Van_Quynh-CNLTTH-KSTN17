@@ -1,72 +1,22 @@
-﻿
+﻿@using WebsiteDatVeXemPhim
+@using WebsiteDatVeXemPhim.EF
 @{
     ViewBag.Title = "MyFilm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@section Styles {
-    <style>
-        .link-list {
-            color: var(--main-color);
-        }
-
-        .content-detail {
-            margin-top: 16px;
-            padding: 24px 16px;
-            background-color: #fff;
-            border-radius: 4px;
-        }
-
-            .content-detail .content-item {
-                display: flex;
-                margin-bottom: 24px;
-            }
-
-            .content-detail .content-label {
-                min-width: 260px;
-                font-size: 16px;
-                font-weight: bold;
-                color: #6C738D;
-            }
-
-            .content-detail .content-input {
-                flex: 1;
-                padding: 7px;
-                border: 1px solid rgb(216, 221, 230);
-                border-radius: 4px;
-            }
-
-            .content-detail .content-numbers {
-                max-width: 88px;
-            }
-
-            .content-detail .content-status {
-                max-width: 240px;
-            }
-
-            .content-detail .btn-update {
-                display: flex;
-                justify-content: flex-end;
-            }
-
-            .content-detail .content-date {
-                max-width: 272px;
-            }
-    </style>
-
-}
-
 <div class="content-wrapper" id="MyFilm">
     <div class="header-detail">
-        <a href="/Admin/Movie/Index" class="link-list"> > Danh sách phim</a>
+        <a href="/Admin/Movie/Index" class="link-list"> < Danh sách phim</a>
         <span class="name-title mt-8"> {{ TenPhim }} </span>
     </div>
     <div class="content-detail">
+        <div class="content-detail-head"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;&nbsp; Thông tin phim</div>
         <div class="content-item">
             <label class="content-label">Tên phim</label>
             <input class="content-input" type="text" v-model="TenPhim" />
         </div>
-        <div class="text-danger"> {{ error_name }}</div>
+        <div class="error text-danger"> {{ error_name }}</div>
         <div class="content-item">
             <label class="content-label">Mô tả</label>
             <textarea class="content-input" type="text" rows="4" v-model="MoTa"></textarea>
@@ -75,17 +25,17 @@
             <label class="content-label">Thời lượng</label>
             <input class="content-input content-numbers" type="text" v-model="ThoiLuong" onkeypress="return isNumberKey(event)" />
         </div>
-        <div class="text-danger"> {{ error_time }}</div>
+        <div class="error text-danger"> {{ error_time }}</div>
         <div class="content-item">
             <label class="content-label">Ngày khởi chiếu</label>
             <input class="content-input content-date" type="text" v-model="NgayKhoiChieu" id="ngaykhoichieu" onchange="getNgayKhoiChieu()" />
         </div>
-        <div class="text-danger"> {{ error_startdate }}</div>
+        <div class="error text-danger"> {{ error_startdate }}</div>
         <div class="content-item">
             <label class="content-label">Ngày kết thúc</label>
             <input class="content-input content-date" type="text" v-model="NgayKetThuc" id="ngayketthuc" onchange="getNgayKetThuc()" />
         </div>
-        <div class="text-danger"> {{ error_finishdate }}</div>
+        <div class="error text-danger"> {{ error_finishdate }}</div>
         <div class="content-item">
             <label class="content-label">Sản xuất</label>
             <input class="content-input" type="text" v-model="Sanxuat" />
@@ -103,28 +53,26 @@
             <label class="content-label">Áp phích</label>
             <input class="content-input" type="text" v-model="ApPhich" />
         </div>
+        <div class="content-item">
+            <label class="content-label"></label>
+            <span class="text-main-color pointer-hover" v-on:click="ChooseImage()">Tải ảnh lên... </span>
+        </div>
         <div class="text-danger"> {{ error_image }}</div>
         <div class="content-item">
             <label class="content-label">Tình trạng</label>
-            <input class="content-input content-status" type="text" v-model="TinhTrang" />
-            @*<div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle content-input content-status" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" v-model="TinhTrang">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>*@
+            <select class="content-input content-status" v-model="TinhTrang">
+                <option value="@((int)Phim.StatusFilm.ChuaKhoiChieu)">Chưa khởi chiếu</option>
+                <option value="@((int)Phim.StatusFilm.DangKhoiChieu)">Đang khởi chiếu</option>
+                <option value="@((int)Phim.StatusFilm.KetThuc)">Kết thúc</option>
+            </select>
         </div>
         <div class="content-item">
             <label class="content-label">Thể loại</label>
             <input class="content-input" type="text" v-model="TheLoai" />
         </div>
-        <div class="text-danger"> {{ error_cate }}</div>
+        <div class="error text-danger"> {{ error_cate }}</div>
         <div class="btn-update">
-            <button v-on:click="updateMovie()" class="btn-main-color">Cập nhật</button>
+            <button v-on:click="updateFilm()" class="btn-main-color">Cập nhật</button>
         </div>
     </div>
 </div>
