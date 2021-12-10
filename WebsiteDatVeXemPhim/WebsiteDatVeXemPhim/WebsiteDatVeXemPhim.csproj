@@ -164,6 +164,7 @@
     <Compile Include="EF\Phim.cs" />
     <Compile Include="EF\PhongChieu.cs" />
     <Compile Include="EF\SuatChieu.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\TheLoai.cs" />
     <Compile Include="EF\Ve.cs" />
     <Compile Include="Global.asax.cs">

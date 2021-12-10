@@ -16,7 +16,7 @@
             <label class="content-label">Tên phim</label>
             <input class="content-input" type="text" v-model="TenPhim" />
         </div>
-        <div class="text-danger"> {{ error_name }}</div>
+        <div class="error text-danger"> {{ error_name }}</div>
         <div class="content-item">
             <label class="content-label">Mô tả</label>
             <textarea class="content-input" type="text" rows="4" v-model="MoTa"></textarea>
@@ -25,17 +25,17 @@
             <label class="content-label">Thời lượng</label>
             <input class="content-input content-numbers" type="text" v-model="ThoiLuong" onkeypress="return isNumberKey(event)" />
         </div>
-        <div class="text-danger"> {{ error_time }}</div>
+        <div class="error text-danger"> {{ error_time }}</div>
         <div class="content-item">
             <label class="content-label">Ngày khởi chiếu</label>
             <input class="content-input content-date" type="text" v-model="NgayKhoiChieu" id="ngaykhoichieu" onchange="getNgayKhoiChieu()" />
         </div>
-        <div class="text-danger"> {{ error_startdate }}</div>
+        <div class="error text-danger"> {{ error_startdate }}</div>
         <div class="content-item">
             <label class="content-label">Ngày kết thúc</label>
             <input class="content-input content-date" type="text" v-model="NgayKetThuc" id="ngayketthuc" onchange="getNgayKetThuc()" />
         </div>
-        <div class="text-danger"> {{ error_finishdate }}</div>
+        <div class="error text-danger"> {{ error_finishdate }}</div>
         <div class="content-item">
             <label class="content-label">Sản xuất</label>
             <input class="content-input" type="text" v-model="Sanxuat" />
@@ -70,7 +70,7 @@
             <label class="content-label">Thể loại</label>
             <input class="content-input" type="text" v-model="TheLoai" />
         </div>
-        <div class="text-danger"> {{ error_cate }}</div>
+        <div class="error text-danger"> {{ error_cate }}</div>
         <div class="btn-update">
             <button v-on:click="updateFilm()" class="btn-main-color">Cập nhật</button>
         </div>

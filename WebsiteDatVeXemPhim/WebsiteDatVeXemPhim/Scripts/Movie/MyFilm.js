@@ -1,6 +1,7 @@
 ﻿var vmMyFilm = new Vue({
     el: "#MyFilm",
     data: {
+        Id: 0,
         TenPhim : '',
         MoTa: '',
         ThoiLuong: 0,
@@ -177,6 +178,7 @@
             }
 
             var modal = {
+                id: id,
                 TenPhim: self.TenPhim,
                 MoTa: self.MoTa,
                 ThoiLuong: self.ThoiLuong,
