@@ -6,18 +6,16 @@ using System.Web.Mvc;
 
 namespace WebsiteDatVeXemPhim.Areas.Admin.Controllers
 {
-    public class RoomController : Controller
+    public class CustomerController : Controller
     {
-        // GET: Admin/Room
+        // GET: Admin/Customer
         public ActionResult Index()
         {
             return View();
         }
 
-        [HttpGet]
-        public ActionResult MyRoom(int id)
+        public ActionResult Details()
         {
-            ViewBag.Id = id;
             return View();
         }
     }

@@ -147,6 +147,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MovieController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
@@ -929,6 +930,9 @@
     <Content Include="Areas\Admin\Views\Schedule\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Schedule\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Room\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Room\MyRoom.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\Account\DetailsUser.js" />
@@ -948,6 +952,7 @@
     <Content Include="Scripts\Movie\AddFilm.js" />
     <Content Include="Scripts\Movie\MyFilm.js" />
     <Content Include="Scripts\Movie\Phim.js" />
+    <Content Include="Scripts\Room\MyRoom.js" />
     <Content Include="Scripts\Room\Room.js" />
     <Content Include="Scripts\Schedule\Create.js" />
     <Content Include="Scripts\vue.js" />

@@ -15,7 +15,7 @@
 }
 
 <div class="content-wrapper" id="CreateSchedule">
-    @*<div class="header-detail">
+    <div class="header-detail">
         <a href="/Admin/Movie/Index" class="link-list"> < Danh sách lịch chiếu</a>
         <span class="name-title mt-8"> Tạo mới lịch chiếu </span>
     </div>
@@ -23,57 +23,58 @@
         <div class="content-detail-head"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;&nbsp; Thông tin lịch chiếu</div>
         <div class="content-item">
             <label class="content-label">Tên phim</label>
-            <input class="content-input" type="text" v-model="TenPhim" readonly/>
+            <input class="content-input" type="text" v-model="TenPhim" readonly />
         </div>
+        <div class="content-item">
+            <label class="content-label">Ngày chiếu</label>
+            <input class="content-input content-date" type="text" v-model="ThoiGianChieu" id="thoigianchieu" onchange="getThoiGianChieu()" />
+        </div>
+        <div class="error text-danger"> {{ error_showtime }}</div>
         <div class="content-item">
             <label class="content-label">Phòng chiếu</label>
-            <input class="content-input" type="text" v-model="TenPhim" />
-        </div>
-        <div class="error text-danger"> {{ error_name }}</div>
-        <div class="content-item">
-            <label class="content-label">Mô tả</label>
-            <textarea class="content-input" type="text" rows="4" v-model="MoTa"></textarea>
-        </div>
-        <div class="content-item">
-            <label class="content-label">Giá vé</label>
-            <input class="content-input content-numbers" type="text" v-model="ThoiLuong" onkeypress="return isNumberKey(event)" />
-        </div>
-        <div class="error text-danger"> {{ error_time }}</div>
-        <div class="content-item">
-            <label class="content-label">Tình trạng</label>
-            <select class="content-input content-status" v-model="TinhTrang">
-                <option value="@((int)Phim.StatusFilm.ChuaKhoiChieu)">Chưa khởi chiếu</option>
-                <option value="@((int)Phim.StatusFilm.DangKhoiChieu)">Đang khởi chiếu</option>
-                <option value="@((int)Phim.StatusFilm.KetThuc)">Kết thúc</option>
+            <select class="content-input content-status" v-model="idPhong">
+                <option v-for="item in listPC" value="item.id">{{item.TenPhong }}</option>
             </select>
         </div>
-    </div>*@
+        <div class="error text-danger"> {{ error_room }}</div>
+        <div class="content-item">
+            <label class="content-label">Giá vé</label>
+            <input class="content-input content-numbers" type="text" v-model="GiaVe" onkeypress="return isNumberKey(event)" />
+        </div>
+        <div class="error text-danger"> {{ error_price }}</div>
+        <div class="content-item">
+            <label class="content-label">Suất chiếu</label>
+            <select class="content-input content-status" v-model="idSuatChieu">
+                <option v-for="item in listSC" value="item.id">{{item.SuatChieu1 }}</option>
+            </select>
+        </div>
+        <div class="error text-danger"> {{ error_sc }}</div>
+        <div class="content-item">
+            <label class="content-label">Tình trạng</label>
+            <select class="content-input content-status" v-model="TrangThai">
+                <option value="1">Active</option>
+                <option value="0">Not Active</option>
+            </select>
+        </div>
+        <div class="btn-update">
+            <button v-on:click="addSchedule()" class="btn-main-color">Hoàn thành</button>
+        </div>
+    </div>
 </div>
 @section Scripts {
     <script>
-        //$(document).ready(function () {
-        //    $('#ngaykhoichieu').datepicker({
-        //        dateFormat: "dd/mm/yy",
-        //        changeMonth: true,
-        //        changeYear: true
-        //    })
+        $(document).ready(function () {
+            $('#thoigianchieu').datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true
+            })
+        })
 
-        //    $('#ngayketthuc').datepicker({
-        //        dateFormat: "dd/mm/yy",
-        //        changeMonth: true,
-        //        changeYear: true
-        //    })
-        //})
-
-        //function getNgayKhoiChieu() {
-        //    var ngaykhoichieu = $("#ngaykhoichieu").val();
-        //    vmAddFilm.NgayKhoiChieu = ngaykhoichieu;
-        //}
-
-        //function getNgayKetThuc() {
-        //    var ngaykt = $("#ngayketthuc").val();
-        //    vmAddFilm.NgayKetThuc = ngaykt;
-        //}
+        function getThoiGianChieu() {
+            var thoigianchieu = $("#thoigianchieu").val();
+            vmCreateSchedule.ThoiGianChieu = thoigianchieu;
+        }
     </script>
     <script src="~/Scripts/Schedule/Create.js"></script>
 }

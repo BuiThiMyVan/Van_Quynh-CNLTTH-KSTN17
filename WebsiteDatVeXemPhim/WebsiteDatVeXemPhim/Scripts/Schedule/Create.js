@@ -1,12 +1,57 @@
 ﻿var vmCreateSchedule = new Vue({
     el: "#CreateSchedule",
     data: {
+        TenPhim: '',
+        ThoiGianChieu: '',
+        idPhong: -1,
+        GiaVe: null,
+        TrangThai: 1,
+        idSuatChieu: -1,
         listSC: [],
-        listPC: []
+        listPC: [],
+
+        error_showtime: '',
+        error_room: '',
+        error_price: '',
+        error_sc: ''
     },
 
     watch: {
-        
+        ThoiGianChieu: function () {
+            var self = this;
+            if (self.ThoiGianChieu == '') {
+                self.error_showtime = 'Cần chọn thời gian chiếu';
+            } else {
+                self.error_showtime = '';
+            }
+        },
+
+        idPhong: function () {
+            var self = this;
+            if (self.idPhong == -1) {
+                self.error_room = 'Cần chọn phòng chiếu';
+            } else {
+                self.error_room = '';
+            }
+        },
+
+        GiaVe: function () {
+            var self = this;
+            if (self.GiaVe == null) {
+                self.error_price = 'Cần nhập giá vé';
+            } else {
+                self.error_price = '';
+            }
+        },
+
+        idSuatChieu: function () {
+            var self = this;
+            if (self.idSuatChieu == -1) {
+                self.error_sc = 'Cần chọn suất chiếu';
+            } else {
+                self.error_sc = '';
+            }
+        },
     },
 
     methods: {
@@ -36,10 +81,39 @@
 
         addSchedule: function () {
             var self = this;
-            var bug = 0;         
+            var bug = 0;
+
+            if (self.ThoiGianChieu == '') {
+                self.error_showtime = 'Cần chọn thời gian chiếu';
+                bug++;
+            }
+
+            if (self.GiaVe == null) {
+                self.error_price = 'Cần nhập giá vé';
+                bug++;
+            }
+
+            if (self.idPhong == -1) {
+                self.error_room = 'Cần chọn phòng chiếu';
+                bug++;
+            }
+
+            if (self.idSuatChieu == -1) {
+                self.error_sc = 'Cần chọn suất chiếu';
+                bug++;
+            }
+
+            if (bug != 0) {
+                return false;
+            }
 
             var modal = {
-
+                ThoiGianChieu: moment(self.ThoiGianChieu, 'DD/MM/YYYY').format('YYYY-MM-DD'),
+                idPhong: self.idPhong,
+                idPhim: id,
+                GiaVe: self.GiaVe,
+                TrangThai: self.TrangThai,
+                idSuatChieu: self.idSuatChieu
             };
 
             $.ajax({
@@ -50,10 +124,10 @@
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
                 if (res == 200) {
-                    alert('Thêm mới phim thành công');
-                    window.location.href = '/Admin/Movie/Index';
+                    alert('Thêm mới lịch chiếu thành công');
+                    window.location.href = '/Admin/Schedule/Index';
                 } else {
-                    alert('Đã xảy ra lỗi khi thêm mới phim');
+                    alert('Đã xảy ra lỗi khi thêm mới lịch chiếu');
                 }
             });
         }

@@ -1,0 +1,70 @@
+﻿@using WebsiteDatVeXemPhim
+@using WebsiteDatVeXemPhim.EF
+@{
+    ViewBag.Title = "MyRoom";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <style>
+        .header-detail div:first-child {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+
+}
+
+<div class="content-wrapper" id="MyRoom" style="display: none">
+    <div class="header-detail">
+        <div>
+            <a href="/Admin/Room/Index" class="link-list"> < Danh sách phòng chiếu</a>
+            <span class="name-title mt-8"> {{ TenPhong }} </span>
+        </div>
+    </div>
+    <div class="content-detail">
+        <div class="content-detail-head"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;&nbsp; Thông tin phòng chiếu</div>
+        <div class="content-item">
+            <label class="content-label">Tên phòng</label>
+            <input class="content-input" type="text" v-model="TenPhong" />
+        </div>
+        <div class="error text-danger"> {{ error_name }}</div>
+        <div class="content-item">
+            <label class="content-label">Số chỗ ngồi</label>
+            <input class="content-input content-numbers" type="text" v-model="SoChoNgoi" onkeypress="return isNumberKey(event)" />
+        </div>
+        <div class="error text-danger"> {{ error_numberseat }}</div>
+        <div class="content-item">
+            <label class="content-label">Số hàng</label>
+            <input class="content-input content-numbers" type="text" v-model="SoHang" onkeypress="return isNumberKey(event)" />
+        </div>
+        <div class="text-danger"> {{ error_row }}</div>
+        <div class="content-item">
+            <label class="content-label">Số dãy</label>
+            <input class="content-input content-numbers" type="text" v-model="SoCot" onkeypress="return isNumberKey(event)" />
+        </div>
+        <div class="text-danger"> {{ error_column }}</div>
+        <div class="content-item">
+            <label class="content-label">Tình trạng</label>
+            <select class="content-input content-status" v-model="TinhTrang">
+                <option value="@((int)PhongChieu.PC.khongsudung)">Không sử dụng</option>
+                <option value="@((int)PhongChieu.PC.sudung)">Đang sử dụng</option>
+            </select>
+        </div>
+        <div class="content-item">
+            <label class="content-label">Loại màn hình</label>
+            <input class="content-input" type="text" v-model="LoaiManHinh" />
+        </div>
+        <div class="error text-danger"> {{ error_cate }}</div>
+        <div class="btn-update">
+            <button v-on:click="updateRoom()" class="btn-main-color">Cập nhật</button>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        var id = @ViewBag.Id;
+    </script>
+    <script src="~/Scripts/Room/MyRoom.js"></script>
+}
+
