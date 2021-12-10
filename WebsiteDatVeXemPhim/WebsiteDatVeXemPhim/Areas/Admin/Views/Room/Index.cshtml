@@ -7,14 +7,7 @@
 
 <div class="content-wrapper" @*style="display:none"*@ id="ListRoom">
     <div class="header">
-        <span class="list-title">Quản lý Phim</span>
-        <a href="/Admin/Movie/AddFilm" class="btn-main-color">Tạo phim</a>
-    </div>
-    <div id="search">
-        <div class="search-box">
-            <input type="text" class="search-input" placeholder="Nhập tên phim/đạo diễn..." />
-            <div class="search-icon"><i class="fas fa-search"></i></div>
-        </div>
+        <span class="list-title">Quản lý phòng chiếu</span>
     </div>
     <div class="table-list">
         <table class="table table-bordered">
@@ -33,7 +26,7 @@
                     <td class="ordinal-numbers text-center">
                         {{ index +1}}
                     </td>
-                    <td class="name-film"> <a class="text-main-color" v-bind:href="'/Admin/Movie/MyFilm?id=' + item.id">{{ item.TenPhong }}</a></td>
+                    <td class="name-film"> <a class="text-main-color" v-bind:href="'/Admin/Room/MyRoom?id=' + item.id">{{ item.TenPhong }}</a></td>
                     <td class="text-center">{{ item.SoChongoi }} </td>
                     <td class="show-date text-center">{{ item.LoaiManHinh }}</td>
                     <td class="produce-year text-center">{{ item.NgayTaoFormat }}</td>
