@@ -16,7 +16,7 @@ namespace WebsiteDatVeXemPhim.EF
         {
             public int id { get; set; }
             public string TenPhong{ get; set; }
-            public int SoChongoi { get; set; }
+            public int SoChoNgoi { get; set; }
             public int SoHang { get; set; }
             public int SoCot { get; set; }
 
