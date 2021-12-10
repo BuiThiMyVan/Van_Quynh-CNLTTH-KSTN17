@@ -39,7 +39,7 @@ CREATE TABLE Phim
 	SanXuat nvarchar(50),
 	DaoDien nvarchar(100),
 	NamSX int,
-	ApPhich image,
+	ApPhich nvarchar(max),
 	TinhTrang int,
 	TheLoai Nvarchar(30),
 	NgayTao Datetime,
