@@ -39,8 +39,7 @@ namespace WebsiteDatVeXemPhim.EF
 
         public int? NamSX { get; set; }
 
-        [Column(TypeName = "image")]
-        public byte[] ApPhich { get; set; }
+        public string ApPhich { get; set; }
 
         public int? TinhTrang { get; set; }
 

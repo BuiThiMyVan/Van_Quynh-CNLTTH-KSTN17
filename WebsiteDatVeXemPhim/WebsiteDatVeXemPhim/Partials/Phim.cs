@@ -39,7 +39,7 @@ namespace WebsiteDatVeXemPhim.EF
             public string SanXuat { get; set; }
             public string DaoDien { get; set; }
             public int NamSX { get; set; }
-            public byte[]  ApPhich { get; set; }
+            public string  ApPhich { get; set; }
             public int TinhTrang { get; set; }
             public string TheLoai { get; set; }
             public DateTime? NgayTao { get; set; }

@@ -16,7 +16,7 @@ namespace WebsiteDatVeXemPhim.Controllers
     public class TicketApiController : ApiController
     {
         // GET: TicketApi
-        BookTicketDbContext con = new BookTicketDbContext();
+        BookTicketDbConText con = new BookTicketDbConText();
         [System.Web.Http.AcceptVerbs("POST", "GET")]
         public IHttpActionResult loadListTicketByIdLichchieu(int idLichchieu)
         {

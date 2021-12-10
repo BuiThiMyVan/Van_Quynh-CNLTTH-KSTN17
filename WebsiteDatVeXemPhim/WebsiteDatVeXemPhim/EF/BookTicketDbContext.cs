@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace WebsiteDatVeXemPhim.EF
 {
-    public partial class BookTicketDbContext : DbContext
+    public partial class BookTicketDbConText : DbContext
     {
-        public BookTicketDbContext()
-            : base("name=BookTicketDbContext")
+        public BookTicketDbConText()
+            : base("name=BookTicketDbConText")
         {
         }
 
@@ -18,7 +18,6 @@ namespace WebsiteDatVeXemPhim.EF
         public virtual DbSet<Phim> Phims { get; set; }
         public virtual DbSet<PhongChieu> PhongChieux { get; set; }
         public virtual DbSet<SuatChieu> SuatChieux { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<Ve> Ves { get; set; }
 

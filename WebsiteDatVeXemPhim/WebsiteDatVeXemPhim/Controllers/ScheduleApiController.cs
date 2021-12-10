@@ -12,7 +12,7 @@ namespace WebsiteDatVeXemPhim.Controllers
     public class ScheduleApiController : ApiController
     {
 
-        BookTicketDbContext con = new BookTicketDbContext();
+        BookTicketDbConText con = new BookTicketDbConText();
         // lay Suất chiếu theo id
         [System.Web.Http.AcceptVerbs("GET")]
         public IHttpActionResult getSuatChieuById(int masc)

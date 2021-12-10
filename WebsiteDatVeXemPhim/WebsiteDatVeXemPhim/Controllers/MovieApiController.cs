@@ -16,7 +16,7 @@ namespace WebsiteDatVeXemPhims.Controllers
 {
     public class MovieApiController : ApiController
     {
-        BookTicketDbContext con = new BookTicketDbContext();
+        BookTicketDbConText con = new BookTicketDbConText();
         
         //lấy phim theo id
         [System.Web.Http.AcceptVerbs("GET")]

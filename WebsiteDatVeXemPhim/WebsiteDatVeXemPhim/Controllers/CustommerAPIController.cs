@@ -11,7 +11,7 @@ namespace WebsiteDatVeXemPhim.Controllers
 {
     public class CustommerAPIController : ApiController
     {
-        BookTicketDbContext con = new BookTicketDbContext();
+        BookTicketDbConText con = new BookTicketDbConText();
 
         [System.Web.Http.AcceptVerbs("POST")]
         public IHttpActionResult addKH(KhachHang objkh)
