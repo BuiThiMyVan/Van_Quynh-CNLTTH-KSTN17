@@ -166,6 +166,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Partials\PhongChieu.cs" />
+    <Compile Include="Partials\SuatChieu.cs" />
     <Compile Include="Partials\TheLoai.cs" />
     <Compile Include="Partials\NguoiDung.cs" />
     <Compile Include="Partials\Ve.cs" />

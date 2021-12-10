@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Web.Http;
 using WebsiteDatVeXemPhim.EF;
 using WebsiteDatVeXemPhim.Models;
+using static WebsiteDatVeXemPhim.EF.SuatChieu;
+
 namespace WebsiteDatVeXemPhim.Controllers
 {
     public class ScheduleApiController : ApiController
@@ -30,13 +32,13 @@ namespace WebsiteDatVeXemPhim.Controllers
         [System.Web.Http.AcceptVerbs("GET")]
         public IHttpActionResult getSuatChieu()
         {
-            var infoSC = con.SuatChieux.ToList().Select(s=>new
-            {
-                MaSC = s.id,
-                SuatChieu = s.SuatChieu1,
-            });
+            var listSuatChieu = con.SuatChieux.ToList();
 
-            return Json(new { infoSC = infoSC });
+            JsonSuatChieu jsonreturn = new JsonSuatChieu
+            {
+                listSuatChieu = listSuatChieu.Select(t => t.CopyObjectForMovieRoom()).ToArray()
+            };
+            return Json(new { data = jsonreturn });
         }
 
 
