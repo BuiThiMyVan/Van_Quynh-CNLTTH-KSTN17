@@ -1,8 +1,107 @@
-﻿
+﻿@using WebsiteDatVeXemPhim
+@using WebsiteDatVeXemPhim.EF
 @{
     ViewBag.Title = "AddFilm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AddFilm</h2>
+<div class="content-wrapper" id="AddFilm">
+    <div class="header-detail">
+        <a href="/Admin/Movie/Index" class="link-list"> < Danh sách phim</a>
+        <span class="name-title mt-8"> Tạo mới phim </span>
+    </div>
+    <div class="content-detail">
+        <div class="content-detail-head"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;&nbsp; Thông tin phim</div>
+        <div class="content-item">
+            <label class="content-label">Tên phim</label>
+            <input class="content-input" type="text" v-model="TenPhim" />
+        </div>
+        <div class="error text-danger"> {{ error_name }}</div>
+        <div class="content-item">
+            <label class="content-label">Mô tả</label>
+            <textarea class="content-input" type="text" rows="4" v-model="MoTa"></textarea>
+        </div>
+        <div class="content-item">
+            <label class="content-label">Thời lượng</label>
+            <input class="content-input content-numbers" type="text" v-model="ThoiLuong" onkeypress="return isNumberKey(event)" />
+        </div>
+        <div class="error text-danger"> {{ error_time }}</div>
+        <div class="content-item">
+            <label class="content-label">Ngày khởi chiếu</label>
+            <input class="content-input content-date" type="text" v-model="NgayKhoiChieu" id="ngaykhoichieu" onchange="getNgayKhoiChieu()" />
+        </div>
+        <div class="error text-danger"> {{ error_startdate }}</div>
+        <div class="content-item">
+            <label class="content-label">Ngày kết thúc</label>
+            <input class="content-input content-date" type="text" v-model="NgayKetThuc" id="ngayketthuc" onchange="getNgayKetThuc()" />
+        </div>
+        <div class="error text-danger"> {{ error_finishdate }}</div>
+        <div class="content-item">
+            <label class="content-label">Sản xuất</label>
+            <input class="content-input" type="text" v-model="Sanxuat" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Đạo diễn</label>
+            <input class="content-input" type="text" v-model="DaoDien" />
+        </div>
+        <div class="content-item">
+            <label class="content-label">Năm sản xuất</label>
+            <input class="content-input content-numbers" type="text" v-model="NamSX" onkeypress="return isNumberKey(event)" />
+        </div>
+        <div class="error text-danger"> {{ error_produceyear }}</div>
+        <div class="content-item">
+            <label class="content-label">Áp phích</label>
+            <input class="content-input" type="text" v-model="ApPhich" />
+        </div>
+        <div class="content-item">
+            <label class="content-label"></label>
+            <span class="text-main-color pointer-hover" v-on:click="ChooseImage()">Tải ảnh lên... </span>
+        </div>
+        <div class="error text-danger"> {{ error_image }}</div>
+        <div class="content-item">
+            <label class="content-label">Tình trạng</label>
+            <select class="content-input content-status" v-model="TinhTrang">
+                <option value="@((int)Phim.StatusFilm.ChuaKhoiChieu)">Chưa khởi chiếu</option>
+                <option value="@((int)Phim.StatusFilm.DangKhoiChieu)">Đang khởi chiếu</option>
+                <option value="@((int)Phim.StatusFilm.KetThuc)">Kết thúc</option>
+            </select>
+        </div>
+        <div class="content-item">
+            <label class="content-label">Thể loại</label>
+            <input class="content-input" type="text" v-model="TheLoai" />
+        </div>
+        <div class="error text-danger"> {{ error_cate }}</div>
+        <div class="btn-update">
+            <button v-on:click="addFilm()" class="btn-main-color">Hoàn thành</button>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#ngaykhoichieu').datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true
+            })
+
+            $('#ngayketthuc').datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true
+            })
+        })
+
+        function getNgayKhoiChieu() {
+            var ngaykhoichieu = $("#ngaykhoichieu").val();
+            vmAddFilm.NgayKhoiChieu = ngaykhoichieu;
+        }
+
+        function getNgayKetThuc() {
+            var ngaykt = $("#ngayketthuc").val();
+            vmAddFilm.NgayKetThuc = ngaykt;
+        }
+    </script>
+    <script src="~/Scripts/Movie/AddFilm.js"></script>
+}
 

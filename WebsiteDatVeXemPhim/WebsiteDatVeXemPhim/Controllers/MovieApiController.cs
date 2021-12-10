@@ -126,9 +126,8 @@ namespace WebsiteDatVeXemPhims.Controllers
         /// <returns></returns>
 
         [System.Web.Http.AcceptVerbs("POST")]
-        public IHttpActionResult addPhim(string ph)
+        public IHttpActionResult addPhim(Phim objph)
         {
-            Phim objph = JsonConvert.DeserializeObject<Phim>(ph);
             objph.NgayTao = DateTime.Now;
             objph.NgayCapNhat = null;
             try

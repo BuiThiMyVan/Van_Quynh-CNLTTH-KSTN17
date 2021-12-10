@@ -82,32 +82,39 @@
     methods: {
         register: function () {
             var self = this;
+            var bug = 0;
 
             if (self.username == '') {
                 self.error_username = 'Bạn cần điền tên đăng nhập';
+                bug++;
             }
 
             if (self.password == '') {
                 self.error_password = 'Bạn cần nhập mật khẩu';
+                bug++;
             }
 
             if (self.confirm_pass !== self.password) {
                 self.error_confirm_pass = 'Mật khẩu nhập lại không khớp';
+                bug++;
             }
 
             if (self.hoten == '') {
                 self.error_hoten = 'Bạn cần nhập họ tên';
+                bug++;
             }
 
             if (self.sdt == '') {
                 self.error_sdt = 'Bạn cần nhập số điện thoại';
+                bug++;
             }
 
             if (self.remember == false) {
                 self.error_remember = 'Chưa xác nhận điều khoản';
+                bug++;
             }
 
-            if (self.error_username !== '' || self.error_password !== '' || self.error_confirm_pass || self.error_hoten !== '' || self.error_sdt !== '' || self.error_remember !== '') {
+            if (bug != 0) {
                 return false;
             }
 
