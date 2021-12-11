@@ -16,6 +16,8 @@ namespace WebsiteDatVeXemPhim.EF
         }
         public class JsonSuatChieu
         {
+            internal LichChieu.LichChieuDTO[] listLichChieu;
+
             public object[] listSuatChieu { get; set; }
         }
 

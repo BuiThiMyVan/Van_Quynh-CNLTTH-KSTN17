@@ -1,38 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace WebsiteDatVeXemPhim.EF
 {
-    public partial class Ve
+    public partial class LichChieu
     {
-        public enum TK
-        {
-            daban = 0,
-            chuaban = 1,
-        }
-        public class VeDTO
+        public class LichChieuDTO
         {
             public int id { get; set; }
 
-            public int? LoaiVe { get; set; }
+            public DateTime? ThoiGianChieu { get; set; }
+            public string ThoiGianChieuFormat
+            {
+                get
+                {
+                    return ThoiGianChieu == null ? "" : ThoiGianChieu.GetValueOrDefault().ToString("dd/MM/yyyy");
+                }
+            }
 
-            public int? idLichChieu { get; set; }
+            public int? idPhong { get; set; }
 
-            [StringLength(50)]
-            public string MaGheNgoi { get; set; }
+            public int? idPhim { get; set; }
 
-            public int? SoHang { get; set; }
-
-            public int? SoCot { get; set; }
-
-            public int? idKhachHang { get; set; }
+            [Column(TypeName = "money")]
+            public decimal? GiaVe { get; set; }
 
             public int? TrangThai { get; set; }
 
-            public DateTime? NgayTao { get; set; }
+            public int? idSuatChieu { get; set; }
+
+            public DateTime? NgayTao { get; set; }     
             public string NgayTaoFormat
             {
                 get
@@ -50,16 +50,17 @@ namespace WebsiteDatVeXemPhim.EF
             }
 
         }
-        public class JsonVe
+        public class JsonLichChieu
         {
-            public object[] listVe { get; set; }
+            public object[] listLichChieu { get; set; }
         }
 
-        public VeDTO CopyObjectForTicket()
+        public LichChieuDTO CopyObjectForSchedule()
         {
-            var kol_campaignDTO = new VeDTO();
+            var kol_campaignDTO = new LichChieuDTO();
             Utils.ObjectUtil.CopyPropertiesTo(this, kol_campaignDTO);
             return kol_campaignDTO;
         }
+
     }
 }

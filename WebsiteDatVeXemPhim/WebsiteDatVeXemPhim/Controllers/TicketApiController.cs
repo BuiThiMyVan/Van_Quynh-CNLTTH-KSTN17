@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
-
+using static WebsiteDatVeXemPhim.EF.Ve;
 
 namespace WebsiteDatVeXemPhim.Controllers
 {
@@ -17,26 +17,19 @@ namespace WebsiteDatVeXemPhim.Controllers
     {
         // GET: TicketApi
         BookTicketDbConText con = new BookTicketDbConText();
+        ////lấy vé theo lịch chiếu
         [System.Web.Http.AcceptVerbs("POST", "GET")]
         public IHttpActionResult loadListTicketByIdLichchieu(int idLichchieu)
         {
-            var infoTicket = con.Ves.Where(x => x.idLichChieu == idLichchieu).ToList().Select(s => new
-            {
-                mave = s.id,
-                LoaiVe = s.LoaiVe,
-                lichchieu = s.idLichChieu,
-                maghengoi = s.MaGheNgoi,
-                sohang = s.SoHang,
-                socot = s.SoCot,
-                idkhachhang = s.idKhachHang,
-                trangthai = s.TrangThai,
-                ngaytao = s.NgayTao == null ? "" : s.NgayTao.GetValueOrDefault().ToString("dd/MM/yyyy"),
-                ngaycapnhat = s.NgayCapNhat == null ? "" : s.NgayCapNhat.GetValueOrDefault().ToString("dd/MM/yyyy"),
-            });
+            var listLichChieu = con.Ves.Where(x => x.idLichChieu == idLichchieu).ToList();
 
-            return Json(new { infoTicket = infoTicket });
+            JsonVe jsonreturn = new JsonVe
+            {
+                listVe = listLichChieu.Select(t => t.CopyObjectForTicket()).ToArray()
+            };
+            return Json(new { data = jsonreturn });
         }
-        ////dat ve chua chay dc
+        ////
         [System.Web.Http.AcceptVerbs("POST")]
         public IHttpActionResult datVE(Ve objve)
         {

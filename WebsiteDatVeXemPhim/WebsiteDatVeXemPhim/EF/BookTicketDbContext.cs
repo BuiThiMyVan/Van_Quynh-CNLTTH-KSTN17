@@ -14,11 +14,11 @@ namespace WebsiteDatVeXemPhim.EF
 
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<LichChieu> LichChieux { get; set; }
+        public virtual DbSet<LienHe> LienHes { get; set; }
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
         public virtual DbSet<Phim> Phims { get; set; }
         public virtual DbSet<PhongChieu> PhongChieux { get; set; }
         public virtual DbSet<SuatChieu> SuatChieux { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<Ve> Ves { get; set; }
 

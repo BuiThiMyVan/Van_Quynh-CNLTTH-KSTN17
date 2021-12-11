@@ -19,13 +19,19 @@ namespace WebsiteDatVeXemPhim
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "WebsiteDatVeXemPhim.Controllers.MVC_Controller" }
             );
-
+            routes.MapRoute(
+               name: "Contact",
+               url: "lien-he",
+               defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
+               namespaces: new[] { "WebsiteDatVeXemPhim.Controllers.MVC_Controller" }
+           );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional},
                 namespaces: new[] { "WebsiteDatVeXemPhim.Controllers.MVC_Controller" }
             );
+           
         }
     }
 }
