@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <style>
+        .content_contact {
+            color: #fff;
+            margin-top: 122px;
+        }
+    </style>
+    } 
+@model WebsiteDatVeXemPhim.EF.LienHe
+<div class="content_contact">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>thông tin liên hệ</h2>
+                    @Html.Raw(Model.Content)
+                </div>
+                <div class="col-md-6">
+                    <h2> Bản đồ</h2>
+                    <div class="map" id="mapCanvas"></div>
+                </div>
+            </div>           
+        </div>
+    </div>
+</div>
+<h2>Index</h2>
+

@@ -8,6 +8,7 @@ using System.Web.Http;
 using WebsiteDatVeXemPhim.EF;
 using WebsiteDatVeXemPhim.Models;
 using static WebsiteDatVeXemPhim.EF.SuatChieu;
+using static WebsiteDatVeXemPhim.EF.LichChieu;
 
 namespace WebsiteDatVeXemPhim.Controllers
 {
@@ -53,7 +54,18 @@ namespace WebsiteDatVeXemPhim.Controllers
             return Json(new { data = listSchedule });
         }
 
+        //// lấy lịch chiếu theo phim
+        [System.Web.Http.AcceptVerbs("GET")]
+        public IHttpActionResult getLichChieuTheoPhim(int idPhim)
+        {
+            var listLichChieu = con.LichChieux.Where(x => x.idPhim == idPhim).ToList();
 
+            JsonLichChieu jsonreturn = new JsonLichChieu
+            {
+                listLichChieu = listLichChieu.Select(t => t.CopyObjectForSchedule()).ToArray()
+            };
+            return Json(new { data = jsonreturn });
+        }
         ////thêm 1 lịch chiếu thì thêm vé
         [System.Web.Http.AcceptVerbs("POST", "GET")]
         public IHttpActionResult addLichChieu(LichChieu objlc)

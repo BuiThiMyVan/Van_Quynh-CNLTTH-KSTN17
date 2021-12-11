@@ -156,6 +156,7 @@
     <Compile Include="Controllers\CustommerAPIController.cs" />
     <Compile Include="Controllers\MovieApiController.cs" />
     <Compile Include="Controllers\MVC_Controller\AccountController.cs" />
+    <Compile Include="Controllers\MVC_Controller\ContactController.cs" />
     <Compile Include="Controllers\MVC_Controller\HomeController.cs" />
     <Compile Include="Controllers\RoomApiController.cs" />
     <Compile Include="Controllers\ScheduleApiController.cs" />
@@ -163,11 +164,11 @@
     <Compile Include="EF\BookTicketDbConText.cs" />
     <Compile Include="EF\KhachHang.cs" />
     <Compile Include="EF\LichChieu.cs" />
+    <Compile Include="EF\LienHe.cs" />
     <Compile Include="EF\NguoiDung.cs" />
     <Compile Include="EF\Phim.cs" />
     <Compile Include="EF\PhongChieu.cs" />
     <Compile Include="EF\SuatChieu.cs" />
-    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\TheLoai.cs" />
     <Compile Include="EF\Ve.cs" />
     <Compile Include="Global.asax.cs">
@@ -950,7 +951,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment.js" />
-    <Content Include="Scripts\Movie\AddFilm.js" />
     <Content Include="Scripts\Movie\MyFilm.js" />
     <Content Include="Scripts\Movie\Phim.js" />
     <Content Include="Scripts\Room\MyRoom.js" />
@@ -977,6 +977,7 @@
     <Content Include="Views\Account\Error404.cshtml" />
     <Content Include="Views\Shared\Account.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
