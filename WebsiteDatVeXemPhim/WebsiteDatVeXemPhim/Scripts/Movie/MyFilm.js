@@ -107,6 +107,7 @@
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
+                self.Id = id;
                 self.TenPhim = res.infoPhim.TenPhim == null ? '' : res.infoPhim.TenPhim;
                 self.MoTa = res.infoPhim.MoTa == null ? '' : res.infoPhim.MoTa;
                 self.ThoiLuong = res.infoPhim.ThoiLuong == null ? 0 : res.infoPhim.ThoiLuong;

@@ -33,7 +33,7 @@
         <div class="content-item">
             <label class="content-label">Phòng chiếu</label>
             <select class="content-input content-status" v-model="idPhong">
-                <option v-for="item in listPC" value="item.id">{{item.TenPhong }}</option>
+                <option v-for="item in listPC" :value="item.id">{{item.TenPhong }}</option>
             </select>
         </div>
         <div class="error text-danger"> {{ error_room }}</div>
@@ -45,7 +45,7 @@
         <div class="content-item">
             <label class="content-label">Suất chiếu</label>
             <select class="content-input content-status" v-model="idSuatChieu">
-                <option v-for="item in listSC" value="item.id">{{item.SuatChieu1 }}</option>
+                <option v-for="item in listSC" :value="item.id">{{item.SuatChieu1 }} : 00</option>
             </select>
         </div>
         <div class="error text-danger"> {{ error_sc }}</div>
@@ -63,6 +63,7 @@
 </div>
 @section Scripts {
     <script>
+        var id = @ViewBag.Id;
         $(document).ready(function () {
             $('#thoigianchieu').datepicker({
                 dateFormat: "dd/mm/yy",

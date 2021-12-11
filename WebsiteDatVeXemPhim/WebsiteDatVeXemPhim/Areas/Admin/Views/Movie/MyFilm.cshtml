@@ -22,7 +22,7 @@
             <span class="name-title mt-8"> {{ TenPhim }} </span>
         </div>
         <div>
-            <a href="/Admin/Schedule/Create" class="btn-main-color">Tạo lịch chiếu</a>
+            <a v-bind:href="'/Admin/Schedule/Create?id=' + Id" class="btn-main-color">Tạo lịch chiếu</a>
         </div>
     </div>
     <div class="content-detail">

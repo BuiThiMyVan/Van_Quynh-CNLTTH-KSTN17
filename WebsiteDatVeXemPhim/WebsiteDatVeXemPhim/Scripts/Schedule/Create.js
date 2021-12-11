@@ -55,7 +55,22 @@
     },
 
     methods: {
+        getInfoFilm: function () {
+            AddLoader();
+            var self = this;
+            $.ajax({
+                url: "/api/MovieApi/getPhimbyId?MaPhim=" + id,
+                type: 'GET',
+                dataType: 'json',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+            }).then(res => {
+                self.TenPhim = res.infoPhim.TenPhim == null ? '' : res.infoPhim.TenPhim;
+                HiddenLoader();
+                $("#CreateSchedule").css("display", "block");
+            });
+        },
         getPhongChieu: function () {
+            AddLoader();
             var self = this;
             $.ajax({
                 url: "/api/RoomApi/loadListPC",
@@ -64,10 +79,13 @@
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
                 console.log(res.data);
-                self.listPC = res.data;
+                self.listPC = res.data.listPhongChieu;
             });
+            HiddenLoader();
+            $("#CreateSchedule").css("display", "block");
         },
         getSuatChieu: function () {
+            AddLoader();
             var self = this;
             $.ajax({
                 url: "/api/ScheduleApi/getSuatChieu",
@@ -75,8 +93,10 @@
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
-                self.listSC = res.infoSC;
+                self.listSC = res.data;
             });
+            HiddenLoader();
+            $("#CreateSchedule").css("display", "block");
         },
 
         addSchedule: function () {
@@ -118,7 +138,7 @@
 
             $.ajax({
                 data: modal,
-                url: "/api/Schedule/addLichChieu",
+                url: "/api/ScheduleApi/addLichChieu",
                 type: 'POST',
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
@@ -134,7 +154,14 @@
 
     }
 })
-
+vmCreateSchedule.getInfoFilm();
 vmCreateSchedule.getSuatChieu();
 vmCreateSchedule.getPhongChieu();
 
+function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode;
+    if ((charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}

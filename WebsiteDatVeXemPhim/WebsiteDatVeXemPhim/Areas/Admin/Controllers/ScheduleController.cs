@@ -14,8 +14,9 @@ namespace WebsiteDatVeXemPhim.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            ViewBag.Id = id;
             return View();
         }
     }

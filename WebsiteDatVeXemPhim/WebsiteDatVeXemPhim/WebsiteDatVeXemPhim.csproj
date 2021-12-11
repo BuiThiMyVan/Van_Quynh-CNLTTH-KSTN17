@@ -173,6 +173,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Partials\LichChieu.cs" />
     <Compile Include="Partials\PhongChieu.cs" />
     <Compile Include="Partials\SuatChieu.cs" />
     <Compile Include="Partials\TheLoai.cs" />
@@ -955,6 +956,7 @@
     <Content Include="Scripts\Room\MyRoom.js" />
     <Content Include="Scripts\Room\Room.js" />
     <Content Include="Scripts\Schedule\Create.js" />
+    <Content Include="Scripts\Schedule\Schedule.js" />
     <Content Include="Scripts\vue.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

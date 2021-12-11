@@ -4,5 +4,41 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+UPDATING
+@*<div class="content-wrapper" style="display:none" id="ListSchedule">
+    <div class="header">
+        <span class="list-title">Danh sách phòng chiếu</span>
+    </div>
+    <div class="table-list mt-32">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" class="ordinal-numbers text-center">STT</th>
+                    <th scope="col" class="name-film">Tên phim</th>
+                    <th scope="col" class="text-center">Phòng</th>
+                    <th scope="col" class="show-date text-center">Ngày chiếu</th>
+                    <th scope="col" class="produce-year text-center">Suất chiếu</th>
+                    <th scope="col" class="text-center">Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item, index) in list">
+                    <td class="ordinal-numbers text-center">
+                        {{ index +1}}
+                    </td>
+                    <td class="name-film"> <a class="text-main-color" v-bind:href="'/Admin/Room/MyRoom?id=' + item.id">{{ item.TenPhim }}</a></td>
+                    <td class="text-center">{{ item.TenPhong }} </td>
+                    <td class="show-date text-center">{{ item.ThoiGianChieuFormat }}</td>
+                    <td class="produce-year text-center">{{ item.SuatChieu }} : 00</td>
+                    <td class="text-center text-blue" v-if="item.TinhTrang == @((int)PhongChieu.PC.sudung)"> Đang sử dụng</td>
+                    <td class="text-center text-main-color" v-if="item.TinhTrang == @((int)PhongChieu.PC.khongsudung)"> Không sử dụng</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>*@
+
+@section Scripts {
+    <script src="~/Scripts/Schedule/Schedule.js"></script>
+}
 

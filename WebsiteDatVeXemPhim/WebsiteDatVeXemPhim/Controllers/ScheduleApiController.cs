@@ -34,11 +34,23 @@ namespace WebsiteDatVeXemPhim.Controllers
         {
             var listSuatChieu = con.SuatChieux.ToList();
 
+            //JsonSuatChieu jsonreturn = new JsonSuatChieu
+            //{
+            //    listSuatChieu = listSuatChieu.Select(t => t.CopyObjectForMovieRoom()).ToArray()
+            //};
+            return Json(new { data = listSuatChieu });
+        }
+
+        [System.Web.Http.AcceptVerbs("GET")]
+        public IHttpActionResult getLichChieu()
+        {
+            var listSchedule = con.LichChieux.ToList();
+
             JsonSuatChieu jsonreturn = new JsonSuatChieu
             {
-                listSuatChieu = listSuatChieu.Select(t => t.CopyObjectForMovieRoom()).ToArray()
+                listSuatChieu = listSchedule.Select(t => t.CopyObjectForSchedule()).ToArray()
             };
-            return Json(new { data = jsonreturn });
+            return Json(new { data = listSchedule });
         }
 
 
