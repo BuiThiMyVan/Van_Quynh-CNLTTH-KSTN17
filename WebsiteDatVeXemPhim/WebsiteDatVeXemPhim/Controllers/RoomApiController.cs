@@ -23,6 +23,8 @@ namespace WebsiteDatVeXemPhim.Controllers
                 MaPC = s.id,
                 TenPhong = s.TenPhong,
                 SoChoNgoi = s.SoChoNgoi,
+                SoHang = s.SoHang,
+                SoCot = s.SoCot,
                 TinhTrang = s.TinhTrang,
                 LoaiManHinh = s.LoaiManHinh,
                 NgayTao = s.NgayTao == null ? "" : s.NgayTao.GetValueOrDefault().ToString("dd/MM/yyyy"),
@@ -47,9 +49,9 @@ namespace WebsiteDatVeXemPhim.Controllers
         }
         //sửa phòng chiếu
         [System.Web.Http.AcceptVerbs("POST")]
-        public IHttpActionResult updatePC(string PC)
+        public IHttpActionResult updatePC(PhongChieu objPC)
         {
-            PhongChieu objPC = JsonConvert.DeserializeObject<PhongChieu>(PC);
+            //PhongChieu objPC = JsonConvert.DeserializeObject<PhongChieu>(PC);
             try
             {
                 PhongChieu PhongChieu = con.PhongChieux.Find(objPC.id);

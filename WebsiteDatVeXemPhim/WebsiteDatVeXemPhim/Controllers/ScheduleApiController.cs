@@ -44,9 +44,9 @@ namespace WebsiteDatVeXemPhim.Controllers
 
         ////thêm 1 lịch chiếu thì thêm vé
         [System.Web.Http.AcceptVerbs("POST", "GET")]
-        public IHttpActionResult addLichChieu(string lc)
+        public IHttpActionResult addLichChieu(LichChieu objlc)
         {
-            LichChieu objlc = JsonConvert.DeserializeObject<LichChieu>(lc);
+            //LichChieu objlc = JsonConvert.DeserializeObject<LichChieu>(lc);
             objlc.NgayTao = DateTime.Now;
             objlc.NgayCapNhat = null;
             ////lấy phòng chiếu theo idphong
