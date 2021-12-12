@@ -13,7 +13,7 @@ namespace WebsiteDatVeXemPhim.Controllers
 {
     public class RoomApiController : ApiController
     {
-        BookTicketDbConText con = new BookTicketDbConText();
+        BookTicketDbContext con = new BookTicketDbContext();
         // lay phong chieu theo id
         [System.Web.Http.AcceptVerbs("GET")]
         public IHttpActionResult getPhongChieubyId(int maPC)

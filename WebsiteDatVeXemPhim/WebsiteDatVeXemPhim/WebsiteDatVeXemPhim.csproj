@@ -153,6 +153,7 @@
     <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
     <Compile Include="Areas\Admin\Controllers\ScheduleController.cs" />
     <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Controllers\ContactApiController.cs" />
     <Compile Include="Controllers\CustommerAPIController.cs" />
     <Compile Include="Controllers\MovieApiController.cs" />
     <Compile Include="Controllers\MVC_Controller\AccountController.cs" />
@@ -161,14 +162,16 @@
     <Compile Include="Controllers\RoomApiController.cs" />
     <Compile Include="Controllers\ScheduleApiController.cs" />
     <Compile Include="Controllers\TicketApiController.cs" />
-    <Compile Include="EF\BookTicketDbConText.cs" />
+    <Compile Include="EF\BookTicketDbContext.cs" />
     <Compile Include="EF\KhachHang.cs" />
     <Compile Include="EF\LichChieu.cs" />
     <Compile Include="EF\LienHe.cs" />
     <Compile Include="EF\NguoiDung.cs" />
+    <Compile Include="EF\PhanHoi.cs" />
     <Compile Include="EF\Phim.cs" />
     <Compile Include="EF\PhongChieu.cs" />
     <Compile Include="EF\SuatChieu.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\TheLoai.cs" />
     <Compile Include="EF\Ve.cs" />
     <Compile Include="Global.asax.cs">
@@ -938,6 +941,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\Account\DetailsUser.js" />
+    <Content Include="Scripts\Contact\Contact.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
