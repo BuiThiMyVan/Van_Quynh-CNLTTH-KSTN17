@@ -11,7 +11,7 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
 {
     public class AccountController : Controller
     {
-        BookTicketDbContext con = new BookTicketDbContext();
+        BookTicketDbConText con = new BookTicketDbConText();
         // GET: Account
         public ActionResult Index()
         {
@@ -89,6 +89,12 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
 
        	[System.Web.Http.AcceptVerbs("POST", "GET")]
         public ActionResult Details()
+        {
+            return View();
+        }
+
+        [System.Web.Http.AcceptVerbs("POST", "GET")]
+        public ActionResult InfoBookingTicket()
         {
             return View();
         }

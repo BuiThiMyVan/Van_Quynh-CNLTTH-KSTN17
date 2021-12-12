@@ -2,7 +2,6 @@
     el: "#DetailsUser",
     data: {
         username: '',
-        password_old: '',
         password: '',
         confirm_pass: '',
         hoten: '',
@@ -48,6 +47,15 @@
                     self.error_sdt = 'Bạn cần nhập đúng định dạng số điện thoại';
                 }
             }
+        },
+
+        confirm_pass: function () {
+            var self = this;
+            if (self.confirm_pass != self.password) {
+                self.error_confirm_pass = "Mật khẩu nhập lại không khớp";
+            } else {
+                self.error_confirm_pass = "";
+            }
         }
     },
 
@@ -63,7 +71,6 @@
             }).then(res => {
                 console.log(res);
                 self.username = res.kh[0].username;
-                self.password_old = res.kh[0].pass,
                 self.confirm_pass = res.kh[0].password,
                 self.hoten = res.kh[0].hoten == null ? '' : res.kh[0].hoten,
                 self.ngaysinh = res.kh[0].ngaysinh == null ? '' : res.kh[0].ngaysinh,

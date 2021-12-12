@@ -167,9 +167,11 @@
     <Compile Include="EF\LichChieu.cs" />
     <Compile Include="EF\LienHe.cs" />
     <Compile Include="EF\NguoiDung.cs" />
+    <Compile Include="EF\PhanHoi.cs" />
     <Compile Include="EF\Phim.cs" />
     <Compile Include="EF\PhongChieu.cs" />
     <Compile Include="EF\SuatChieu.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\TheLoai.cs" />
     <Compile Include="EF\Ve.cs" />
     <Compile Include="Global.asax.cs">
@@ -943,6 +945,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\Account\DetailsUser.js" />
+    <Content Include="Scripts\Contact\Contact.js" />
     <Content Include="Scripts\Homepage\BookingTicket.js" />
     <Content Include="Scripts\Homepage\DetailsFilm.js" />
     <Content Include="Scripts\Homepage\Homepage.js" />
@@ -985,10 +988,11 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Error404.cshtml" />
     <Content Include="Views\Shared\Account.cshtml" />
-    <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Home\DetailsFilm.cshtml" />
     <Content Include="Views\Home\BookingTicket.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\InfoBookingTicket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

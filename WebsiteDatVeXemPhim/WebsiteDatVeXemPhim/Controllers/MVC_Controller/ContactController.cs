@@ -9,7 +9,7 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
     public class ContactController : Controller
     {
         // GET: Contact
-        BookTicketDbContext con = new BookTicketDbContext();
+        BookTicketDbConText con = new BookTicketDbConText();
         public ActionResult Index()
         {
             var contact = con.LienHes.Single(x => x.Status == 1);

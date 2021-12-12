@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace WebsiteDatVeXemPhim.EF
 {
-    public partial class BookTicketDbContext : DbContext
+    public partial class BookTicketDbConText : DbContext
     {
-        public BookTicketDbContext()
-            : base("name=BookTicketDbContext")
+        public BookTicketDbConText()
+            : base("name=BookTicketDbConText")
         {
         }
 

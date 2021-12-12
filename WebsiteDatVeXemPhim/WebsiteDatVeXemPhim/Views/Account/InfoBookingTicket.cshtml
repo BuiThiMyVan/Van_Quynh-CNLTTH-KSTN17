@@ -1,0 +1,65 @@
+﻿@using WebsiteDatVeXemPhim
+@using WebsiteDatVeXemPhim.EF
+@{
+    ViewBag.Title = "InfoBookingTicket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+
+    <link href="~/Areas/Admin/Content/css/main-admin.css" rel="stylesheet" />
+    <style>
+        #ListBookedTicket {
+            margin-top: 90px;
+            color: #fff;
+            background-color: transparent;
+        }
+
+            #ListBookedTicket .table-list {
+                margin-top: 24px;
+            }
+
+        .table-list th,
+        .table-list td,
+        .table-list tr {
+            background-color: #2b2b31;
+            border: 1px solid #fff;
+        }
+
+        .table-list th {
+            padding: 16px 8px;
+        }
+    </style>
+}
+<div class="container" id="ListBookedTicket">
+    <div class="content-wrapper" >
+        <h3 class="user__info__title text-center">Thông tin đặt vé</h3>
+        <div class="table-list">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" class="ordinal-numbers text-center">STT</th>
+                        <th scope="col" class="name-film">Tên phim</th>
+                        <th scope="col" class="text-center">Ngày chiếu</th>
+                        <th scope="col" class="show-date text-center">Suất chiếu</th>
+                        <th scope="col" class="produce-year text-center">Ngày đặt</th>
+                        <th scope="col" class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in list">
+                        <td class="ordinal-numbers text-center">
+                            {{index +1}}
+                        </td>
+                        <td class="name-film"> <a class="text-main-color" v-bind:href="'/Admin/Movie/MyFilm?id=' + item.id">{{ item.TenPhim }}</a></td>
+                        <td class="text-center">{{ item.ThoiLuong }} phút</td>
+                        <td class="show-date text-center">{{ item.NgayKhoiChieuFormat }}</td>
+                        <td class="produce-year text-center">{{ item.NamSX }}</td>
+                        <td class="text-center text-orange"> Huỷ vé</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

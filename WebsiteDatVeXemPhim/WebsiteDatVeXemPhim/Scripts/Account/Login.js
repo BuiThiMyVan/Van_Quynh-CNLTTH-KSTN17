@@ -30,7 +30,18 @@
     methods: {
         login: function () {
             var self = this;
-            if (self.error_username !== '' || self.error_username !== '') {
+            var bug = 0;
+            if (self.username == '') {
+                self.error_username = "Bạn cần nhập tên đăng nhập";
+                bug++;
+            }
+
+            if (self.password == '') {
+                self.error_password = 'Bạn cần nhập mật khẩu';
+                bug++;
+            }
+
+            if (bug != 0) {
                 return false;
             }
             else {
