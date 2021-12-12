@@ -37,7 +37,7 @@ namespace WebsiteDatVeXemPhim.Controllers
             //KhachHang objkh = JsonConvert.DeserializeObject<KhachHang>(khachhang);
             var listVe = (from Ve v in con.Ves
                          where v.idKhachHang == kh.id 
-                         select v).OrderByDescending(v => v.NgayTao).ToList(); 
+                         select v).OrderByDescending(v => v.NgayCapNhat).ToList(); 
             JsonVe jsonreturn = new JsonVe
             {
                 listVe = listVe.Select(t => t.CopyObjectForTicket()).ToArray()

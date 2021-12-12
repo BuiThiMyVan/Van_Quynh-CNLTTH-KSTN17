@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -15,11 +16,51 @@ namespace WebsiteDatVeXemPhim.EF
         }
         public class VeDTO
         {
+            BookTicketDbConText con = new BookTicketDbConText();
             public int id { get; set; }
 
             public int? LoaiVe { get; set; }
 
             public int? idLichChieu { get; set; }
+
+            public int idPhim
+            {
+                get
+                {
+                    var lc = con.LichChieux.Find(idLichChieu);
+                    var p = con.Phims.Find(lc.idPhim);
+                    return p.id;
+                }
+            }
+
+            public string TenPhim
+            {
+                get
+                {
+                    var lc = con.LichChieux.Find(idLichChieu);
+                    var p = con.Phims.Find(lc.idPhim);
+                    return p.TenPhim == null ? "" : p.TenPhim;
+                }
+            }
+
+            public string ThoiGianChieu
+            {
+                get
+                {
+                    var lc = con.LichChieux.Find(idLichChieu);
+                    return lc.ThoiGianChieu == null ? "" : lc.ThoiGianChieu.GetValueOrDefault().ToString("dd/MM/yyyy");
+                }
+            }
+
+            public int? SuatChieu
+            {
+                get
+                {
+                    var lc = con.LichChieux.Find(idLichChieu);
+                    var sc = con.SuatChieux.Find(lc.idSuatChieu);
+                    return sc.SuatChieu1;
+                }
+            }
 
             [StringLength(50)]
             public string MaGheNgoi { get; set; }
@@ -27,6 +68,16 @@ namespace WebsiteDatVeXemPhim.EF
             public int? SoHang { get; set; }
 
             public int? SoCot { get; set; }
+
+            public string ChoNgoi
+            {
+                get
+                {
+                    string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                    string choNgoi = alphabet[(int)SoHang] + (SoCot+1).ToString();
+                    return choNgoi;
+                }
+            }
 
             public int? idKhachHang { get; set; }
 

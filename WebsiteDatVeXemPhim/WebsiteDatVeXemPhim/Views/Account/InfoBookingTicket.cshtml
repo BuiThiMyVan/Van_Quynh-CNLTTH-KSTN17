@@ -9,13 +9,13 @@
 
     <link href="~/Areas/Admin/Content/css/main-admin.css" rel="stylesheet" />
     <style>
-        #ListBookedTicket {
+        #InfoBookingTicket {
             margin-top: 90px;
             color: #fff;
             background-color: transparent;
         }
 
-            #ListBookedTicket .table-list {
+            #InfoBookingTicket .table-list {
                 margin-top: 24px;
             }
 
@@ -24,15 +24,21 @@
         .table-list tr {
             background-color: #2b2b31;
             border: 1px solid #fff;
+            padding: 16px 8px;
         }
 
-        .table-list th {
-            padding: 16px 8px;
+        .table-list .name-film {
+            min-width: 300px;
+        }
+
+        .text-orange {
+            text-decoration: underline;
+            cursor: pointer;
         }
     </style>
 }
-<div class="container" id="ListBookedTicket">
-    <div class="content-wrapper" >
+<div class="container" id="InfoBookingTicket" style="display: none">
+    <div class="content-wrapper">
         <h3 class="user__info__title text-center">Thông tin đặt vé</h3>
         <div class="table-list">
             <table class="table table-bordered">
@@ -40,10 +46,12 @@
                     <tr>
                         <th scope="col" class="ordinal-numbers text-center">STT</th>
                         <th scope="col" class="name-film">Tên phim</th>
+                        <th scope="col" class="text-center">Chỗ ngồi</th>
                         <th scope="col" class="text-center">Ngày chiếu</th>
                         <th scope="col" class="show-date text-center">Suất chiếu</th>
                         <th scope="col" class="produce-year text-center">Ngày đặt</th>
-                        <th scope="col" class="text-center">Thao tác</th>
+                        <th scope="col" class="produce-year text-center">Tình trạng</th>
+                        <th scope="col" class="text-center" style="min-width: 113px;">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,11 +59,15 @@
                         <td class="ordinal-numbers text-center">
                             {{index +1}}
                         </td>
-                        <td class="name-film"> <a class="text-main-color" v-bind:href="'/Admin/Movie/MyFilm?id=' + item.id">{{ item.TenPhim }}</a></td>
-                        <td class="text-center">{{ item.ThoiLuong }} phút</td>
-                        <td class="show-date text-center">{{ item.NgayKhoiChieuFormat }}</td>
-                        <td class="produce-year text-center">{{ item.NamSX }}</td>
-                        <td class="text-center text-orange"> Huỷ vé</td>
+                        <td class="name-film"> <a class="text-main-color" v-bind:href="'/Home/DetailsFilm?id=' + item.idPhim">{{ item.TenPhim }}</a></td>
+                        <td class="text-center">{{ item.ChoNgoi }}</td>
+                        <td class="produce-year text-center">{{ item.ThoiGianChieu }}</td>
+                        <td class="show-date text-center">{{ item.SuatChieu }} : 00</td>
+                        <td class="produce-year text-center">{{ item.NgayCapNhatFormat }}</td>
+                        <td class="text-center text-blue" v-if="isCompleted(item.ThoiGianChieu)">Hoàn thành</td>
+                        <td class="text-center text-main-color" v-else>Đã đặt</td>
+                        <td class="text-center text-orange" style="min-width: 113px;" v-if="!isCompleted(item.ThoiGianChieu)" v-on:click="cancelTicket(item.id)"> Huỷ vé</td>
+                        <td class="text-center text-orange" style="min-width: 113px;" v-else></td>
                     </tr>
                 </tbody>
             </table>
@@ -63,3 +75,14 @@
     </div>
 </div>
 
+@section Scripts {
+    @{
+        var session = (NguoiDung)Session[WebsiteDatVeXemPhim.Common.CommonConstants.USER_SESSION];
+    }
+    <script>
+        var session = "@session.UserName";
+        console.log(typeof session);
+        
+    </script>
+    <script src="~/Scripts/Account/InfoBookingTicket.js"></script>
+}

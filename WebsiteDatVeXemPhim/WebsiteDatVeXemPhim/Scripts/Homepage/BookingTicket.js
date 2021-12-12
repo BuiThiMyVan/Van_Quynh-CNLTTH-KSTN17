@@ -48,11 +48,12 @@
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
-                self.listVe = res.data.listVe;         
+                self.listVe = res.data.listVe;
             });
         },
 
         getScheduleById: function () {
+            AddLoader();
             var self = this;
             $.ajax({
                 url: "/api/ScheduleApi/getLichChieuTheoId?id=" + idLichChieu,
@@ -90,6 +91,7 @@
                     self.listCotSo.push(i + 1);
                 }
             });
+            HiddenLoader();
         },
 
         getInfoCustomer: function () {
@@ -100,15 +102,18 @@
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
-                self.idKhachHang = res.kh.id;
+                self.idKhachHang = res.kh[0].id;
             });
         },
 
         getInfo: function () {
             AddLoader();
             vmBookingTicket.getListTicket();
-            vmBookingTicket.getScheduleById();
-            vmBookingTicket.getInfoCustomer();
+            setTimeout(function () {
+                vmBookingTicket.getScheduleById();
+                vmBookingTicket.getInfoCustomer();
+            }, 1000)
+            
             HiddenLoader();
             $("#BookingTicket").css("display", "block");
         },
@@ -139,7 +144,7 @@
                 }).then(res => {
                     if (res.message == 200) {
                         alert('Đặt vé thành công');
-                        window.location.href = '/Account/ListTicket';
+                        window.location.href = '/Account/InfoBookingTicket';
                     } else {
                         alert('Đã xảy ra lỗi trong quá trình đặt vé');
                     }
@@ -148,7 +153,7 @@
                 window.location.href = "";
             }
 
-            
+
         }
     }
 })

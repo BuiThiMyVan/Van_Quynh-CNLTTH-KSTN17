@@ -902,6 +902,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Libs\CKFinder.dll" />
+    <Content Include="Scripts\Account\InfoBookingTicket.js" />
     <Content Include="Scripts\Account\Login.js" />
     <Content Include="Scripts\Account\Register.js" />
     <Content Include="Scripts\bootstrap.js" />

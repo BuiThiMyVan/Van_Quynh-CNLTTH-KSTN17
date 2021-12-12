@@ -53,7 +53,7 @@ namespace WebsiteDatVeXemPhim.Controllers
             {
                 KhachHang khachHang = con.KhachHangs.Find(objkh.id);
                 NguoiDung nguoiDung = con.NguoiDungs.Find(khachHang.UserName);
-               if(objkh.Pass != "") { 
+               if(objkh.Pass != "" && objkh.Pass != null) { 
                 nguoiDung.Pass = objkh.EncodePassword(objkh.Pass);
 
                 khachHang.Pass = objkh.EncodePassword(objkh.Pass);

@@ -1,6 +1,7 @@
 ﻿var vmDetailsUser = new Vue({
     el: "#DetailsUser",
     data: {
+        id: -1,
         username: '',
         password: '',
         confirm_pass: '',
@@ -62,16 +63,14 @@
     methods: {
         getInfoUser: function () {
             var self = this;
-            console.log(typeof session);
             $.ajax({
                 url: "/api/CustommerAPI/getCustommerByUsername?username=" + session,
                 type: 'GET',
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
-                console.log(res);
+                self.id = res.kh[0].id;
                 self.username = res.kh[0].username;
-                self.confirm_pass = res.kh[0].password,
                 self.hoten = res.kh[0].hoten == null ? '' : res.kh[0].hoten,
                 self.ngaysinh = res.kh[0].ngaysinh == null ? '' : res.kh[0].ngaysinh,
                 self.diachi = res.kh[0].diachi == null ? '' : res.kh[0].diachi,
@@ -106,8 +105,8 @@
             if (bug != 0) {
                 return false;
             }
-
             var modal = {
+                id: self.id,
                 UserName: self.username,
                 Pass: self.password,
                 HoTen: self.hoten,
@@ -123,10 +122,9 @@
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
-                console.log(res);
                 if (res.message == 200) {
                     alert('Cập nhật thông tin tài khoản thành công');
-                    window.location.href = '/home-page';               
+                    window.location.href = "/home-page";               
                 } else {
                     alert('Đã xảy ra lỗi trong quá trình cập nhật');
                 }

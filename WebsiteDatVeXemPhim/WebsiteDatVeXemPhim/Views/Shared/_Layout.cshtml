@@ -26,10 +26,16 @@
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
     <title>Đặt vé xem phim</title>
+    <style>
+        #img-spin {
+            top: 0;
+        }
+    </style>
     @RenderSection("Styles", false)
 </head>
 
 <body class="body">
+    <div id="img-spin" class="display-none"><img src="/Content/Images/spin.gif" /></div>
     <!-- header -->
     @Html.Partial("_Header")
     <!-- end header -->

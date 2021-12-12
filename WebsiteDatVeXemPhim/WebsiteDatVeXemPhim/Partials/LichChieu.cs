@@ -53,6 +53,15 @@ namespace WebsiteDatVeXemPhim.EF
 
             public int? idPhim { get; set; }
 
+            public string TenPhim
+            {
+                get
+                {
+                    var p = con.Phims.Find(idPhim);
+                    return p.TenPhim;
+                }
+            }
+
             [Column(TypeName = "money")]
             public decimal? GiaVe { get; set; }
 

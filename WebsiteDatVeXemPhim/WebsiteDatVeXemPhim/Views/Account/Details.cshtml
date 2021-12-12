@@ -13,6 +13,14 @@
         .user__info__form {
             padding: 90px 60px;
         }
+
+        .text-danger {
+            color: #dc3545;
+        }
+
+        .user__info__btn:hover {
+            cursor: pointer;
+        }
     </style>
 }
 
@@ -66,7 +74,7 @@
                             <div class="text-danger"> {{error_confirm_pass}}</div>
                         </div>
 
-                        <button class="user__info__btn" type="button" v-on:click="updateInfoUser()">Cập nhật thông tin</button>
+                        <span class="user__info__btn" v-on:click="updateInfoUser()">Cập nhật thông tin</span>
                     </form>
                     <!-- registration form -->
                 </div>
