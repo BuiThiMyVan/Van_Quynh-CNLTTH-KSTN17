@@ -70,7 +70,6 @@
             });
         },
         getPhongChieu: function () {
-            AddLoader();
             var self = this;
             $.ajax({
                 url: "/api/RoomApi/loadListPC",
@@ -81,11 +80,8 @@
                 console.log(res.data);
                 self.listPC = res.data.listPhongChieu;
             });
-            HiddenLoader();
-            $("#CreateSchedule").css("display", "block");
         },
         getSuatChieu: function () {
-            AddLoader();
             var self = this;
             $.ajax({
                 url: "/api/ScheduleApi/getSuatChieu",
@@ -93,10 +89,9 @@
                 dataType: 'json',
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8"
             }).then(res => {
-                self.listSC = res.data;
+                console.log(res);
+                self.listSC = res.data.listSuatChieu;
             });
-            HiddenLoader();
-            $("#CreateSchedule").css("display", "block");
         },
 
         addSchedule: function () {

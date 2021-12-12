@@ -1,0 +1,161 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/Content/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Content/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/Content/css/nouislider.min.css">
+    <link rel="stylesheet" href="/Content/css/ionicons.min.css">
+    <link rel="stylesheet" href="/Content/css/plyr.css">
+    <link rel="stylesheet" href="/Content/css/photoswipe.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery-ui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Content/css/main.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Dmitry Volkov">
+    <title>Đặt vé xem phim</title>
+    <style>
+        #Register .sign__input {
+            width: 338px;
+        }
+
+        #Register .sign__group .sign__input[type="date"] {
+            color: rgba(255,255,255,0.5);
+        }
+
+            #Register .sign__group .sign__input[type="date"]:hover {
+                cursor: pointer;
+            }
+
+        .accept-policy {
+            border: 2px solid #fff;
+        }
+
+        .text-danger {
+            font-size: 16px;
+        }
+
+        .sign__form {
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body class="body">
+
+    <div class="sign section--bg" data-bg="img/section/section.jpg" id="Register">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sign__content">
+                        <!-- registration form -->
+                        <form action="#" class="sign__form">
+                            <a href="/home-page" class="sign__title">
+                                <span>BUG</span> Cinema
+                            </a>
+
+                            <div class="sign__group">
+                                <input v-model="username" type="text" class="sign__input" placeholder="Tên đăng nhập">
+                                <div class="text-danger"> {{error_username}}</div>
+                            </div>
+
+                            <div class="sign__group">
+                                <input v-model="password" type="password" class="sign__input" placeholder="Mật khẩu">
+                                <div class="text-danger"> {{error_password}}</div>
+                            </div>
+
+                            <div class="sign__group">
+                                <input v-model="confirm_pass" type="password" class="sign__input" placeholder="Nhập lại mật khẩu">
+                                <div class="text-danger"> {{error_confirm_pass}}</div>
+                            </div>
+
+                            <div class="sign__group">
+                                <input v-model="hoten" type="text" class="sign__input" placeholder="Họ Tên">
+                                <div class="text-danger"> {{error_hoten}}</div>
+                            </div>
+
+                            <div class="sign__group">
+                                <input v-model="ngaysinh" onchange="getBirthday()" id="datepicker" class="sign__input" type="text" placeholder="Ngày sinh">
+                            </div>
+
+                            <div class="sign__group">
+                                <input v-model="diachi" type="text" class="sign__input" placeholder="Địa chỉ">
+                            </div>
+
+                            <div class="sign__group">
+                                <input v-model="sdt" type="text" class="sign__input" placeholder="Số điện thoại">
+                                <div class="text-danger"> {{error_sdt}}</div>
+                            </div>
+
+                            <div class="sign__group sign__group--checkbox">
+                                <input v-model="remember" id="remember" name="remember" type="checkbox" checked="checked">
+                                <label for="remember">Tôi đã đọc và đồng ý với <a href="#">Chính sách bảo mật</a></label>
+                                <div class="text-danger"> {{error_remember}}</div>
+                            </div>
+
+                            <button class="sign__btn" type="button" v-on:click="register()">Đăng ký</button>
+
+                            <span class="sign__text">Bạn đã có tài khoản? <a href="/Account/Login">Đăng nhập!</a></span>
+                        </form>
+                        <!-- registration form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="/Content/js/bootstrap.bundle.min.js"></script>
+    <script src="/Content/js/owl.carousel.min.js"></script>
+    <script src="/Content/js/jquery.mousewheel.min.js"></script>
+    <script src="/Content/js/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/Content/js/wNumb.js"></script>
+    <script src="/Content/js/nouislider.min.js"></script>
+    <script src="/Content/js/plyr.min.js"></script>
+    <script src="/Content/js/jquery.morelines.min.js"></script>
+    <script src="/Content/js/photoswipe.min.js"></script>
+    <script src="/Content/js/photoswipe-ui-default.min.js"></script>
+    <script src="/Content/js/main.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/Account/Register.js"></script>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        $('#datepicker').datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true
+        })
+    })
+
+
+    function getBirthday() {
+        var birthday = $("#datepicker").val();
+        vmRegister.ngaysinh = birthday;
+    }
+</script>
+

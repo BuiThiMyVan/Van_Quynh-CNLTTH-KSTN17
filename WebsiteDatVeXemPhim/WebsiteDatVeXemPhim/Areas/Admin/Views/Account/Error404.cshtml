@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,19 +11,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Font -->
-    <link href="https://fonts.googleapis.com/css/?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600%7CUbuntu:300,400,500,700" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="/Content/css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/Content/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/Content/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/Content/css/nouislider.min.css">
     <link rel="stylesheet" href="/Content/css/ionicons.min.css">
     <link rel="stylesheet" href="/Content/css/plyr.css">
-    <link href="/Content/css/fontawesome.min.css" rel="stylesheet" />
-    <link href="/Content/css/themify-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Content/css/photoswipe.css">
     <link rel="stylesheet" href="/Content/css/main.css">
-    <link href="/Content/css/app.css" rel="stylesheet" />
+
     <!-- icons -->
     <link rel="icon" type="image/png" href="img/LOGO.ico" sizes="64x64">
 
@@ -26,17 +31,27 @@
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
     <title>Đặt vé xem phim</title>
-    @RenderSection("Styles", false)
-</head>
 
+</head>
 <body class="body">
-    <!-- header -->
-    @Html.Partial("_Header")
-    <!-- end header -->
-    @RenderBody()
-    <!-- footer -->
-    @Html.Partial("_Footer")
-    <!-- end footer -->
+
+    <!-- page 404 -->
+    <div class="page-404 section--bg" data-bg="img/section/section.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-404__wrap">
+                        <div class="page-404__content">
+                            <h1 class="page-404__title">404</h1>
+                            <p class="page-404__text">Trang bạn tìm kiếm hiện không có sẵn!</p>
+                            <a href="/home-page" class="page-404__btn">Trở về</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page 404 -->
     <!-- JS -->
     <script src="/Content/js/jquery-3.3.1.min.js"></script>
     <script src="/Content/js/bootstrap.bundle.min.js"></script>
@@ -49,10 +64,7 @@
     <script src="/Content/js/jquery.morelines.min.js"></script>
     <script src="/Content/js/photoswipe.min.js"></script>
     <script src="/Content/js/photoswipe-ui-default.min.js"></script>
-    <script src="/Scripts/moment.js"></script>
-    <script src="/Scripts/Common.js"></script>
     <script src="/Content/js/main.js"></script>
-    <script src="~/Scripts/vue.js"></script>
 </body>
-@RenderSection("Scripts", false)
+
 </html>

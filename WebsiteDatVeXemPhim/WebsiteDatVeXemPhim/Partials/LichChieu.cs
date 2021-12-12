@@ -10,6 +10,7 @@ namespace WebsiteDatVeXemPhim.EF
     {
         public class LichChieuDTO
         {
+            BookTicketDbConText con = new BookTicketDbConText();
             public int id { get; set; }
 
             public DateTime? ThoiGianChieu { get; set; }
@@ -23,6 +24,33 @@ namespace WebsiteDatVeXemPhim.EF
 
             public int? idPhong { get; set; }
 
+            public string TenPhong
+            {
+                get
+                {
+                    var p = con.PhongChieux.Find(idPhong);
+                    return p.TenPhong == null ? "" : p.TenPhong;
+                }
+            }
+
+            public int? SoHang
+            {
+                get
+                {
+                    var p = con.PhongChieux.Find(idPhong);
+                    return p.SoHang == null ? 0 : p.SoHang;
+                }
+            }
+
+            public int? SoCot
+            {
+                get
+                {
+                    var p = con.PhongChieux.Find(idPhong);
+                    return p.SoCot == null ? 0 : p.SoCot;
+                }
+            }
+
             public int? idPhim { get; set; }
 
             [Column(TypeName = "money")]
@@ -31,6 +59,15 @@ namespace WebsiteDatVeXemPhim.EF
             public int? TrangThai { get; set; }
 
             public int? idSuatChieu { get; set; }
+
+            public int? SuatChieu
+            {
+                get
+                {
+                    var sc = con.SuatChieux.Find(idSuatChieu);
+                    return sc.SuatChieu1;
+                }
+            }
 
             public DateTime? NgayTao { get; set; }     
             public string NgayTaoFormat

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebsiteDatVeXemPhim.Areas.Admin.Controllers
 {
-    public class ScheduleController : Controller
+    public class ScheduleController : BaseController
     {
         // GET: Admin/Schedule
         public ActionResult Index()

@@ -46,17 +46,24 @@
                     dataType: 'json',
                     contentType: "application/x-www-form-urlencoded; charset=UTF-8"
                 }).then(res => {
+                    console.log(res);
                     switch (res.result) {
                         case 1:
-                            AddLoader();
-                            window.location.href = "/Home/Index";
-                            HiddenLoader();
+                            if (idPhim != 0) {
+                                window.location.href = "/Home/DetailsFilm/" + idPhim;
+                            } else {
+                                window.location.href = "/Home/Index";
+                            }
+                            
                             break;
                         case 2:
                             self.error_login = "Tài khoản không tồn tại";
                             break;
                         case 3:
                             self.error_login = "Mật khẩu nhập không chính xác";
+                            break;
+                        case 4:
+                            window.location.href = "/Admin/Home/Dashboard";
                             break;
                     }
                 });

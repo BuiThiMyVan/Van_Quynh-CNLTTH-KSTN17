@@ -146,6 +146,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -935,9 +936,16 @@
     <Content Include="Areas\Admin\Views\Room\MyRoom.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Error404.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\Account\DetailsUser.js" />
+    <Content Include="Scripts\Homepage\BookingTicket.js" />
+    <Content Include="Scripts\Homepage\DetailsFilm.js" />
+    <Content Include="Scripts\Homepage\Homepage.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -951,6 +959,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\Movie\AddFilm.js" />
     <Content Include="Scripts\Movie\MyFilm.js" />
     <Content Include="Scripts\Movie\Phim.js" />
     <Content Include="Scripts\Room\MyRoom.js" />
@@ -978,11 +987,12 @@
     <Content Include="Views\Shared\Account.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Home\DetailsFilm.cshtml" />
+    <Content Include="Views\Home\BookingTicket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Account\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="UploadFiles\" />
     <Folder Include="Views\Base\" />

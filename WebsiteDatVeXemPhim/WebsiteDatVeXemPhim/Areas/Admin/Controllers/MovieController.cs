@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebsiteDatVeXemPhim.Areas.Admin.Controllers
 {
-    public class MovieController : Controller
+    public class MovieController : BaseController
     {
         // GET: Admin/Movie
         public ActionResult Index()

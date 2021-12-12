@@ -35,24 +35,24 @@ namespace WebsiteDatVeXemPhim.Controllers
         {
             var listSuatChieu = con.SuatChieux.ToList();
 
-            //JsonSuatChieu jsonreturn = new JsonSuatChieu
-            //{
-            //    listSuatChieu = listSuatChieu.Select(t => t.CopyObjectForMovieRoom()).ToArray()
-            //};
-            return Json(new { data = listSuatChieu });
-        }
-
-        [System.Web.Http.AcceptVerbs("GET")]
-        public IHttpActionResult getLichChieu()
-        {
-            var listSchedule = con.LichChieux.ToList();
-
             JsonSuatChieu jsonreturn = new JsonSuatChieu
             {
-                listSuatChieu = listSchedule.Select(t => t.CopyObjectForSchedule()).ToArray()
+                listSuatChieu = listSuatChieu.Select(t => t.CopyObjectForMovieRoom()).ToArray()
             };
-            return Json(new { data = listSchedule });
+            return Json(new { data = jsonreturn });
         }
+
+        //[System.Web.Http.AcceptVerbs("GET")]
+        //public IHttpActionResult getLichChieu()
+        //{
+        //    var listSchedule = con.LichChieux.ToList();
+
+        //    JsonSuatChieu jsonreturn = new JsonSuatChieu
+        //    {
+        //        listSuatChieu = listSchedule.Select(t => t.CopyObjectForSchedule()).ToArray()
+        //    };
+        //    return Json(new { data = listSchedule });
+        //}
 
         //// lấy lịch chiếu theo phim
         [System.Web.Http.AcceptVerbs("GET")]
@@ -66,6 +66,16 @@ namespace WebsiteDatVeXemPhim.Controllers
             };
             return Json(new { data = jsonreturn });
         }
+
+        [System.Web.Http.AcceptVerbs("GET")]
+        public IHttpActionResult getLichChieuTheoId(int id)
+        {
+            var listLichChieu = con.LichChieux.Where(x => x.id == id).FirstOrDefault();
+
+            var listLC = listLichChieu.CopyObjectForSchedule();
+            return Json(new { data = listLC });
+        }
+
         ////thêm 1 lịch chiếu thì thêm vé
         [System.Web.Http.AcceptVerbs("POST", "GET")]
         public IHttpActionResult addLichChieu(LichChieu objlc)

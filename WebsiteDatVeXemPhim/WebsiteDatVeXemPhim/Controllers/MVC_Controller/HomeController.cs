@@ -18,5 +18,24 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
         {
             return PartialView();
         }
+
+        public ActionResult DetailsFilm(int id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
+
+        public ActionResult BookingTicket(int idLichChieu, int idPhim)
+        {
+            var session = Session["USER_SESSION"];
+            if(session == null)
+            {
+                return Redirect("/Account/Login?idPhim=" + idPhim);
+            }
+
+            ViewBag.idLichChieu = idLichChieu;
+            ViewBag.idPhim = idPhim;
+            return View();
+        }
     }
 }

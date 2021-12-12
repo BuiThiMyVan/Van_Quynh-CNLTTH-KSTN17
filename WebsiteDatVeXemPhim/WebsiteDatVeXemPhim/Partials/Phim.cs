@@ -17,6 +17,7 @@ namespace WebsiteDatVeXemPhim.EF
 
         public class PhimDTO
         {
+            BookTicketDbConText con = new BookTicketDbConText();
             public int id { get; set; }
             public string TenPhim { get; set; }
             public double ThoiLuong { get; set; }
@@ -56,6 +57,21 @@ namespace WebsiteDatVeXemPhim.EF
                 get
                 {
                     return NgayCapNhat == null ? "" : NgayCapNhat.GetValueOrDefault().ToString("dd/MM/yyyy");
+                }
+            }
+            public string LichChieuString
+            {
+                get
+                {
+                    var lc = con.LichChieux.ToList();
+                    var lichchieu = "";
+                    foreach(var item in lc)
+                    {
+                        lichchieu += item.ThoiGianChieu.GetValueOrDefault().ToString("dd/MM/yyyy") + ", ";
+                    }
+
+                    lichchieu = lichchieu.Remove(lichchieu.Length - 2);
+                    return lichchieu;
                 }
             }
 

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebsiteDatVeXemPhim.Areas.Admin.Controllers
 {
-    public class RoomController : Controller
+    public class RoomController : BaseController
     {
         // GET: Admin/Room
         public ActionResult Index()

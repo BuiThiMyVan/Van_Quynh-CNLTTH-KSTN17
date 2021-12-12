@@ -14,7 +14,7 @@ namespace WebsiteDatVeXemPhim.Areas.Admin.Controllers
             var session = Session["USER_SESSION"];
             if (session == null)
             {
-                filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Login", action = "Index" }));
+                filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "Account", action = "Login" }));
             }
             base.OnActionExecuting(filterContext);
         }

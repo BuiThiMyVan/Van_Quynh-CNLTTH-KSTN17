@@ -10,7 +10,7 @@ namespace WebsiteDatVeXemPhim.EF
         public class SuatChieuDTO
         {
             public int id { get; set; }
-            public int SuatChieu { get; set; }
+            public int SuatChieu1 { get; set; }
           
 
         }

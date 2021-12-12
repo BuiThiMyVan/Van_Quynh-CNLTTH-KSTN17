@@ -7,7 +7,7 @@ using System.Web.Security;
 using WebsiteDatVeXemPhim.Common;
 using WebsiteDatVeXemPhim.EF;
 
-namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
+namespace WebsiteDatVeXemPhim.Areas.Admin.Controllers
 {
     public class AccountController : Controller
     {
@@ -19,16 +19,8 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
         }
 
         [System.Web.Http.AcceptVerbs("POST", "GET")]
-        public ActionResult Login(int? idPhim)
+        public ActionResult Login()
         {
-            if(idPhim.HasValue)
-            {
-                ViewBag.idPhim = idPhim;
-            } else
-            {
-                ViewBag.idPhim = 0;
-            }
-            
             return View();
         }
 
@@ -48,14 +40,15 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
                 userSession.UserName = res.UserName;
                 userSession.roleid = res.roleid;
                 Session.Add(CommonConstants.USER_SESSION, userSession);
-                if(userSession.roleid == (int)NguoiDung.Role.admin)
+                if (userSession.roleid == (int)NguoiDung.Role.admin)
                 {
                     result = 4;
-                } else
+                }
+                else
                 {
                     result = 1;
                 }
-                
+
             }
             else
             {
@@ -87,7 +80,7 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
             return RedirectToAction("Index", "Home");
         }
 
-       	[System.Web.Http.AcceptVerbs("POST", "GET")]
+        [System.Web.Http.AcceptVerbs("POST", "GET")]
         public ActionResult Details()
         {
             return View();
