@@ -11,7 +11,7 @@ namespace WebsiteDatVeXemPhim.Controllers.MVC_Controller
 {
     public class AccountController : Controller
     {
-        BookTicketDbConText con = new BookTicketDbConText();
+        BookTicketDbContext con = new BookTicketDbContext();
         // GET: Account
         public ActionResult Index()
         {

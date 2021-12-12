@@ -3,31 +3,107 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model WebsiteDatVeXemPhim.EF.LienHe
 @section Styles {
     <style>
         .content_contact {
             color: #fff;
             margin-top: 122px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 60px;
         }
+        #mapCanvas{
+            width: 100%;
+            height:600px;
+            color: #000;
+        }
+       
     </style>
-    } 
-@model WebsiteDatVeXemPhim.EF.LienHe
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVugAdmakHOpFKBahFV1GVlaDN-i3kBCc&callback=initMap"></script>
+    <script src="/Scripts/Contact/Contact.js"></script>
+    <script>
+
+        // This example displays a marker at the center of Australia.
+        // When the user clicks the marker, an info window opens.
+        function initMap() {
+            const uluru = { lat: 21.044705022470165, lng: 105.78154471821634 };
+            const map = new google.maps.Map(document.getElementById('mapCanvas'), {
+                zoom: 20,
+                center: uluru,
+            });
+            const contentString = '@Html.Raw(Model.Content)';
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+            });
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map,
+                title: "Uluru (Ayers Rock)",
+            });
+
+            marker.addListener("click", () => {
+                infowindow.open({
+                    anchor: marker,
+                    map,
+                    shouldFocus: false,
+                });
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+}
+
 <div class="content_contact">
     <div class="row">
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6">
-                    <h2>thông tin liên hệ</h2>
+                    <h2>Thông Tin Liên Hệ</h2>
                     @Html.Raw(Model.Content)
+                    <h2>Gửi Thông Tin</h2>
+
+                    <form action="/" method="post">
+                        <div class="form-group">
+                            <label>Họ tên</label>
+                            <input type="text" id="txtName" class="form-control" />
+
+                        </div>
+                        <div class="form-group">
+                            <label>Điện thoại</label>
+                            <input type="text" id="txtPhone" class="form-control" />
+
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <input type="text" id="txtAddress" class="form-control" />
+
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" id="txtEmail" class="form-control" />
+
+                        </div>
+                        <div class="form-group">
+                            <label>Yêu cầu</label>
+                            <textarea id="txtContent" class="form-control"> 
+                            
+                            </textarea>
+
+                        </div>
+  
+                        <button id="btnSend" class="btn btn-success" style="color: #fff; background-color: #FF55A5"> Gửi đi </button>
+
+                    </form>
                 </div>
                 <div class="col-md-6">
-                    <h2> Bản đồ</h2>
+                    <h2> Bản Đồ</h2>
                     <div class="map" id="mapCanvas"></div>
                 </div>
-            </div>           
+            </div>
         </div>
     </div>
 </div>
-<h2>Index</h2>
+
+
 
