@@ -16,9 +16,11 @@ namespace WebsiteDatVeXemPhim.EF
         public virtual DbSet<LichChieu> LichChieux { get; set; }
         public virtual DbSet<LienHe> LienHes { get; set; }
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
+        public virtual DbSet<PhanHoi> PhanHois { get; set; }
         public virtual DbSet<Phim> Phims { get; set; }
         public virtual DbSet<PhongChieu> PhongChieux { get; set; }
         public virtual DbSet<SuatChieu> SuatChieux { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
         public virtual DbSet<Ve> Ves { get; set; }
 
@@ -56,6 +58,14 @@ namespace WebsiteDatVeXemPhim.EF
 
             modelBuilder.Entity<NguoiDung>()
                 .Property(e => e.Pass)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<PhanHoi>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<PhanHoi>()
+                .Property(e => e.Email)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Phim>()

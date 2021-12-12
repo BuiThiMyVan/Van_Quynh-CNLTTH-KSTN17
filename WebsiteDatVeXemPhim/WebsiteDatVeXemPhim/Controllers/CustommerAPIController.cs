@@ -17,7 +17,7 @@ namespace WebsiteDatVeXemPhim.Controllers
         public IHttpActionResult addKH(KhachHang objkh)
         {
             
-            objkh.TinhTrang = (int)KhachHang.KH.enable;
+            objkh.TinhTrang = (int)KhachHang.KH.enable;  
             objkh.Pass = objkh.EncodePassword(objkh.Pass);
             objkh.NgayTao = DateTime.Now;
             objkh.NgayCapNhat = DateTime.Now;
@@ -53,10 +53,11 @@ namespace WebsiteDatVeXemPhim.Controllers
             {
                 KhachHang khachHang = con.KhachHangs.Find(objkh.id);
                 NguoiDung nguoiDung = con.NguoiDungs.Find(khachHang.UserName);
-               
+               if(objkh.Pass != "") { 
                 nguoiDung.Pass = objkh.EncodePassword(objkh.Pass);
 
                 khachHang.Pass = objkh.EncodePassword(objkh.Pass);
+                }
                 khachHang.HoTen = objkh.HoTen;
                 khachHang.NgaySinh = objkh.NgaySinh;
                 khachHang.DiaChi = objkh.DiaChi;
