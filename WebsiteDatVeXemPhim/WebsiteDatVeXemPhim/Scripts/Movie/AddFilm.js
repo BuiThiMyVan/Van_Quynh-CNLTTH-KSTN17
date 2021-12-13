@@ -179,7 +179,7 @@
                     alert('Tạo mới phim thành công');
                     window.location.href = "/Admin/Movie/Index";
                 } else {
-                    alert('Đã xảy ra lỗi khi cập nhật thông tin phim');
+                    alert('Đã xảy ra lỗi khi thêm mới phim');
                 }
                 
             });

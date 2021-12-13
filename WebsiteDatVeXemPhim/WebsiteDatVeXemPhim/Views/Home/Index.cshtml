@@ -30,6 +30,16 @@
         .card--list .card__title {
             line-height: 40px;
         }
+
+        .txtSearch {
+            background: transparent;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            padding: 8px 16px;
+            width: 80%;
+            height: 42px;
+            color: #ddd;
+        }
     </style>
     
 }
@@ -154,31 +164,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="filter__content">
-                        <div class="filter__items">
+                        <div class="filter__items" style="width: 100%">
                             <!-- filter item -->
-                            <div class="filter__item" id="filter__date">
-                                <span class="filter__item-label">Ngày chiếu</span>
-
-                                <div class="filter__item-btn dropdown-toggle" role="navigation" id="filter-quality"
-                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <input type="button" value="27/10/2020">
-                                    <span></span>
-                                </div>
-
-                                <ul class="filter__item-menu dropdown-menu scrollbar-dropdown"
-                                    aria-labelledby="filter-quality">
-                                    <li>27/10/2020</li>
-                                    <li>28/10/2020</li>
-                                    <li>29/10/2020</li>
-                                    <li>30/10/2020</li>
-                                    <li>31/10/2020</li>
-                                    <li>1/11/2020</li>
-                                </ul>
-                            </div>
+                                <input type="text" class="txtSearch" placeholder="Tìm kiếm thông tin phim mà bạn mong muốn" v-model="txtSearch" v-on:keypress.enter="getListFilm()">
                         </div>
 
                         <!-- filter btn -->
-                        <button class="filter__btn" type="button">Lọc</button>
+                        <button class="filter__btn" type="button" v-on:click="getListFilm()">Tìm kiếm</button>
                         <!-- end filter btn -->
                     </div>
                 </div>
@@ -218,8 +210,11 @@
                                         </ul>
                                     </div>
 
-                                    <div class="card__description">
+                                    <div class="card__description" v-if="item.LichChieuString !== ''">
                                         <p>Ngày: {{ item.LichChieuString }}</p>
+                                    </div>
+                                    <div class="card__description" v-else>
+                                        <p>Sắp chiếu</p>
                                     </div>
                                 </div>
                             </div>

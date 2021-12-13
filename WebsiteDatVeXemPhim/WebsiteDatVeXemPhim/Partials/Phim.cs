@@ -63,14 +63,19 @@ namespace WebsiteDatVeXemPhim.EF
             {
                 get
                 {
-                    var lc = con.LichChieux.ToList();
+                    var lc = con.LichChieux.Where(x => x.idPhim == id).ToList();
                     var lichchieu = "";
-                    foreach(var item in lc)
+                    if (lc.Count() > 0)
                     {
-                        lichchieu += item.ThoiGianChieu.GetValueOrDefault().ToString("dd/MM/yyyy") + ", ";
-                    }
+                        foreach (var item in lc)
+                        {
+                            lichchieu += item.ThoiGianChieu.GetValueOrDefault().ToString("dd/MM/yyyy") + ", ";
+                        }
 
-                    lichchieu = lichchieu.Remove(lichchieu.Length - 2);
+                        lichchieu = lichchieu.Remove(lichchieu.Length - 2);
+                    }
+                    
+                    
                     return lichchieu;
                 }
             }

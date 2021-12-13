@@ -217,7 +217,6 @@ ul {
   transform: translate3d(0, 0, 0);
 }
 .header__nav-link {
-    margin-left: 123px;
     font-size: 14px;
     font-weight: 300;
     text-transform: uppercase;

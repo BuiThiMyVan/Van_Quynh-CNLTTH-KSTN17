@@ -43,7 +43,7 @@ namespace WebsiteDatVeXemPhim.EF
 
         public int? TinhTrang { get; set; }
 
-        [StringLength(30)]
+        [StringLength(200)]
         public string TheLoai { get; set; }
 
         public DateTime? NgayTao { get; set; }

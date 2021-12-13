@@ -71,7 +71,7 @@
 
         ApPhich: function () {
             var self = this;
-            if (self.TenPhim == '') {
+            if (self.ApPhich == '') {
                 self.error_image = 'Poster không được để trống';
             } else {
                 self.error_image = '';

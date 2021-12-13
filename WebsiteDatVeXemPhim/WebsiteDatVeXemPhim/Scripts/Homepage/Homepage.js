@@ -34,7 +34,8 @@
             var self = this;
             var modal = {
                 page: self.currentPage,
-                pageSize: self.pageSize
+                pageSize: self.pageSize,
+                txtSearch: self.txtSearch.trim()
             };
             $.ajax({
                 data: modal,

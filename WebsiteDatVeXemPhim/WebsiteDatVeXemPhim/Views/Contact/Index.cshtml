@@ -13,15 +13,30 @@
             margin-right: 20px;
             margin-bottom: 60px;
         }
-        #mapCanvas{
+
+        #mapCanvas {
             width: 100%;
-            height:600px;
+            height: 600px;
             color: #000;
         }
-       
+
+        .text-danger {
+            text-align: left;
+            color: red;
+            width: 100%;
+            padding-left: 12px;
+        }
+
+        .feedback__form__group {
+            margin-top: 20px;
+            margin-bottom: 0px !important;
+        }
+
+        .feedback__form__btn:hover {
+            cursor: pointer;
+        }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVugAdmakHOpFKBahFV1GVlaDN-i3kBCc&callback=initMap"></script>
-    <script src="/Scripts/Contact/Contact.js"></script>
     <script>
 
         // This example displays a marker at the center of Australia.
@@ -54,46 +69,36 @@
     </script>
 }
 
-<div class="content_contact">
+<div class="content_contact" id="CreateFeedback">
     <div class="row">
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6">
-                    <h2>Thông Tin Liên Hệ</h2>
+                    <h2 class="text-align-center">Thông Tin Liên Hệ</h2>
                     @Html.Raw(Model.Content)
-                    <h2>Gửi Thông Tin</h2>
+                    <h2 class="text-align-center">Gửi Phản Hồi</h2>
 
-                    <form action="/" method="post">
-                        <div class="form-group">
-                            <label>Họ tên</label>
-                            <input type="text" id="txtName" class="form-control" />
-
+                    <form action="#" class="feedback__form__form">
+                        <div class="feedback__form__group" style="margin-top: 0">
+                            <input type="text" class="feedback__form__input" placeholder="Họ Tên" v-model="Name">
                         </div>
-                        <div class="form-group">
-                            <label>Điện thoại</label>
-                            <input type="text" id="txtPhone" class="form-control" />
-
+                        <div class="text-danger"> {{err_Name}}</div>
+                        <div class="feedback__form__group">
+                            <input type="text" class="feedback__form__input" placeholder="Số điện thoại" v-model="Phone">
                         </div>
-                        <div class="form-group">
-                            <label>Địa chỉ</label>
-                            <input type="text" id="txtAddress" class="form-control" />
-
+                        <div class="text-danger"> {{err_Phone}}</div>
+                        <div class="feedback__form__group">
+                            <input type="text" class="feedback__form__input" placeholder="Địa chỉ" v-model="Address">
                         </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" id="txtEmail" class="form-control" />
-
+                        <div class="feedback__form__group">
+                            <input type="text" class="feedback__form__input" placeholder="Email" v-model="Email">
                         </div>
-                        <div class="form-group">
-                            <label>Yêu cầu</label>
-                            <textarea id="txtContent" class="form-control"> 
-                            
-                            </textarea>
-
+                        <div class="feedback__form__group">
+                            <textarea placeholder="Yêu cầu" class="feedback__form__detail" id="" cols="60" rows="4" v-model="Content"></textarea>
                         </div>
-  
-                        <button id="btnSend" class="btn btn-success" style="color: #fff; background-color: #FF55A5"> Gửi đi </button>
+                        <div class="text-danger"> {{err_Content}}</div>
 
+                        <span class="feedback__form__btn" v-on:click="createFeedback()">Đăng phản hồi</span>
                     </form>
                 </div>
                 <div class="col-md-6">
@@ -104,6 +109,9 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script src="~/Scripts/Contact/Contact.js"></script>
+}
 
 
 

@@ -9,7 +9,7 @@ namespace WebsiteDatVeXemPhim.Controllers
 {
     public class FeedbackApiController : ApiController
     {
-        BookTicketDbContext con = new BookTicketDbContext();
+        BookTicketDbConText con = new BookTicketDbConText();
         [System.Web.Http.AcceptVerbs("POST")]
         public IHttpActionResult addPhanHoi(PhanHoi objph)
         {

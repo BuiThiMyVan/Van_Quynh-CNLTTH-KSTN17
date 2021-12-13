@@ -62,8 +62,15 @@ namespace WebsiteDatVeXemPhims.Controllers
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         public IHttpActionResult loadListPhim(Pagination objpage)
         {
+
             var totalRecord = con.Phims.Count();
             var listPhim = con.Phims.OrderByDescending(s => s.NgayTao).Skip((objpage.page - 1) * objpage.pageSize).Take(objpage.pageSize).ToList();
+            var search = objpage.txtSearch;
+            if(!string.IsNullOrEmpty(search))
+            {
+                search = StringHelper.ConvertVN(search.Trim().Normalize(System.Text.NormalizationForm.FormC).ToLower());
+                listPhim = listPhim.Where(x => (!string.IsNullOrEmpty(x.TenPhim) && StringHelper.ConvertVN(x.TenPhim.Trim().Normalize(System.Text.NormalizationForm.FormC).ToLower()).Contains(search)) || (!string.IsNullOrEmpty(x.DaoDien) && StringHelper.ConvertVN(x.DaoDien.Trim().Normalize(System.Text.NormalizationForm.FormC).ToLower()).Contains(search))).ToList();
+            }
 
             int totalPage = 0;
             totalPage = (int)Math.Ceiling((double)totalRecord / objpage.pageSize);
@@ -163,6 +170,7 @@ namespace WebsiteDatVeXemPhims.Controllers
                 phim.DaoDien = objph.DaoDien;
                 phim.NamSX = objph.NamSX;
                 phim.ApPhich = objph.ApPhich;
+                phim.TheLoai = objph.TheLoai;
                 phim.TinhTrang = objph.TinhTrang;
                 phim.NgayCapNhat = DateTime.Now;
 

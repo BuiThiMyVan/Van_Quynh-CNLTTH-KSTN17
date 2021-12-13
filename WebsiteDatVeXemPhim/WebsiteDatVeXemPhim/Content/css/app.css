@@ -25,3 +25,7 @@
 .pointer-hover:hover {
     cursor: pointer;
 }
+
+.text-align-center {
+    text-align: center;
+}

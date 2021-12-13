@@ -79,8 +79,8 @@
     </div>
     <div id="search">
         <div class="search-box">
-            <input type="text" class="search-input" placeholder="Nhập tên phim/đạo diễn..." />
-            <div class="search-icon"><i class="fas fa-search"></i></div>
+            <input type="text" class="search-input" v-model="txtSearch" placeholder="Nhập tên phim/đạo diễn..." v-on:keypress.enter="getListFilm()"/>
+            <div class="search-icon" v-on:click="getListFilm()"><i class="fas fa-search"></i></div>
         </div>
     </div>
     <div class="table-list">

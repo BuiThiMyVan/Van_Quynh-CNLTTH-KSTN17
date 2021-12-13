@@ -10,5 +10,7 @@ namespace WebsiteDatVeXemPhim.Models
         public int page { get; set; }
 
         public int pageSize { get; set; }
+
+        public string txtSearch { get; set; }
     }
 }
